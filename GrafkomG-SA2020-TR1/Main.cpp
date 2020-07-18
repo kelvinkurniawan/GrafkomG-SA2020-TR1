@@ -985,6 +985,9 @@ void drawBuildingF() {
 		spacing += 20.0;
 		spacingB += 20.0;
 	}
+
+	//detail kaca depan
+	
 }
 
 void drawBuildingG() {
