@@ -21,6 +21,7 @@ public:
 	GLfloat black[3] = { 0,0,0 };
 	GLfloat white[3] = { 1,1,1 };
 	GLfloat lightGrey[3] = { 0.8,0.8,0.8 };
+	GLfloat darkGrey[3] = { 0.6,0.6,0.6 };
 	GLfloat orange[3] = { 1.0, 0.5, 0.0 };
 	GLubyte softBlue[3] = { 181, 234, 255 };
 };
@@ -468,14 +469,17 @@ void drawBuildingB() {
 	glBegin(GL_POLYGON);
 	glVertex3f(375.0, 55.0, 52.0); //I
 	glVertex3f(150.0, 55.0, 52.0); //J
+	glColor3fv(color.lightGrey);
 	glVertex3f(150.0, 200.0, 52.0); //J-up
 	glVertex3f(375.0, 200.0, 52.0); //I-up
 	glEnd();
 
 	//kanan
+	glColor3fv(color.white);
 	glBegin(GL_POLYGON);
 	glVertex3f(375.5, 55.0, -300.0); //N
 	glVertex3f(375.5, 55.0, 50.0); //I
+	glColor3fv(color.lightGrey);
 	glVertex3f(375.5, 200.0, 50.0); //I-up
 	glVertex3f(375.5, 200.0, -300.0); //N-up
 	glEnd();
@@ -1500,6 +1504,7 @@ void drawBuildingF() {
 	glBegin(GL_POLYGON);
 	glVertex3f(0.0, 55.0, -300.0); //kiri
 	glVertex3f(0.0, 55.0, 50.0); // depan
+	glColor3fv(color.lightGrey);
 	glVertex3f(0.0, 200.0, 50.0); // depan
 	glVertex3f(0.0, 200.0, -300.0); //kiri
 	glEnd();
@@ -1516,14 +1521,17 @@ void drawBuildingF() {
 	glBegin(GL_POLYGON);
 	glVertex3f(375.0, 55.0, -750.0); //belakang
 	glVertex3f(225.0, 55.0, -750.0); //belakang
+	glColor3fv(color.lightGrey);
 	glVertex3f(225.0, 200.0, -750.0); //belakang
 	glVertex3f(375.0, 200.0, -750.0); //belakang
 	glEnd();
 
+	glColor3fv(color.white);
 	//kanan
 	glBegin(GL_POLYGON);
 	glVertex3f(374.0, 55.0, -750.0); //belakang
 	glVertex3f(374.0, 55.0, 50.0);  //depan
+	glColor3fv(color.lightGrey);
 	glVertex3f(374.0, 200.0, 50.0);  //depan
 	glVertex3f(374.0, 200.0, -750.0); //belakang
 	glEnd();
@@ -1559,6 +1567,13 @@ void drawBuildingF() {
 		glVertex3f(245.0, spacing, -750.5); //belakang
 		glVertex3f(245.0, spacingB, -750.5); //belakang
 		glVertex3f(250.0, spacingB, -750.5); //belakang
+		glEnd();
+
+		glBegin(GL_POLYGON);
+		glVertex3f(-0.5, spacing, -250.0); //kiri
+		glVertex3f(-0.5, spacing, -50.0); // depan
+		glVertex3f(-0.5, spacingB, -50.0); // depan
+		glVertex3f(-0.5, spacingB, -250.0); //kiri
 		glEnd();
 
 		glColor4fv(color.line);
@@ -1627,10 +1642,12 @@ void drawBuildingG() {
 	glBegin(GL_POLYGON);
 	glVertex3f(-400.0, 55.0, 200.0); //V
 	glVertex3f(-450.0, 55.0, 0.0);
+	glColor3fv(color.darkGrey);
 	glVertex3f(-450.0, 200.0, 0.0);
 	glVertex3f(-400.0, 200.0, 200.0); //V
 	glEnd();
 
+	glColor3fv(color.lightGrey);
 	//kanan
 	glBegin(GL_POLYGON);
 	glVertex3f(125.0, 55.0, 314.0); //O
@@ -1638,6 +1655,71 @@ void drawBuildingG() {
 	glVertex3f(125.0, 200.0, 0.0);
 	glVertex3f(125.0, 200.0, 314.0); //O
 	glEnd();
+
+	//detail
+	glColor3fv(color.darkGrey);
+	float spacing = 75.0;
+	float spacingB = 80.0;
+	for (int i = 0; i < 6; i++) {
+		glBegin(GL_POLYGON);
+		glVertex3f(-430.0, spacing, -0.5);
+		glVertex3f(-400.0, spacing, -0.5);
+		glVertex3f(-400.0, spacingB, -0.5);
+		glVertex3f(-430.0, spacingB, -0.5);
+		glEnd();
+
+		glBegin(GL_POLYGON);
+		glVertex3f(-380.0, spacing, -0.5);
+		glVertex3f(-350.0, spacing, -0.5);
+		glVertex3f(-350.0, spacingB, -0.5);
+		glVertex3f(-380.0, spacingB, -0.5);
+		glEnd();
+
+		glBegin(GL_POLYGON);
+		glVertex3f(-330.0, spacing, -0.5);
+		glVertex3f(-300.0, spacing, -0.5);
+		glVertex3f(-300.0, spacingB, -0.5);
+		glVertex3f(-330.0, spacingB, -0.5);
+		glEnd();
+
+		glBegin(GL_POLYGON);
+		glVertex3f(-280.0, spacing, -0.5);
+		glVertex3f(-250.0, spacing, -0.5);
+		glVertex3f(-250.0, spacingB, -0.5);
+		glVertex3f(-280.0, spacingB, -0.5);
+		glEnd();
+
+		glBegin(GL_POLYGON);
+		glVertex3f(-230.0, spacing, -0.5);
+		glVertex3f(-200.0, spacing, -0.5);
+		glVertex3f(-200.0, spacingB, -0.5);
+		glVertex3f(-230.0, spacingB, -0.5);
+		glEnd();
+
+		glBegin(GL_POLYGON);
+		glVertex3f(-180.0, spacing, -0.5);
+		glVertex3f(-150.0, spacing, -0.5);
+		glVertex3f(-150.0, spacingB, -0.5);
+		glVertex3f(-180.0, spacingB, -0.5);
+		glEnd();
+
+		glBegin(GL_POLYGON);
+		glVertex3f(-130.0, spacing, -0.5);
+		glVertex3f(-100.0, spacing, -0.5);
+		glVertex3f(-100.0, spacingB, -0.5);
+		glVertex3f(-130.0, spacingB, -0.5);
+		glEnd();
+
+		glBegin(GL_POLYGON);
+		glVertex3f(-80.0, spacing, -0.5);
+		glVertex3f(-50.0, spacing, -0.5);
+		glVertex3f(-50.0, spacingB, -0.5);
+		glVertex3f(-80.0, spacingB, -0.5);
+		glEnd();
+
+		spacing += 20.0;
+		spacingB += 20.0;
+	}
 
 }
 
