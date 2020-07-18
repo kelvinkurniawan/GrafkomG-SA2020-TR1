@@ -877,6 +877,74 @@ void drawBuildingG() {
 
 }
 
+void myTree(float startPoint) {
+	// Batang
+	glColor3ub(139, 69, 19);
+	glBegin(GL_QUADS);
+	glVertex3f(startPoint, 55, 340);
+	glVertex3f(startPoint - 10, 55, 340);
+	glVertex3f(startPoint - 10, 120, 340);
+	glVertex3f(startPoint, 120, 340);
+	glEnd();
+	glBegin(GL_QUADS);
+	glVertex3f(startPoint, 55, 330);
+	glVertex3f(startPoint - 10, 55, 330);
+	glVertex3f(startPoint - 10, 120, 330);
+	glVertex3f(startPoint, 120, 330);
+	glEnd();
+	glBegin(GL_QUADS);
+	glVertex3f(startPoint - 10, 55, 330);
+	glVertex3f(startPoint - 10, 55, 340);
+	glVertex3f(startPoint - 10, 120, 340);
+	glVertex3f(startPoint - 10, 120, 330);
+	glEnd();
+	glBegin(GL_QUADS);
+	glVertex3f(startPoint, 55, 330);
+	glVertex3f(startPoint, 55, 340);
+	glVertex3f(startPoint, 120, 340);
+	glVertex3f(startPoint, 120, 330);
+	glEnd();
+
+	// daun
+	glColor3ub(1, 50, 32);
+	glBegin(GL_QUADS);
+	glVertex3f(startPoint - 20, 90, 380);
+	glVertex3f(startPoint + 20, 90, 380);
+	glVertex3f(startPoint + 20, 90, 300);
+	glVertex3f(startPoint - 20, 90, 300);
+	glEnd();
+	glBegin(GL_QUADS);
+	glVertex3f(startPoint - 20, 180, 380);
+	glVertex3f(startPoint + 20, 180, 380);
+	glVertex3f(startPoint + 20, 180, 300);
+	glVertex3f(startPoint - 20, 180, 300);
+	glEnd();
+	glBegin(GL_QUADS);
+	glVertex3f(startPoint - 20, 90, 380);
+	glVertex3f(startPoint - 20, 180, 380);
+	glVertex3f(startPoint - 20, 180, 300);
+	glVertex3f(startPoint - 20, 90, 300);
+	glEnd();
+	glBegin(GL_QUADS);
+	glVertex3f(startPoint + 20, 90, 380);
+	glVertex3f(startPoint + 20, 180, 380);
+	glVertex3f(startPoint + 20, 180, 300);
+	glVertex3f(startPoint + 20, 90, 300);
+	glEnd();
+	glBegin(GL_QUADS);
+	glVertex3f(startPoint - 20, 90, 300);
+	glVertex3f(startPoint + 20, 90, 300);
+	glVertex3f(startPoint + 20, 180, 300);
+	glVertex3f(startPoint - 20, 180, 300);
+	glEnd();
+	glBegin(GL_QUADS);
+	glVertex3f(startPoint - 20, 90, 380);
+	glVertex3f(startPoint + 20, 90, 380);
+	glVertex3f(startPoint + 20, 180, 380);
+	glVertex3f(startPoint - 20, 180, 380);
+	glEnd();
+}
+
 void display() {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -888,12 +956,20 @@ void display() {
 	drawBuildingE();
 	drawBuildingF();
 	drawBuildingG();
+
+	myTree(170.0);
+	myTree(0.0);
+	myTree(-100.0);
+	myTree(-200.0);
+	myTree(-330.0);
+
 	glColor3f(0.0,0.5, 0.0);
 	drawBuildingBase();
 	glPopMatrix();
 
 	glutSwapBuffers();
 }
+
 
 void keyFun(unsigned char key, int x, int y) {
 	switch (key) {
