@@ -140,13 +140,13 @@ void myinit() {
 	glPointSize(2.0);
 	glMatrixMode(GL_PROJECTION);
 	glEnable(GL_DEPTH_TEST);
-	gluOrtho2D(-500.0, 500.0, -500.0, 500.0);
+	gluOrtho2D(0, 500.0, -500.0, 500.0);
 }
 
 int main(int argc, char** argv) {
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
-	glutInitWindowSize(500, 500);
+	glutInitWindowSize(1920, 1080);
 	glutInitWindowPosition(0, 0);
 	glutCreateWindow("TR - Grafkom Asdos");
 
