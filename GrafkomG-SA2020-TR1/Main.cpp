@@ -950,10 +950,10 @@ void drawBuildingF() {
 	glEnd();
 
 	//detail
-	glColor3fv(color.glass);
 	float spacing = 75.0;
 	float spacingB = 80.0;
 	for (int i = 0; i < 6; i++) {
+		glColor3fv(color.glass);
 		glBegin(GL_POLYGON);
 		glVertex3f(374.5, spacing, -700.0); //belakang
 		glVertex3f(374.5, spacing, -350.0);  //depan
@@ -982,12 +982,17 @@ void drawBuildingF() {
 		glVertex3f(250.0, spacingB, -750.5); //belakang
 		glEnd();
 
+		glColor4fv(color.line);
+		glBegin(GL_LINES);
+		glVertex3f(224.5, spacing, -300.5); //kiri
+		glVertex3f(0.0, spacingB, -300.5); //kiri
+		glVertex3f(224.5, spacing, -750.0); //kiri
+		glVertex3f(224.5, spacingB, -300.0); //kiri
+		glEnd();
+
 		spacing += 20.0;
 		spacingB += 20.0;
 	}
-
-	//detail kaca depan
-	
 }
 
 void drawBuildingG() {
