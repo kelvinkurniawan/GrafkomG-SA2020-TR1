@@ -2,6 +2,14 @@
 #include <GL/freeglut.h>
 using namespace std;
 
+bool mouseDown = false;
+
+float xrot = 0.0f;
+float yrot = 0.0f;
+
+float xdiff = 0.0f;
+float ydiff = 0.0f;
+
 class myColor {
 public:
 	GLfloat glass[3] = { 0.45, 0.749, 0.83 };
@@ -694,6 +702,32 @@ void keySpecialFun(int key, int x, int y) {
 	glutPostRedisplay();
 }
 
+void mouse(int button, int state, int x, int y)
+{
+	if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN)
+	{
+		mouseDown = true;
+		xdiff = (x + xrot);
+		ydiff = (-y + yrot);
+	}
+	else
+		mouseDown = false;
+}
+
+void mouseMotion(int x, int y) {
+	if (mouseDown)
+	{
+		xrot = (y + ydiff) / 150;
+		yrot = (x - xdiff) / 150;
+
+		glutPostRedisplay();
+
+
+		glRotatef(xrot, 1.0f, 0.0f, 0.0f);
+		glRotatef(yrot, 0.0f, 1.0f, 0.0f);
+	}
+}
+
 void reshape(int width, int height) {
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
@@ -727,6 +761,8 @@ int main(int argc, char** argv) {
 	glutKeyboardFunc(keyFun);
 	glutSpecialFunc(keySpecialFun);
 	glutReshapeFunc(reshape);
+	glutMouseFunc(mouse);
+	glutMotionFunc(mouseMotion);
 
 	myinit();
 	glutMainLoop();
