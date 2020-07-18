@@ -504,7 +504,7 @@ void drawBuildingC() {
 		spacing += 5.0;
 	}
 
-	glColor3f(0.5, 0.5, 0.5);
+	glColor3fv(color.grey);
 	glBegin(GL_POLYGON);
 	glVertex3f(-1.0, 200.0, 250.0); //P
 	glVertex3f(-1.0, 200.0, 85.0); //Q
@@ -512,7 +512,7 @@ void drawBuildingC() {
 	glVertex3f(-1.0, 519.5, 250.0); //P-up
 	glEnd();
 
-	glColor4f(1.0, 1.0, 1.0, 0.2);
+	glColor4fv(color.line);
 	float spacingA = 515.0;
 	float spacingB = 510.0;
 	for (int i = 0; i < 21; i++) {
@@ -528,7 +528,44 @@ void drawBuildingC() {
 		spacingB -= 15.0;
 	}
 
-	glColor3f(1.0, 1.0, 1.0);
+	glColor3fv(color.glass);
+	glBegin(GL_QUADS);
+	glVertex3f(100.0, 100.0, 350); //P
+	glVertex3f(150.0, 100.0, 300); //O
+	glVertex3f(150.0, 170.0, 300); //O-up
+	glVertex3f(100.0, 170.0, 350); //P-up
+	glEnd();
+
+	glBegin(GL_QUADS);
+	glVertex3f(100.0, 100.0, 350); //P
+	glVertex3f(62.5, 100.0, 300); //O
+	glVertex3f(62.5, 170.0, 300); //O-up
+	glVertex3f(100.0, 170.0, 350); //P-up
+	glEnd();
+
+	glBegin(GL_QUADS);
+	glVertex3f(150.0, 100.0, 300); //P
+	glVertex3f(100, 100.0, 220); //O
+	glVertex3f(100, 170.0, 220); //O-up
+	glVertex3f(150.0, 170.0, 300); //P-up
+	glEnd();
+
+	glBegin(GL_QUADS);
+	glVertex3f(100, 100.0, 350); //P
+	glVertex3f(62.5, 100.0, 300); //O
+	glVertex3f(100, 100.0, 220); //O
+	glVertex3f(150.0, 100.0, 300); //P-up
+	glEnd();
+
+	glBegin(GL_QUADS);
+	glVertex3f(100, 170.0, 350); //P
+	glVertex3f(62.5, 170.0, 300); //O
+	glVertex3f(100, 170.0, 220); //O
+	glVertex3f(150.0, 170.0, 300); //P-up
+	glEnd();
+
+
+	glColor3fv(color.white);
 	//depan
 	glBegin(GL_POLYGON);
 	glVertex3f(0.0, 55.0, 300.5); //P
