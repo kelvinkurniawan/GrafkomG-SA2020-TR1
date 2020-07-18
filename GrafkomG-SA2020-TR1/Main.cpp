@@ -787,6 +787,59 @@ void drawBuildingF() {
 	glEnd();
 }
 
+void drawBuildingG() {
+	myColor color;
+	glColor3fv(color.lightGrey);
+	//bawah
+	glBegin(GL_POLYGON);
+	glVertex3f(125.0, 55.0, 314.9); //O
+	glVertex3f(-400.0, 55.0, 200.0); //V
+	glVertex3f(-450.0, 55.0, 0.0);
+	glVertex3f(125.0, 55.0, 0.0);
+	glEnd();
+
+	//atas
+	glBegin(GL_POLYGON);
+	glVertex3f(125.0, 200.0, 314.9); //O
+	glVertex3f(-400.0, 200.0, 200.0); //V
+	glVertex3f(-450.0, 200.0, 0.0);
+	glVertex3f(125.0, 200.0, 0.0);
+	glEnd();
+
+	//depan
+	glBegin(GL_POLYGON);
+	glVertex3f(125.0, 55.0, 314.0); //O
+	glVertex3f(-400.0, 55.0, 200.0); //V
+	glVertex3f(-400.0, 200.0, 200.0); //V
+	glVertex3f(125.0, 200.0, 314.0); //O
+	glEnd();
+
+	//belakang
+	glBegin(GL_POLYGON);
+	glVertex3f(-450.0, 55.0, 0.0);
+	glVertex3f(125.0, 55.0, 0.0);
+	glVertex3f(125.0, 200.0, 0.0);
+	glVertex3f(-450.0, 200.0, 0.0);
+	glEnd();
+
+	//kiri
+	glBegin(GL_POLYGON);
+	glVertex3f(-400.0, 55.0, 200.0); //V
+	glVertex3f(-450.0, 55.0, 0.0);
+	glVertex3f(-450.0, 200.0, 0.0);
+	glVertex3f(-400.0, 200.0, 200.0); //V
+	glEnd();
+
+	//kanan
+	glBegin(GL_POLYGON);
+	glVertex3f(125.0, 55.0, 314.0); //O
+	glVertex3f(125.0, 55.0, 0.0);
+	glVertex3f(125.0, 200.0, 0.0);
+	glVertex3f(125.0, 200.0, 314.0); //O
+	glEnd();
+
+}
+
 void display() {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -797,6 +850,7 @@ void display() {
 	drawBuildingD();
 	drawBuildingE();
 	drawBuildingF();
+	drawBuildingG();
 	glColor3f(0.0,0.5, 0.0);
 	drawBuildingBase();
 	glPopMatrix();
