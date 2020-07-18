@@ -195,6 +195,35 @@ void drawBuildingA() {
 	glVertex3f(370.0, 80.0, 344.0);
 	glEnd();
 
+	// pilar 2
+	glBegin(GL_POLYGON);
+	glVertex3f(340.0, 55.0, 343.0);
+	glVertex3f(335.0, 55.0, 342.5);
+	glVertex3f(335.0, 80.0, 342.5);
+	glVertex3f(340.0, 80.0, 343.0);
+	glEnd();
+
+	glBegin(GL_POLYGON);
+	glVertex3f(340.0, 55.0, 341.0);
+	glVertex3f(335.0, 55.0, 340.5);
+	glVertex3f(335.0, 80.0, 340.5);
+	glVertex3f(340.0, 80.0, 341.0);
+	glEnd();
+
+	glBegin(GL_POLYGON);
+	glVertex3f(335.0, 55.0, 343.0);
+	glVertex3f(335.0, 55.0, 340.5);
+	glVertex3f(335.0, 80.0, 340.5);
+	glVertex3f(335.0, 80.0, 343.0);
+	glEnd();
+
+	glBegin(GL_POLYGON);
+	glVertex3f(340.0, 55.0, 343.0);
+	glVertex3f(340.0, 55.0, 340.5);
+	glVertex3f(340.0, 80.0, 340.5);
+	glVertex3f(340.0, 80.0, 343.0);
+	glEnd();
+
 	// pilar 3
 
 	glBegin(GL_POLYGON);
