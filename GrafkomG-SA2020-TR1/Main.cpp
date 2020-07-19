@@ -14,7 +14,7 @@ class myColor {
 public:
 	GLfloat glass[3] = { 0.45, 0.749, 0.83 };
 	GLfloat line[4] = { 1.0, 1.0, 1.0, 0.3 };
-
+	GLfloat ground[3] = { 0.0, 0.3, 0.0 };
 
 	// Absolute Color
 	GLfloat grey[3] = { 0.5, 0.5, 0.5 };
@@ -27,6 +27,10 @@ public:
 };
 
 void drawBuildingBase() {
+
+	myColor color;
+
+	glColor3fv(color.ground);
 	//Depan
 	glBegin(GL_POLYGON);
 	glVertex3f(-400.0, 0.0, 300.0);
@@ -1809,7 +1813,6 @@ void display() {
 	myTree(-200.0);
 	myTree(-330.0);
 
-	glColor3f(0.0, 0.5, 0.0);
 	drawBuildingBase();
 	glPopMatrix();
 
@@ -1896,7 +1899,6 @@ void mouseMotion(int x, int y) {
 
 		glutPostRedisplay();
 
-
 		glRotatef(xrot, 1.0f, 0.0f, 0.0f);
 		glRotatef(yrot, 0.0f, 1.0f, 0.0f);
 	}
@@ -1911,24 +1913,27 @@ void reshape(int width, int height) {
 }
 
 void myinit() {
-	glClearColor(0.0, 0.0, 0.0, 1.0);
-	glPointSize(2.0);
-	glLineWidth(2.5);
+	glClearColor(0.93, 0.86, 0.64, 1.0);
+	//glPointSize(2.0);
+	//glLineWidth(2.5);
 	glMatrixMode(GL_PROJECTION);
 	glEnable(GL_DEPTH_TEST);
 	gluOrtho2D(0, 500.0, -500.0, 500.0);
-	glEnable(GL_LINE_SMOOTH);
-	glEnable(GL_POINT_SMOOTH);
+	//glEnable(GL_LINE_SMOOTH);
+	//glEnable(GL_POINT_SMOOTH);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-	glEnable(GL_BLEND);
-	gluOrtho2D(-500.0, 500.0, -500.0, 500.0);
+	glEnable(GL_BLEND); 
+	//(GL_COLOR_MATERIAL);
+	//glEnable(GL_LIGHTING);
+	//glEnable(GL_LIGHT0);
+	//gluOrtho2D(-500.0, 500.0, -500.0, 500.0);
 }
 
 int main(int argc, char** argv) {
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
 	glutInitWindowSize(1920, 1080);
-	glutInitWindowPosition(0, 0);
+	glutInitWindowPosition(-1, -1);
 	glutCreateWindow("TR - Grafkom Asdos");
 
 	glutDisplayFunc(display);
