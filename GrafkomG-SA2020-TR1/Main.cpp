@@ -14,7 +14,11 @@ class myColor {
 public:
 	GLfloat glass[3] = { 0.45, 0.749, 0.83 };
 	GLfloat line[4] = { 1.0, 1.0, 1.0, 0.3 };
-	GLfloat ground[3] = { 0.0, 0.3, 0.0 };
+	GLubyte ground[3] = { 86,67,22 };
+	GLubyte darkground[3] = { 45,34,0 };
+	GLubyte groundAccent[3] = { 75,53,0 };
+	GLubyte street[3] = { 52,52,52 };
+	GLubyte lightstreet[3] = { 95,95,95 };
 
 	// Absolute Color
 	GLfloat grey[3] = { 0.5, 0.5, 0.5 };
@@ -30,54 +34,58 @@ void drawBuildingBase() {
 
 	myColor color;
 
-	glColor3fv(color.ground);
+	glColor3ubv(color.groundAccent);
 	//Depan
 	glBegin(GL_POLYGON);
-	glVertex3f(-400.0, 0.0, 300.0);
-	glVertex3f(400.0, 0.0, 400.0);
-	glVertex3f(400.0, 50.0, 400.0);
-	glVertex3f(-400.0, 50.0, 300.0);
+	glVertex3f(-400.0, 0.0, 600.0);
+	glVertex3f(400.0, 0.0, 600.0);
+	glVertex3f(400.0, 50.0, 600.0);
+	glVertex3f(-400.0, 50.0, 600.0);
 	glEnd();
 
 	//belakang
 	glBegin(GL_POLYGON);
-	glVertex3f(-600.0, 0.0, -500.0);
-	glVertex3f(400.0, 0.0, -500.0);
-	glVertex3f(400.0, 50.0, -500.0);
-	glVertex3f(-600.0, 50.0, -500.0);
+	glVertex3f(-600.0, 0.0, -600.0);
+	glVertex3f(400.0, 0.0, -600.0);
+	glVertex3f(400.0, 50.0, -600.0);
+	glVertex3f(-600.0, 50.0, -600.0);
 	glEnd();
 
 	//kanan
 	glBegin(GL_POLYGON);
-	glVertex3f(400.0, 0.0, -500.0);
-	glVertex3f(400.0, 0.0, 400.0);
-	glVertex3f(400.0, 50.0, 400.0);
-	glVertex3f(400.0, 50.0, -500.0);
+	glVertex3f(400.0, 0.0, -600.0);
+	glVertex3f(400.0, 0.0, 600.0);
+	glVertex3f(400.0, 50.0, 600.0);
+	glVertex3f(400.0, 50.0, -600.0);
 	glEnd();
 
 	//kiri
 	glBegin(GL_POLYGON);
-	glVertex3f(-400.0, 0.0, 300.0);
-	glVertex3f(-600.0, 0.0, -500.0);
-	glVertex3f(-600.0, 50.0, -500.0);
-	glVertex3f(-400.0, 50.0, 300.0);
-	glEnd();
-
-	//atas
-	glBegin(GL_POLYGON);
-	glVertex3f(-400.0, 50.0, 300.0);
-	glVertex3f(400.0, 50.0, 400.0);
-	glVertex3f(400.0, 50.0, -500.0);
-	glVertex3f(-600.0, 50.0, -500.0);
+	glVertex3f(-400.0, 0.0, 600.0);
+	glVertex3f(-600.0, 0.0, -600.0);
+	glVertex3f(-600.0, 50.0, -600.0);
+	glVertex3f(-400.0, 50.0, 600.0);
 	glEnd();
 
 	//bawah
 	glBegin(GL_POLYGON);
-	glVertex3f(-400.0, 0.0, 300.0);
-	glVertex3f(400.0, 0.0, 400.0);
-	glVertex3f(400.0, 0.0, -500.0);
-	glVertex3f(-600.0, 0.0, -500.0);
+	glVertex3f(-400.0, 0.0, 600.0);
+	glVertex3f(400.0, 0.0, 600.0);
+	glVertex3f(400.0, 0.0, -600.0);
+	glVertex3f(-600.0, 0.0, -600.0);
 	glEnd();
+	//atas
+	glBegin(GL_POLYGON);
+	glColor3ubv(color.ground);
+	glVertex3f(-400.0, 50.0, 600.0);
+	glColor3ubv(color.darkground);
+	glVertex3f(400.0, 50.0, 600.0);
+	glColor3ubv(color.ground);
+	glVertex3f(400.0, 50.0, -600.0);
+	glColor3ubv(color.darkground);
+	glVertex3f(-600.0, 50.0, -600.0);
+	glEnd();
+
 }
 
 void drawBuildingA() {
@@ -2021,72 +2029,104 @@ void drawBuildingG() {
 
 }
 
-void myTree(float startPoint) {
+void myTree(float startPoint, float zPoint) {
 	// Batang
 	glColor3ub(139, 69, 19);
 	glBegin(GL_QUADS);
-	glVertex3f(startPoint, 55, 340);
-	glVertex3f(startPoint - 10, 55, 340);
-	glVertex3f(startPoint - 10, 120, 340);
-	glVertex3f(startPoint, 120, 340);
+	glVertex3f(startPoint, 55, zPoint);
+	glVertex3f(startPoint - 10, 55, zPoint);
+	glVertex3f(startPoint - 10, 120, zPoint);
+	glVertex3f(startPoint, 120, zPoint);
 	glEnd();
 	glBegin(GL_QUADS);
-	glVertex3f(startPoint, 55, 330);
-	glVertex3f(startPoint - 10, 55, 330);
-	glVertex3f(startPoint - 10, 120, 330);
-	glVertex3f(startPoint, 120, 330);
+	glVertex3f(startPoint, 55, zPoint-10);
+	glVertex3f(startPoint - 10, 55, zPoint - 10);
+	glVertex3f(startPoint - 10, 120, zPoint - 10);
+	glVertex3f(startPoint, 120, zPoint - 10);
 	glEnd();
 	glBegin(GL_QUADS);
-	glVertex3f(startPoint - 10, 55, 330);
-	glVertex3f(startPoint - 10, 55, 340);
-	glVertex3f(startPoint - 10, 120, 340);
-	glVertex3f(startPoint - 10, 120, 330);
+	glVertex3f(startPoint - 10, 55, zPoint - 10);
+	glVertex3f(startPoint - 10, 55, zPoint);
+	glVertex3f(startPoint - 10, 120, zPoint);
+	glVertex3f(startPoint - 10, 120, zPoint - 10);
 	glEnd();
 	glBegin(GL_QUADS);
-	glVertex3f(startPoint, 55, 330);
-	glVertex3f(startPoint, 55, 340);
-	glVertex3f(startPoint, 120, 340);
-	glVertex3f(startPoint, 120, 330);
+	glVertex3f(startPoint, 55, zPoint - 10);
+	glVertex3f(startPoint, 55, zPoint);
+	glVertex3f(startPoint, 120, zPoint);
+	glVertex3f(startPoint, 120, zPoint - 10);
 	glEnd();
 
 	// daun
 	glColor3ub(1, 50, 32);
 	glBegin(GL_QUADS);
-	glVertex3f(startPoint - 20, 90, 380);
-	glVertex3f(startPoint + 20, 90, 380);
-	glVertex3f(startPoint + 20, 90, 300);
-	glVertex3f(startPoint - 20, 90, 300);
+	glVertex3f(startPoint - 20, 90, zPoint + 40);
+	glVertex3f(startPoint + 20, 90, zPoint + 40);
+	glVertex3f(startPoint + 20, 90, zPoint - 40);
+	glVertex3f(startPoint - 20, 90, zPoint - 40);
 	glEnd();
 	glBegin(GL_QUADS);
-	glVertex3f(startPoint - 20, 180, 380);
-	glVertex3f(startPoint + 20, 180, 380);
-	glVertex3f(startPoint + 20, 180, 300);
-	glVertex3f(startPoint - 20, 180, 300);
+	glVertex3f(startPoint - 20, 180, zPoint + 40);
+	glVertex3f(startPoint + 20, 180, zPoint + 40);
+	glVertex3f(startPoint + 20, 180, zPoint - 40);
+	glVertex3f(startPoint - 20, 180, zPoint - 40);
 	glEnd();
 	glBegin(GL_QUADS);
-	glVertex3f(startPoint - 20, 90, 380);
-	glVertex3f(startPoint - 20, 180, 380);
-	glVertex3f(startPoint - 20, 180, 300);
-	glVertex3f(startPoint - 20, 90, 300);
+	glVertex3f(startPoint - 20, 90, zPoint + 40);
+	glVertex3f(startPoint - 20, 180, zPoint + 40);
+	glVertex3f(startPoint - 20, 180, zPoint - 40);
+	glVertex3f(startPoint - 20, 90, zPoint - 40);
 	glEnd();
 	glBegin(GL_QUADS);
-	glVertex3f(startPoint + 20, 90, 380);
-	glVertex3f(startPoint + 20, 180, 380);
-	glVertex3f(startPoint + 20, 180, 300);
-	glVertex3f(startPoint + 20, 90, 300);
+	glVertex3f(startPoint + 20, 90, zPoint + 40);
+	glVertex3f(startPoint + 20, 180, zPoint + 40);
+	glVertex3f(startPoint + 20, 180, zPoint - 40);
+	glVertex3f(startPoint + 20, 90, zPoint - 40);
 	glEnd();
 	glBegin(GL_QUADS);
-	glVertex3f(startPoint - 20, 90, 300);
-	glVertex3f(startPoint + 20, 90, 300);
-	glVertex3f(startPoint + 20, 180, 300);
-	glVertex3f(startPoint - 20, 180, 300);
+	glVertex3f(startPoint - 20, 90, zPoint - 40);
+	glVertex3f(startPoint + 20, 90, zPoint - 40);
+	glVertex3f(startPoint + 20, 180, zPoint - 40);
+	glVertex3f(startPoint - 20, 180, zPoint - 40);
 	glEnd();
 	glBegin(GL_QUADS);
-	glVertex3f(startPoint - 20, 90, 380);
-	glVertex3f(startPoint + 20, 90, 380);
-	glVertex3f(startPoint + 20, 180, 380);
-	glVertex3f(startPoint - 20, 180, 380);
+	glVertex3f(startPoint - 20, 90, zPoint + 40);
+	glVertex3f(startPoint + 20, 90, zPoint + 40);
+	glVertex3f(startPoint + 20, 180, zPoint + 40);
+	glVertex3f(startPoint - 20, 180, zPoint + 40);
 	glEnd();
+}
+
+void street() {
+
+	myColor color;
+	glBegin(GL_QUADS);
+	glColor3ubv(color.lightstreet);
+	glVertex3f(-435.0, 55.0, 360.0);
+	glColor3ubv(color.street);
+	glVertex3f(400.0, 55.0, 400.0);
+	glColor3ubv(color.street);
+	glVertex3f(400.0, 55.0, 520.0);
+	glColor3ubv(color.lightstreet);
+	glVertex3f(-420.0, 55.0, 480.0);
+	glEnd();
+
+	float width = 35.0f;
+	float margin = 80.0f;
+	float deltaZ = 0.0f;
+	float startPoint = -400.0f;
+	for (int i = 0; i < 11; i++) {
+		glBegin(GL_QUADS);
+		glColor3fv(color.white);
+		glVertex3f(startPoint, 56.0, 410.0 + deltaZ);
+		glVertex3f(startPoint - width, 56.0, 410.0 + deltaZ);
+		glVertex3f(startPoint - width, 56.0, 420.0 + deltaZ);
+		glVertex3f(startPoint, 56.0, 420.0 + deltaZ);
+		glEnd();
+
+		startPoint += margin;
+		deltaZ += 5.0;
+	}
 }
 
 void display() {
@@ -2101,11 +2141,19 @@ void display() {
 	drawBuildingF();
 	drawBuildingG();
 
-	myTree(170.0);
-	myTree(0.0);
-	myTree(-100.0);
-	myTree(-200.0);
-	myTree(-330.0);
+	myTree(170.0, 340);
+	myTree(0.0, 340);
+	myTree(-100.0, 340);
+	myTree(-200.0, 340);
+	myTree(-330.0, 340);
+
+	street();
+
+	myTree(300.0, 580);
+	myTree(120.0, 575);
+	myTree(-90.0, 550);
+	myTree(-220.0, 540);
+	myTree(-300.0, 530);
 
 	drawBuildingBase();
 	glPopMatrix();
