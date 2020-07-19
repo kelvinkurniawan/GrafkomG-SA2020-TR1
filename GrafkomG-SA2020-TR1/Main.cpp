@@ -678,6 +678,14 @@ void drawBuildingC() {
 	glVertex3f(125.0, 550.0, 315.0); //O-up
 	glVertex3f(0.0, 550.0, 300.0); //P-up
 	glEnd();
+
+	glBegin(GL_POLYGON);
+	glColor3fv(color.lightGrey);
+	glVertex3f(15.0, 445.0, 310.0); //P
+	glVertex3f(55.0, 445.0, 315.0); //O
+	glVertex3f(55.0, 505.0, 315.0); //O-up
+	glVertex3f(15.0, 505.0, 310.0); //P-up
+	glEnd();
 	
 	//kiri
 	glColor3fv(color.glass);
@@ -2498,33 +2506,36 @@ void perpotonganGaris(float ax, float ay, float bx, float by, float cx, float cy
 }
 
 void tweening() {
-	float startShape[12][3] = {
+	myColor color;
+	float startShape[8][3] = {
 		{20, 500, 315}, {50, 500, 315}, {50, 490, 315}, {40, 490, 315}, {40, 450, 315}, {30, 450, 315},
 		{30, 490, 315}, {20, 490, 315}
 	};
 
-	float finalShape[12][3] = {
+	float finalShape[8][3] = {
 		{20, 500, 315}, {50, 500, 315}, {50, 475, 315}, {50, 475, 315}, {30, 475, 315}, {30, 475, 315},
 		{30, 450, 315}, {20, 450, 315}
 	};
 
 	float intermediateShape[12][3];
+	float intermediateShapeReverse[12][3];
 
 	static float tween = 0.0 - deltat;
 
 	if (tween < 1) {
 		tween += deltat;
-	}
+	}	
 
 	for (size_t i = 0; i < 8; i++) {
 		intermediateShape[i][0] = (1.0 - tween) * startShape[i][0] + tween * finalShape[i][0];
 		intermediateShape[i][1] = (1.0 - tween) * startShape[i][1] + tween * finalShape[i][1];
 		intermediateShape[i][2] = (1.0 - tween) * startShape[i][2] + tween * finalShape[i][2];
-	}
-
+	}	
+	
 	glVertexPointer(3, GL_FLOAT, 0, intermediateShape);
 
-	glColor3f(1.0, 0.0, 0.0);
+	glColor3fv(color.darkGrey);
+
 	for (size_t i = 0; i < 8000; i++) {
 		glDrawArrays(GL_LINE_LOOP, 0, 8);
 		glutPostRedisplay();
