@@ -2594,6 +2594,16 @@ int main(int argc, char** argv) {
 	glutMotionFunc(mouseMotion);
 	glutMouseWheelFunc(mouseWheel);
 	glutPassiveMotionFunc(mouseMotionActive);
+
+	cout << " << Hint <<" << endl << endl;
+	cout << " > Press W, A, S, D to rotate the object" << endl;
+	cout << " > Press arrow button to translate the object" << endl;
+	cout << " > Press 1 or scroll up your mouse to increase scale" << endl;
+	cout << " > Press 2 or scroll up your mouse to decrease scale" << endl;
+	cout << " > Press r to enable/disable manual lighting" << endl;
+	cout << " > Press t/y to adjust the depth of lighting" << endl;
+	cout << " > Press left click and hold your mouse to rotate the object" << endl;
+
 	myinit();
 	glutMainLoop();
 
