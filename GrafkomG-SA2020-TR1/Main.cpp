@@ -2077,39 +2077,48 @@ void myTree(float startPoint, float zPoint) {
 	glEnd();
 
 	// daun
-	glColor3ub(1, 50, 32);
+	glColor3ub(19, 51, 17);
 	glBegin(GL_QUADS);
 	glVertex3f(startPoint - 20, 90, zPoint + 40);
 	glVertex3f(startPoint + 20, 90, zPoint + 40);
 	glVertex3f(startPoint + 20, 90, zPoint - 40);
 	glVertex3f(startPoint - 20, 90, zPoint - 40);
 	glEnd();
+
 	glBegin(GL_QUADS);
 	glVertex3f(startPoint - 20, 180, zPoint + 40);
 	glVertex3f(startPoint + 20, 180, zPoint + 40);
 	glVertex3f(startPoint + 20, 180, zPoint - 40);
 	glVertex3f(startPoint - 20, 180, zPoint - 40);
 	glEnd();
+
 	glBegin(GL_QUADS);
+	glColor3ub(27, 78, 24);
 	glVertex3f(startPoint - 20, 90, zPoint + 40);
+	glColor3ub(19, 51, 17);
 	glVertex3f(startPoint - 20, 180, zPoint + 40);
 	glVertex3f(startPoint - 20, 180, zPoint - 40);
 	glVertex3f(startPoint - 20, 90, zPoint - 40);
 	glEnd();
+
 	glBegin(GL_QUADS);
 	glVertex3f(startPoint + 20, 90, zPoint + 40);
 	glVertex3f(startPoint + 20, 180, zPoint + 40);
 	glVertex3f(startPoint + 20, 180, zPoint - 40);
 	glVertex3f(startPoint + 20, 90, zPoint - 40);
 	glEnd();
+
 	glBegin(GL_QUADS);
 	glVertex3f(startPoint - 20, 90, zPoint - 40);
 	glVertex3f(startPoint + 20, 90, zPoint - 40);
 	glVertex3f(startPoint + 20, 180, zPoint - 40);
 	glVertex3f(startPoint - 20, 180, zPoint - 40);
 	glEnd();
+
 	glBegin(GL_QUADS);
+	glColor3ub(27, 78, 24);
 	glVertex3f(startPoint - 20, 90, zPoint + 40);
+	glColor3ub(19, 51, 17);
 	glVertex3f(startPoint + 20, 90, zPoint + 40);
 	glVertex3f(startPoint + 20, 180, zPoint + 40);
 	glVertex3f(startPoint - 20, 180, zPoint + 40);
@@ -2286,11 +2295,26 @@ void myinit() {
 	//glEnable(GL_LINE_SMOOTH);
 	//glEnable(GL_POINT_SMOOTH);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+	/*
 	glEnable(GL_BLEND); 
-	//glEnable(GL_COLOR_MATERIAL);
-	//glEnable(GL_LIGHTING);
-	//glEnable(GL_LIGHT0);
-	//gluOrtho2D(-500.0, 500.0, -500.0, 500.0);
+	glEnable(GL_COLOR_MATERIAL);
+	glEnable(GL_LIGHTING);
+	glEnable(GL_LIGHT0); 
+
+	GLfloat ambientLight[] = { 0.2, 0.2, 0.2, 1.0 };
+	GLfloat diffuseLight[] = { 0.8f, 0.8f, 0.8, 1.0f };
+	GLfloat specularLight[] = { 0, 0, 0, 1 };
+	GLfloat emission[] = { 0.5f, 0.5f, 0.5f, 1.0f };
+	GLfloat position[] = { 0.0f, -10.0f, 1.0f, 0.0f };
+
+	glLightfv(GL_LIGHT0, GL_AMBIENT, ambientLight);
+	glLightfv(GL_LIGHT0, GL_DIFFUSE, diffuseLight);
+	glLightfv(GL_LIGHT0, GL_SPECULAR, specularLight);
+	glLightfv(GL_LIGHT0, GL_EMISSION, emission);
+	glLightfv(GL_LIGHT0, GL_POSITION, position);
+
+	*/
 }
 
 void mouseWheel(int button, int dir, int x, int y){
