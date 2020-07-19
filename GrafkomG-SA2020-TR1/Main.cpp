@@ -2372,10 +2372,8 @@ void display() {
 	if (manualLighting) {
 		GLfloat position[] = { mouseX, mouseY, mouseZ, 1 };
 		glLightfv(GL_LIGHT0, GL_POSITION, position);
-	}
-	else {
-		GLfloat position[] = { 400.0f, 100.0f, 500.0f, 0.5 };
-		glLightfv(GL_LIGHT0, GL_POSITION, position);
+		glEnable(GL_LIGHTING);
+		glEnable(GL_LIGHT0);
 	}
 
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -2449,10 +2447,14 @@ void keyFun(unsigned char key, int x, int y) {
 
 	// enable manual lighting
 	case 'r':
-		if (!manualLighting)
+		if (!manualLighting) {
 			manualLighting = true;
-		else
+		}
+		else {
 			manualLighting = false;
+			GLfloat position[] = { 400.0f, 100.0f, 500.0f, 0.5 };
+			glLightfv(GL_LIGHT0, GL_POSITION, position);
+		}
 		break;
 
 	// moving z point
@@ -2555,6 +2557,7 @@ void myinit() {
 	glLightfv(GL_LIGHT0, GL_SPECULAR, specularLight);
 	glLightfv(GL_LIGHT0, GL_EMISSION, emission);
 	glLightfv(GL_LIGHT0, GL_POSITION, position);
+
 	glEnable(GL_LIGHTING);
 	glEnable(GL_LIGHT0);
 
