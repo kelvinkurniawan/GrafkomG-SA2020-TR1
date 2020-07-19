@@ -2142,6 +2142,9 @@ void display() {
 	drawBuildingG();
 
 	myTree(170.0, 340);
+	myTree(170.0, 130);
+	myTree(70.0, -400);
+	myTree(150.0, -500);
 	myTree(0.0, 340);
 	myTree(-100.0, 340);
 	myTree(-200.0, 340);
