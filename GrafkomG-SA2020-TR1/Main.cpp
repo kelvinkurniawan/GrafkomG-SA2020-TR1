@@ -3,12 +3,16 @@
 using namespace std;
 
 bool mouseDown = false;
+bool manualLighting = false;
+
 
 float xrot = 0.0f;
 float yrot = 0.0f;
 
 float xdiff = 0.0f;
 float ydiff = 0.0f;
+
+float mouseX, mouseY, mouseZ = 700;
 
 class myColor {
 public:
@@ -2364,6 +2368,16 @@ void perpotonganGaris(float ax, float ay, float bx, float by, float cx, float cy
 }
 
 void display() {
+
+	if (manualLighting) {
+		GLfloat position[] = { mouseX, mouseY, mouseZ, 1 };
+		glLightfv(GL_LIGHT0, GL_POSITION, position);
+	}
+	else {
+		GLfloat position[] = { 400.0f, 100.0f, 500.0f, 0.5 };
+		glLightfv(GL_LIGHT0, GL_POSITION, position);
+	}
+
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	glPushMatrix();
@@ -2433,7 +2447,22 @@ void keyFun(unsigned char key, int x, int y) {
 		glRotatef(-5.0, 0.0, 0.0, 1.0);
 		break;
 
-		// Zoom In - Out
+	// enable manual lighting
+	case 'r':
+		if (!manualLighting)
+			manualLighting = true;
+		else
+			manualLighting = false;
+		break;
+
+	// moving z point
+	case 't':
+		mouseZ += 100.0f;
+		break;
+	case 'y':
+		mouseZ -= 100.0f;
+		break;
+	// Zoom In - Out
 	case '1':
 		glScalef(1.025, 1.025, 1.025);
 		break;
@@ -2490,6 +2519,8 @@ void mouseMotion(int x, int y) {
 		glRotatef(xrot, 1.0f, 0.0f, 0.0f);
 		glRotatef(yrot, 0.0f, 1.0f, 0.0f);
 	}
+
+
 }
 
 void reshape(int width, int height) {
@@ -2511,26 +2542,26 @@ void myinit() {
 	glEnable(GL_POINT_SMOOTH);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	glEnable(GL_BLEND);
-
+	glEnable(GL_NORMALIZE);
 
 	GLfloat ambientLight[] = { 0.2, 0.2, 0.2, 1.0 };
 	GLfloat diffuseLight[] = { 0.8f, 0.8f, 0.8, 1.0f };
 	GLfloat specularLight[] = { 0, 0, 0, 1 };
 	GLfloat emission[] = { 0.5f, 0.5f, 0.5f, 1.0f };
-	GLfloat position[] = { 5.0f, -20.0f, 1.0f, 0.0f };
+	GLfloat position[] = { 400.0f, 100.0f, 500.0f, 0.5 };
 
 	glLightfv(GL_LIGHT0, GL_AMBIENT, ambientLight);
 	glLightfv(GL_LIGHT0, GL_DIFFUSE, diffuseLight);
 	glLightfv(GL_LIGHT0, GL_SPECULAR, specularLight);
 	glLightfv(GL_LIGHT0, GL_EMISSION, emission);
 	glLightfv(GL_LIGHT0, GL_POSITION, position);
-
 	glEnable(GL_LIGHTING);
 	glEnable(GL_LIGHT0);
 
 }
 
 void mouseWheel(int button, int dir, int x, int y){
+
 	if (dir > 0){
 		glScalef(1.025, 1.025, 1.025);
 	}
@@ -2539,6 +2570,13 @@ void mouseWheel(int button, int dir, int x, int y){
 	}
 	glutPostRedisplay();
 
+}
+
+void mouseMotionActive(int x, int y){
+	mouseX = x;
+	mouseY = y;
+
+	glutPostRedisplay();
 }
 
 int main(int argc, char** argv) {
@@ -2555,7 +2593,7 @@ int main(int argc, char** argv) {
 	glutMouseFunc(mouse);
 	glutMotionFunc(mouseMotion);
 	glutMouseWheelFunc(mouseWheel);
-
+	glutPassiveMotionFunc(mouseMotionActive);
 	myinit();
 	glutMainLoop();
 
