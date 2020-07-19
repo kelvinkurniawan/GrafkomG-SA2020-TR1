@@ -2492,6 +2492,17 @@ void drawBuildingH() {
 
 }
 
+void drawBuildingI() {
+	myColor color;
+	glColor3fv(color.glass);
+	glBegin(GL_POLYGON);
+	glVertex3f(-25.0, 55.0,-750.0);
+	glVertex3f(-500.0, 55.0, -750.0);
+	glVertex3f(-500.0, 55.0, -400.0);
+	glVertex3f(-25.0, 55.0, -400.0);
+	glEnd();
+}
+
 void myTree(float startPoint, float zPoint) {
 	// Batang
 	glColor3ub(139, 69, 19);
@@ -2701,6 +2712,7 @@ void display() {
 	drawBuildingF();
 	drawBuildingG();
 	drawBuildingH();
+	drawBuildingI();
 
 	myTree(170.0, 340);
 	myTree(170.0, 130);
