@@ -2499,13 +2499,13 @@ void perpotonganGaris(float ax, float ay, float bx, float by, float cx, float cy
 
 void tweening() {
 	float startShape[12][3] = {
-		{0, 600, 315}, {100, 600, 315}, {100, 300, 315}, {300, 300, 315}, {300, 600, 315}, {400, 600, 315},
-		{400, 0, 315}, {300, 0, 315}, {300, 200, 315}, {100, 200, 315}, {100, 0, 315}, {0, 0, 315}
+		{20, 500, 315}, {50, 500, 315}, {50, 490, 315}, {40, 490, 315}, {40, 450, 315}, {30, 450, 315},
+		{30, 490, 315}, {20, 490, 315}
 	};
 
 	float finalShape[12][3] = {
-		{0, 600, 315}, {100, 600, 315}, {100, 500, 315}, {300, 300, 315}, {300, 600, 315}, {400, 600, 315},
-		{400, 0, 315}, {300, 0, 315}, {300, 200, 315}, {100, 400, 315}, {100, 0, 315}, {0, 0, 315}
+		{20, 500, 315}, {50, 500, 315}, {50, 475, 315}, {50, 475, 315}, {30, 475, 315}, {30, 475, 315},
+		{30, 450, 315}, {20, 450, 315}
 	};
 
 	float intermediateShape[12][3];
@@ -2516,7 +2516,7 @@ void tweening() {
 		tween += deltat;
 	}
 
-	for (size_t i = 0; i < 12; i++) {
+	for (size_t i = 0; i < 8; i++) {
 		intermediateShape[i][0] = (1.0 - tween) * startShape[i][0] + tween * finalShape[i][0];
 		intermediateShape[i][1] = (1.0 - tween) * startShape[i][1] + tween * finalShape[i][1];
 		intermediateShape[i][2] = (1.0 - tween) * startShape[i][2] + tween * finalShape[i][2];
@@ -2525,14 +2525,13 @@ void tweening() {
 	glVertexPointer(3, GL_FLOAT, 0, intermediateShape);
 
 	glColor3f(1.0, 0.0, 0.0);
-	for (size_t i = 0; i < 800; i++) {
-		glDrawArrays(GL_LINE_LOOP, 0, 12);
+	for (size_t i = 0; i < 8000; i++) {
+		glDrawArrays(GL_LINE_LOOP, 0, 8);
 		glutPostRedisplay();
 	}
 
 	glEnableClientState(GL_VERTEX_ARRAY);
 }
-
 
 void display() {
 
@@ -2579,7 +2578,7 @@ void display() {
 	perpotonganGaris(300.0, 1300.0, 350.0, 1200.0, 300.0, 1200.0, 350.0, 1300.0);
 	perpotonganGaris(500.0, 1000.0, 550.0, 900.0, 500.0, 900.0, 550.0, 1000.0);
 
-	//tweening
+	tweening();
 
 	drawBuildingBase();
 	glDisable(GL_COLOR_MATERIAL);
