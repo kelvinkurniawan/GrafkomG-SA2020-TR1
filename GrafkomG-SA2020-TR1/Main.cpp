@@ -686,7 +686,7 @@ void drawBuildingC() {
 	glVertex3f(55.0, 505.0, 315.0); //O-up
 	glVertex3f(15.0, 505.0, 310.0); //P-up
 	glEnd();
-	
+
 	//kiri
 	glColor3fv(color.glass);
 	glBegin(GL_POLYGON);
@@ -2354,8 +2354,8 @@ void drawBuildingG() {
 	glEnd();
 }
 
-<<<<<<< HEAD
-void drawBuildingH() {
+<<<<<< < HEAD
+	void drawBuildingH() {
 	myColor color;
 	glColor3fv(color.lightGrey);
 
@@ -2461,15 +2461,15 @@ void drawBuildingI() {
 	myColor color;
 	glColor3fv(color.glass);
 	glBegin(GL_POLYGON);
-	glVertex3f(-25.0, 55.0,-750.0);
+	glVertex3f(-25.0, 55.0, -750.0);
 	glVertex3f(-500.0, 55.0, -750.0);
 	glVertex3f(-500.0, 55.0, -400.0);
 	glVertex3f(-25.0, 55.0, -400.0);
 	glEnd();
 }
 
-=======
->>>>>>> 0e8b66cb186704783f8516ebe9b129426d1f4164
+====== =
+>>>>>> > 0e8b66cb186704783f8516ebe9b129426d1f4164
 void myTree(float startPoint, float zPoint) {
 	// Batang
 	glColor3ub(139, 69, 19);
@@ -2480,7 +2480,7 @@ void myTree(float startPoint, float zPoint) {
 	glVertex3f(startPoint, 120, zPoint);
 	glEnd();
 	glBegin(GL_QUADS);
-	glVertex3f(startPoint, 55, zPoint-10);
+	glVertex3f(startPoint, 55, zPoint - 10);
 	glVertex3f(startPoint - 10, 55, zPoint - 10);
 	glVertex3f(startPoint - 10, 120, zPoint - 10);
 	glVertex3f(startPoint, 120, zPoint - 10);
@@ -2640,14 +2640,14 @@ void tweening() {
 
 	if (tween < 1) {
 		tween += deltat;
-	}	
+	}
 
 	for (size_t i = 0; i < 8; i++) {
 		intermediateShape[i][0] = (1.0 - tween) * startShape[i][0] + tween * finalShape[i][0];
 		intermediateShape[i][1] = (1.0 - tween) * startShape[i][1] + tween * finalShape[i][1];
 		intermediateShape[i][2] = (1.0 - tween) * startShape[i][2] + tween * finalShape[i][2];
-	}	
-	
+	}
+
 	glVertexPointer(3, GL_FLOAT, 0, intermediateShape);
 
 	glColor3fv(color.darkGrey);
@@ -2680,14 +2680,14 @@ void display() {
 	drawBuildingE();
 	drawBuildingF();
 	drawBuildingG();
-<<<<<<< HEAD
-	drawBuildingH();
+	<<<<<< < HEAD
+		drawBuildingH();
 	drawBuildingI();
-=======
+	====== =
 
->>>>>>> 0e8b66cb186704783f8516ebe9b129426d1f4164
+		>>>>>> > 0e8b66cb186704783f8516ebe9b129426d1f4164
 
-	myTree(170.0, 340);
+		myTree(170.0, 340);
 	myTree(170.0, 130);
 	myTree(70.0, -400);
 	myTree(150.0, -500);
@@ -2745,7 +2745,7 @@ void keyFun(unsigned char key, int x, int y) {
 		glRotatef(-5.0, 0.0, 0.0, 1.0);
 		break;
 
-	// enable manual lighting
+		// enable manual lighting
 	case 'r':
 		if (!manualLighting) {
 			manualLighting = true;
@@ -2757,14 +2757,14 @@ void keyFun(unsigned char key, int x, int y) {
 		}
 		break;
 
-	// moving z point
+		// moving z point
 	case 't':
 		mouseZ += 100.0f;
 		break;
 	case 'y':
 		mouseZ -= 100.0f;
 		break;
-	// Zoom In - Out
+		// Zoom In - Out
 	case '1':
 		glScalef(1.025, 1.025, 1.025);
 		break;
@@ -2863,19 +2863,19 @@ void myinit() {
 
 }
 
-void mouseWheel(int button, int dir, int x, int y){
+void mouseWheel(int button, int dir, int x, int y) {
 
-	if (dir > 0){
+	if (dir > 0) {
 		glScalef(1.025, 1.025, 1.025);
 	}
-	else{
+	else {
 		glScalef(0.975, 0.975, 0.975);
 	}
 	glutPostRedisplay();
 
 }
 
-void mouseMotionActive(int x, int y){
+void mouseMotionActive(int x, int y) {
 	mouseX = x;
 	mouseY = y;
 
