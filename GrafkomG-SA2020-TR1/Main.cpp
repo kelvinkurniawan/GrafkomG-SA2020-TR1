@@ -1810,7 +1810,7 @@ void drawBuildingF() {
 	glBegin(GL_POLYGON);
 	glVertex3f(0.0, 55.0, -300.0); //kiri
 	glVertex3f(0.0, 55.0, 50.0); // depan
-	glColor3fv(color.lightGrey);
+	glColor3fv(color.lightGrey);	
 	glVertex3f(0.0, 200.0, 50.0); // depan
 	glVertex3f(0.0, 200.0, -300.0); //kiri
 	glEnd();
@@ -1937,14 +1937,17 @@ void drawBuildingG() {
 	glEnd();
 
 	//belakang
+	glColor3f(0.81, 0.77, 0.7);
 	glBegin(GL_POLYGON);
 	glVertex3f(-450.0, 55.0, 0.0);
 	glVertex3f(125.0, 55.0, 0.0);
+	glColor3fv(color.darkGrey);
 	glVertex3f(125.0, 200.0, 0.0);
 	glVertex3f(-450.0, 200.0, 0.0);
 	glEnd();
 
 	//kiri
+	glColor3f(0.81, 0.77, 0.7);
 	glBegin(GL_POLYGON);
 	glVertex3f(-400.0, 55.0, 200.0); //V
 	glVertex3f(-450.0, 55.0, 0.0);
@@ -2027,6 +2030,47 @@ void drawBuildingG() {
 		spacingB += 20.0;
 	}
 
+	glColor3fv(color.glass);
+	glBegin(GL_POLYGON);
+	glVertex3f(-400.5, 55.0, 175.0); //V
+	glVertex3f(-429.9, 55.0, 85.0);
+	glVertex3f(-429.9, 185.0, 85.0);
+	glVertex3f(-400.5, 185.0, 175.0); //V
+	glEnd();
+	glBegin(GL_POLYGON);
+	glVertex3f(-432.0, 75.0, 75.0); //V
+	glVertex3f(-450.5, 75.0, 5.0);
+	glVertex3f(-450.5, 120.0, 5.0);
+	glVertex3f(-432.0, 120.0, 75.0); //V
+	glEnd();
+
+	float spacingC = 175.0;
+	float spacingD = 185.0;
+	for (int i = 0; i < 5; i++) {
+		glBegin(GL_POLYGON);
+		glVertex3f(-432.0, spacingC, 75.0); //V
+		glVertex3f(-450.5, spacingC, 5.0);
+		glVertex3f(-450.5, spacingD, 5.0);
+		glVertex3f(-432.0, spacingD, 75.0); //V
+		glEnd();
+
+		spacingC -= 15;
+		spacingD -= 15;
+	}
+
+	float spacingE = 165.0;
+	float spacingF = 170.0;
+	for (int i = 0; i < 5; i++) {
+		glBegin(GL_POLYGON);
+		glVertex3f(-403.0, spacingE, 195.0); //V
+		glVertex3f(-420.0, spacingE, 125.0);
+		glVertex3f(-420.0, spacingF, 125.0);
+		glVertex3f(-403.0, spacingF, 195.0); //V
+		glEnd();
+
+		spacingE -= 20;
+		spacingF -= 20;
+	}
 }
 
 void myTree(float startPoint, float zPoint) {
