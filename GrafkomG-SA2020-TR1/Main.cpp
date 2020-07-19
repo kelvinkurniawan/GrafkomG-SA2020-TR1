@@ -2884,13 +2884,134 @@ public:
 		glVertex3f(20.0, 400.0, -750.0);
 		glEnd();
 
-		glColor3fv(color.white);
+		//glColor3fv(color.white);
+		glColor3f(0.9, 0.9, 0.9);
 		//atas
 		glBegin(GL_POLYGON);
 		glVertex3f(200.0, 400.0, -750.0);
 		glVertex3f(20.0, 400.0, -750.0);
 		glVertex3f(20.0, 400.0, -600.0);
 		glVertex3f(200.0, 400.0, -600.0);
+		glEnd();
+
+		//detail
+		glColor3fv(color.darkGrey);
+		float xTiang;
+		for (xTiang = 25.0; xTiang <= 165.0; xTiang = xTiang + 140) {
+			//belakang tiang
+			glBegin(GL_POLYGON);
+			glVertex3f(xTiang + 30, 55.0, -755.0);
+			glVertex3f(xTiang, 55.0, -755.0);
+			glVertex3f(xTiang, 410.0, -755.0);
+			glVertex3f(xTiang + 30, 410.0, -755.0);
+			glEnd();
+
+			//kanan
+			glBegin(GL_POLYGON);
+			glVertex3f(xTiang + 30, 55.0, -755.0);
+			glVertex3f(xTiang + 30, 55.0, -730.0);
+			glVertex3f(xTiang + 30, 410.0, -730.0);
+			glVertex3f(xTiang + 30, 410.0, -755.0);
+			glEnd();
+
+			//kiri
+			glBegin(GL_POLYGON);
+			glVertex3f(xTiang, 55.0, -755.0);
+			glVertex3f(xTiang, 55.0, -730.0);
+			glVertex3f(xTiang, 410.0, -730.0);
+			glVertex3f(xTiang, 410.0, -755.0);
+			glEnd();
+
+			//atas
+			glBegin(GL_POLYGON);
+			glVertex3f(xTiang + 30, 400.0, -755.0);
+			glVertex3f(xTiang, 410.0, -755.0);
+			glVertex3f(xTiang, 410.0, -730.0);
+			glVertex3f(xTiang + 30, 400.0, -730.0);
+			glEnd();
+
+			//depan tiang
+			glBegin(GL_POLYGON);
+			glVertex3f(xTiang + 30, 55.0, -730.0);
+			glVertex3f(xTiang, 55.0, -730.0);
+			glVertex3f(xTiang, 410.0, -730.0);
+			glVertex3f(xTiang + 30, 410.0, -730.0);
+			glEnd();
+		}
+
+		//jendela
+		glColor3fv(color.lightGrey);
+		glLineWidth(5);
+		float yGarangan;
+		float xGarangan;
+		float zGarangan;
+		for (yGarangan = 50.0; yGarangan <= 400.0; yGarangan = yGarangan + 25.0) {
+			for (zGarangan = -751; zGarangan <= -600; zGarangan = zGarangan + 151) {
+				glBegin(GL_LINES);
+				glVertex3f(20.0, yGarangan, zGarangan);
+				glVertex3f(200.0, yGarangan, zGarangan);
+				glEnd();
+			}
+		}
+
+
+		for (yGarangan = 50.0; yGarangan <= 400.0; yGarangan = yGarangan + 25.0) {
+			for (xGarangan = 20.0; xGarangan <= 200; xGarangan = xGarangan + 180) {
+				glBegin(GL_LINES);
+				glVertex3f(xGarangan, yGarangan, -750);
+				glVertex3f(xGarangan, yGarangan, -600);
+				glEnd();
+			}
+		}
+
+
+		for (xGarangan = 80.0; xGarangan <= 140.0; xGarangan = xGarangan + 60.0) {
+			glBegin(GL_LINES);
+			glVertex3f(xGarangan, 55, -750);
+			glVertex3f(xGarangan, 400, -750);
+			glEnd();
+		}
+
+		//detail top
+		glColor3fv(color.lightGrey);
+		//atas
+		glBegin(GL_POLYGON);
+		glVertex3f(60.0, 410.0, -650.0);
+		glVertex3f(40.0, 410.0, -650.0);
+		glVertex3f(40.0, 410.0, -620.0);
+		glVertex3f(60.0, 410.0, -620.0);
+		glEnd();
+
+		//depan
+		glBegin(GL_POLYGON);
+		glVertex3f(40.0, 55.0, -620.0);
+		glVertex3f(60.0, 55.0, -620.0);
+		glVertex3f(60.0, 410.0, -620.0);
+		glVertex3f(40.0, 410.0, -620.0);
+		glEnd();
+
+		//belakang
+		glBegin(GL_POLYGON);
+		glVertex3f(60.0, 55.0, -650.0);
+		glVertex3f(40.0, 55.0, -650.0);
+		glVertex3f(40.0, 410.0, -650.0);
+		glVertex3f(60.0, 410.0, -650.0);
+		glEnd();
+
+		//kanan
+		glBegin(GL_POLYGON);
+		glVertex3f(60.0, 55.0, -650.0);
+		glVertex3f(60.0, 55.0, -620.0);
+		glVertex3f(60.0, 410.0, -620.0);
+		glVertex3f(60.0, 410.0, -650.0);
+		glEnd();
+
+		//kiri
+		glBegin(GL_POLYGON);
+		glVertex3f(40.0, 55.0, -650.0);
+		glVertex3f(40.0, 55.0, -620.0);
+		glVertex3f(40.0, 410.0, -620.0);
+		glVertex3f(40.0, 410.0, -650.0);
 		glEnd();
 	}
 
