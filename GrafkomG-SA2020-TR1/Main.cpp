@@ -2232,8 +2232,9 @@ void mouse(int button, int state, int x, int y)
 		xdiff = (x + xrot);
 		ydiff = (-y + yrot);
 	}
-	else
+	else {
 		mouseDown = false;
+	}
 }
 
 void mouseMotion(int x, int y) {
@@ -2268,10 +2269,22 @@ void myinit() {
 	//glEnable(GL_POINT_SMOOTH);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	glEnable(GL_BLEND); 
-	//(GL_COLOR_MATERIAL);
+	//glEnable(GL_COLOR_MATERIAL);
 	//glEnable(GL_LIGHTING);
 	//glEnable(GL_LIGHT0);
 	//gluOrtho2D(-500.0, 500.0, -500.0, 500.0);
+}
+
+void mouseWheel(int button, int dir, int x, int y)
+{
+	if (dir > 0){
+		glScalef(1.025, 1.025, 1.025);
+	}
+	else{
+		glScalef(0.975, 0.975, 0.975);
+	}
+	glutPostRedisplay();
+
 }
 
 int main(int argc, char** argv) {
@@ -2287,6 +2300,7 @@ int main(int argc, char** argv) {
 	glutReshapeFunc(reshape);
 	glutMouseFunc(mouse);
 	glutMotionFunc(mouseMotion);
+	glutMouseWheelFunc(mouseWheel);
 
 	myinit();
 	glutMainLoop();
