@@ -13,6 +13,7 @@ float ydiff = 0.0f;
 class myColor {
 public:
 	GLfloat glass[3] = { 0.45, 0.749, 0.83 };
+	GLubyte lightglass[3] = { 208, 250, 249 };
 	GLfloat line[4] = { 1.0, 1.0, 1.0, 0.3 };
 	GLubyte ground[3] = { 86,67,22 };
 	GLubyte darkground[3] = { 45,34,0 };
@@ -393,13 +394,14 @@ void drawBuildingB() {
 	glVertex3f(375.0, 650.0, -300.0); //N
 	glEnd();
 
-	glColor3f(0.45, 0.749, 0.83);
+	glColor3fv(color.glass);
 	//depan
 	glBegin(GL_POLYGON);
 	glVertex3f(375.0, 55.0, 50.0); //I
-	glVertex3f(150.0, 55.0, 50.0); //J
-	glVertex3f(150.0, 650.0, 50.0); //J-up
 	glVertex3f(375.0, 650.0, 50.0); //I-up
+	glVertex3f(150.0, 650.0, 50.0); //J-up
+	glColor3ubv(color.lightglass);
+	glVertex3f(150.0, 55.0, 50.0); //J
 	glEnd();
 
 	//kiri J-K
@@ -661,16 +663,18 @@ void drawBuildingC() {
 	glVertex3f(0.0, 550.0, 35.0); //Q
 	glEnd();
 
-	glColor3fv(color.glass);
 	//depan
 	glBegin(GL_POLYGON);
+	glColor3ubv(color.lightglass);
 	glVertex3f(0.0, 55.0, 300.0); //P
+	glColor3fv(color.glass);
 	glVertex3f(125.0, 55.0, 315.0); //O
 	glVertex3f(125.0, 550.0, 315.0); //O-up
 	glVertex3f(0.0, 550.0, 300.0); //P-up
 	glEnd();
-
+	
 	//kiri
+	glColor3fv(color.glass);
 	glBegin(GL_POLYGON);
 	glVertex3f(0.0, 55.0, 300.0); //P
 	glVertex3f(0.0, 55.0, 35.0); //Q
@@ -736,6 +740,7 @@ void drawBuildingC() {
 	}
 
 	glColor3fv(color.glass);
+	// depan
 	glBegin(GL_QUADS);
 	glVertex3f(100.0, 100.0, 350); //P
 	glVertex3f(150.0, 100.0, 300); //O
@@ -780,10 +785,13 @@ void drawBuildingC() {
 	glColor3fv(color.glass);
 	glBegin(GL_QUADS);
 	glVertex3f(100.0, 100.0, 350); //P
+	glColor3ubv(color.lightglass);
 	glVertex3f(62.5, 100.0, 300); //O
 	glVertex3f(62.5, 170.0, 300); //O-up
+	glColor3fv(color.glass);
 	glVertex3f(100.0, 170.0, 350); //P-up
 	glEnd();
+
 
 	glBegin(GL_QUADS);
 	glVertex3f(150.0, 100.0, 300); //P
@@ -806,11 +814,13 @@ void drawBuildingC() {
 	glVertex3f(150.0, 170.0, 300); //P-up
 	glEnd();
 
-	glColor3ubv(color.softBlue);
 	//depan
 	glBegin(GL_POLYGON);
+	glColor3ubv(color.lightglass);
 	glVertex3f(0.0, 55.0, 300.5); //P
+	glColor3ubv(color.lightglass);
 	glVertex3f(125.0, 55.0, 315.5); //O
+	glColor3ubv(color.softBlue);
 	glVertex3f(125.0, 200.0, 315.5); //O-up
 	glVertex3f(0.0, 200.0, 300.5); //P-up
 	glEnd();
@@ -967,19 +977,23 @@ void drawBuildingD() {
 	glVertex3f(-250.0, 650.0, 200.0); //W
 	glEnd();
 
-	glColor3f(0.45, 0.749, 0.83);
+	glColor3fv(color.glass);
 	//depan1
 	glBegin(GL_POLYGON);
 	glVertex3f(-250.0, 55.0, 275.0); //S
+	glColor3ubv(color.lightglass);
 	glVertex3f(-350.0, 55.0, 265.0); //T
+	glColor3fv(color.glass);
 	glVertex3f(-350.0, 650.0, 265.0); //T
 	glVertex3f(-250.0, 650.0, 275.0); //S
 	glEnd();
 
 	//depan2
 	glBegin(GL_POLYGON);
+	glColor3ubv(color.lightglass);
 	glVertex3f(-350.0, 55.0, 265.0); //T
 	glVertex3f(-400.0, 55.0, 250.0); //U
+	glColor3fv(color.glass);
 	glVertex3f(-400.0, 650.0, 250.0); //U
 	glVertex3f(-350.0, 650.0, 265.0); //T
 	glEnd();
@@ -1106,7 +1120,7 @@ void drawBuildingD() {
 		spacingB -= 10.0;
 	}
 
-	glColor3f(1.0, 1.0, 1.0);
+	glColor3fv(color.white);
 	//depan1
 	glBegin(GL_POLYGON);
 	glVertex3f(-250.0, 55.0, 275.5); //S
@@ -1533,7 +1547,9 @@ void drawBuildingE() {
 	//depan
 	glBegin(GL_POLYGON);
 	glVertex3f(-50.0, 55.0, 300.0); //Z
+	glColor3ubv(color.lightglass);
 	glVertex3f(-100.0, 55.0, 300.0); //A1
+	glColor3fv(color.glass);
 	glVertex3f(-100.0, 350.0, 300.0); //A1
 	glVertex3f(-50.0, 350.0, 300.0); //Z
 	glEnd();
@@ -1541,12 +1557,15 @@ void drawBuildingE() {
 	glBegin(GL_POLYGON);
 	glVertex3f(-100.0, 55.0, 300.0); //A1
 	glVertex3f(-100.0, 55.0, 200.0); //B1
-	glVertex3f(-100.0, 250.0, 200.0); //B1
-	glVertex3f(-100.0, 250.0, 300.0); //A1
+	glVertex3f(-100.0, 350.0, 200.0); //B1
+	glVertex3f(-100.0, 350.0, 300.0); //A1
 	glEnd();
 
+	//depan2
 	glBegin(GL_POLYGON);
+	glColor3ubv(color.lightglass);
 	glVertex3f(-200.0, 55.0, 265.0); //C1
+	glColor3fv(color.glass);
 	glVertex3f(-100.0, 55.0, 265.0); //C1
 	glVertex3f(-100.0, 350.0, 265.0); //C1
 	glVertex3f(-200.0, 350.0, 265.0); //C1
@@ -2257,7 +2276,6 @@ void display() {
 	glutSwapBuffers();
 }
 
-
 void keyFun(unsigned char key, int x, int y) {
 	switch (key) {
 		// Right - Left
@@ -2368,8 +2386,7 @@ void myinit() {
 	//gluOrtho2D(-500.0, 500.0, -500.0, 500.0);
 }
 
-void mouseWheel(int button, int dir, int x, int y)
-{
+void mouseWheel(int button, int dir, int x, int y){
 	if (dir > 0){
 		glScalef(1.025, 1.025, 1.025);
 	}
