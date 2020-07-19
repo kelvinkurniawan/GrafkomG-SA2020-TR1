@@ -19,6 +19,10 @@ public:
 	// Lighting controller
 	float mouseX, mouseY, mouseZ = 700;
 
+	// Animation
+	bool moveLeft1 = true, moveLeft2 = true, moveLeft3 = true, moveLeft4 = true, moveLeft5 = true;
+	float deltaStar1 = 10.0, deltaStar2 = 10.0, deltaStar3 = 10.0, deltaStar4 = 10.0, deltaStar5 = 10.0;
+
 	// Window controller
 	float width = 1920;
 	float height = 1080;
@@ -3130,11 +3134,11 @@ void display() {
 	obj.myTree(-220.0, 540);
 	obj.myTree(-300.0, 530);
 
-	obj.starObject(-500.0, 1000.0, -550.0, 900.0, -500.0, 900.0, -550.0, 1000.0);
-	obj.starObject(-300.0, 1300.0, -350.0, 1200.0, -300.0, 1200.0, -350.0, 1300.0);
-	obj.starObject(-25.0, 1500.0, 25.0, 1400.0, -25.0, 1400.0, 25.0, 1500.0);
-	obj.starObject(300.0, 1300.0, 350.0, 1200.0, 300.0, 1200.0, 350.0, 1300.0);
-	obj.starObject(500.0, 1000.0, 550.0, 900.0, 500.0, 900.0, 550.0, 1000.0);
+	obj.starObject(-500.0 + config.deltaStar1, 1000.0, -550.0 + config.deltaStar1, 900.0, -500.0 + config.deltaStar1, 900.0, -550.0 + config.deltaStar1, 1000.0);
+	obj.starObject(-300.0 + config.deltaStar2, 1300.0, -350.0 + config.deltaStar2, 1200.0, -300.0 + config.deltaStar2, 1200.0, -350.0 + config.deltaStar2, 1300.0);
+	obj.starObject(-25.0 + config.deltaStar3, 1500.0, 25.0 + config.deltaStar3, 1400.0, -25.0 + config.deltaStar3, 1400.0, 25.0 + config.deltaStar3, 1500.0);
+	obj.starObject(300.0 + config.deltaStar4, 1300.0, 350.0 + config.deltaStar4, 1200.0, 300.0 + config.deltaStar4, 1200.0, 350.0 + config.deltaStar4, 1300.0);
+	obj.starObject(500.0 + config.deltaStar5, 1000.0, 550.0 + config.deltaStar5, 900.0, 500.0 + config.deltaStar5, 900.0, 550.0 + config.deltaStar5, 1000.0);
 
 	obj.tweening();
 
@@ -3289,6 +3293,93 @@ void mouseMotionActive(int x, int y) {
 	glutPostRedisplay();
 }
 
+void timer(int) {
+	glutPostRedisplay();
+	glutTimerFunc(1000 / 30, timer, 0);
+
+	{
+		if (config.deltaStar1 > -100 && config.moveLeft1)
+		{
+			config.deltaStar1 -= 1.5;
+		}
+		else {
+			config.moveLeft1 = false;
+		}
+		if (config.deltaStar1 < 1000 && !config.moveLeft1)
+		{
+			config.deltaStar1 += 1.5;
+		}
+		else {
+			config.moveLeft1 = true;
+		}
+	}
+	{
+		if (config.deltaStar2 > -600 && config.moveLeft2)
+		{
+			config.deltaStar2 -= 1;
+		}
+		else {
+			config.moveLeft2 = false;
+		}
+		if (config.deltaStar2 < 900 && !config.moveLeft2)
+		{
+			config.deltaStar2 += 1;
+		}
+		else {
+			config.moveLeft2 = true;
+		}
+	}
+	{
+		if (config.deltaStar3 > -375 && config.moveLeft3)
+		{
+			config.deltaStar3 -= 0.5;
+		}
+		else {
+			config.moveLeft3 = false;
+		}
+		if (config.deltaStar3 < 625 && !config.moveLeft3)
+		{
+			config.deltaStar3 += 0.5;
+		}
+		else {
+			config.moveLeft3 = true;
+		}
+	}
+	{
+		if (config.deltaStar4 > -700 && config.moveLeft4)
+		{
+			config.deltaStar4 -= 2;
+		}
+		else {
+			config.moveLeft4 = false;
+		}
+		if (config.deltaStar4 < 300 && !config.moveLeft4)
+		{
+			config.deltaStar4 += 2;
+		}
+		else {
+			config.moveLeft4 = true;
+		}
+	}
+	{
+		if (config.deltaStar5 > -1000 && config.moveLeft5)
+		{
+			config.deltaStar5 -= 2.5;
+		}
+		else {
+			config.moveLeft5 = false;
+		}
+		if (config.deltaStar5 < 100 && !config.moveLeft5)
+		{
+			config.deltaStar5 += 2.5;
+		}
+		else {
+			config.moveLeft5 = true;
+		}
+	}
+
+}
+
 void myinit() {
 	glClearColor(0.93, 0.86, 0.64, 1.0);
 	glPointSize(5.0);
@@ -3327,6 +3418,7 @@ int main(int argc, char** argv) {
 	glutReshapeFunc(reshape);
 	glutMouseFunc(mouse);
 	glutMotionFunc(mouseMotion);
+	glutTimerFunc(0, timer, 0);
 	glutMouseWheelFunc(mouseWheel);
 	glutPassiveMotionFunc(mouseMotionActive);
 
