@@ -3,16 +3,20 @@
 #define deltat .001
 using namespace std;
 
-bool mouseDown = false;
-bool manualLighting = false;
 
-float xrot = 0.0f;
-float yrot = 0.0f;
+class myConfiguration {
+public:
+	bool mouseDown = false;
+	bool manualLighting = false;
 
-float xdiff = 0.0f;
-float ydiff = 0.0f;
+	float xrot = 0.0f;
+	float yrot = 0.0f;
 
-float mouseX, mouseY, mouseZ = 700;
+	float xdiff = 0.0f;
+	float ydiff = 0.0f;
+
+	float mouseX, mouseY, mouseZ = 700;
+};
 
 class myColor {
 public:
@@ -41,8 +45,6 @@ public:
 class myObject {
 public:
 	void drawBuildingBase() {
-
-		myColor color;
 
 		glColor3ubv(color.groundAccent);
 		//Depan
@@ -2877,12 +2879,14 @@ public:
 	}
 };
 
+myConfiguration config;
+myObject obj;
+myColor color;
+
 void display() {
 
-	myObject obj;
-
-	if (manualLighting) {
-		GLfloat position[] = { mouseX, mouseY, mouseZ, 1 };
+	if (config.manualLighting) {
+		GLfloat position[] = { config.mouseX, config.mouseY, config.mouseZ, 1 };
 		glLightfv(GL_LIGHT0, GL_POSITION, position);
 		glEnable(GL_LIGHTING);
 		glEnable(GL_LIGHT0);
@@ -2967,11 +2971,11 @@ void keyFun(unsigned char key, int x, int y) {
 
 		// enable manual lighting
 	case 'r':
-		if (!manualLighting) {
-			manualLighting = true;
+		if (!config.manualLighting) {
+			config.manualLighting = true;
 		}
 		else {
-			manualLighting = false;
+			config.manualLighting = false;
 			GLfloat position[] = { 400.0f, 100.0f, 500.0f, 0.5 };
 			glLightfv(GL_LIGHT0, GL_POSITION, position);
 		}
@@ -2979,10 +2983,10 @@ void keyFun(unsigned char key, int x, int y) {
 
 		// moving z point
 	case 't':
-		mouseZ += 100.0f;
+		config.mouseZ += 100.0f;
 		break;
 	case 'y':
-		mouseZ -= 100.0f;
+		config.mouseZ -= 100.0f;
 		break;
 		// Zoom In - Out
 	case '1':
@@ -3021,25 +3025,25 @@ void mouse(int button, int state, int x, int y)
 {
 	if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN)
 	{
-		mouseDown = true;
-		xdiff = (x + xrot);
-		ydiff = (-y + yrot);
+		config.mouseDown = true;
+		config.xdiff = (x + config.xrot);
+		config.ydiff = (-y + config.yrot);
 	}
 	else {
-		mouseDown = false;
+		config.mouseDown = false;
 	}
 }
 
 void mouseMotion(int x, int y) {
-	if (mouseDown)
+	if (config.mouseDown)
 	{
-		xrot = (y + ydiff) / 150;
-		yrot = (x - xdiff) / 150;
+		config.xrot = (y + config.ydiff) / 150;
+		config.yrot = (x - config.xdiff) / 150;
 
 		glutPostRedisplay();
 
-		glRotatef(xrot, 1.0f, 0.0f, 0.0f);
-		glRotatef(yrot, 0.0f, 1.0f, 0.0f);
+		glRotatef(config.xrot, 1.0f, 0.0f, 0.0f);
+		glRotatef(config.yrot, 0.0f, 1.0f, 0.0f);
 	}
 
 
@@ -3066,8 +3070,8 @@ void mouseWheel(int button, int dir, int x, int y) {
 }
 
 void mouseMotionActive(int x, int y) {
-	mouseX = x;
-	mouseY = y;
+	config.mouseX = x;
+	config.mouseY = y;
 
 	glutPostRedisplay();
 }
