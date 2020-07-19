@@ -46,6 +46,8 @@ class myObject {
 public:
 	void drawBuildingBase() {
 
+		myColor color;
+
 		glColor3ubv(color.groundAccent);
 		//Depan
 		glBegin(GL_POLYGON);
@@ -2582,7 +2584,7 @@ public:
 
 	void drawBuildingI() {
 		myColor color;
-		glColor3fv(color.glass);
+		glColor3fv(color.lightGrey);
 
 		//bawah
 		glBegin(GL_POLYGON);
@@ -2624,14 +2626,198 @@ public:
 		glVertex3f(-500.0, 350.0, -750.0);
 		glEnd();
 
-		glColor3fv(color.white);
-		//bawah
+		glColor3f(0.9, 0.9, 0.9);
+		//atas
 		glBegin(GL_POLYGON);
 		glVertex3f(-25.0, 350.0, -750.0);
 		glVertex3f(-500.0, 350.0, -750.0);
 		glVertex3f(-500.0, 350.0, -400.0);
 		glVertex3f(-25.0, 350.0, -400.0);
 		glEnd();
+
+		//detail
+		glColor3fv(color.glass);
+		glBegin(GL_POLYGON);
+		glVertex3f(-450.0, 100.0, -399.5);
+		glVertex3f(-50.0, 100.0, -399.5);
+		glVertex3f(-50.0, 300.0, -399.5);
+		glVertex3f(-450.0, 300.0, -399.5);
+		glEnd();
+
+		glColor3fv(color.lightGrey);
+		float spacing = -400.0;
+		float spacingB = -350.0;
+		for (int i = 0; i < 5; i++) {
+			glBegin(GL_POLYGON);
+			glVertex3f(spacing, 75.0, -399.3);
+			glVertex3f(spacingB, 75.0, -399.3);
+			glVertex3f(spacingB, 350.0, -399.3);
+			glVertex3f(spacing, 350.0, -399.3);
+			glEnd();
+
+			spacing += 65.0;
+			spacingB += 65.0;
+		}
+
+		float spacingC = 300.0;
+		float spacingD = 325.0;
+		for (int i = 0; i < 3; i++) {
+			glBegin(GL_POLYGON);
+			glVertex3f(-500.0, spacingC, -399.1);
+			glVertex3f(-25.0, spacingC, -399.1);
+			glVertex3f(-25.0, spacingD, -399.1);
+			glVertex3f(-500.0, spacingD, -399.1);
+			glEnd();
+
+			spacingC -= 75.0;
+			spacingD -= 75.0;
+		}
+
+		glColor3fv(color.glass);
+		float spacingE = 275.0;
+		float spacingF = 300.0;
+		for (int i = 0; i < 5; i++) {
+			glBegin(GL_POLYGON);
+			glVertex3f(-500.5, spacingE, -700.0);
+			glVertex3f(-500.5, spacingE, -450.0);
+			glVertex3f(-500.5, spacingF, -450.0);
+			glVertex3f(-500.5, spacingF, -700.0);
+			glEnd();
+
+			glBegin(GL_POLYGON);
+			glVertex3f(-24.5, spacingE, -700.0);
+			glVertex3f(-24.5, spacingE, -450.0);
+			glVertex3f(-24.5, spacingF, -450.0);
+			glVertex3f(-24.5, spacingF, -700.0);
+			glEnd();
+
+			spacingE -= 50.0;
+			spacingF -= 50.0;
+		}
+
+		glColor3fv(color.darkGrey);
+		float spacingG = 310.0;
+		float spacingH = 300.0;
+		for (int i = 0; i < 5; i++) {
+			glBegin(GL_POLYGON);
+			glVertex3f(-375.0, spacingG, -750.5);
+			glVertex3f(-425.0, spacingG, -750.5);
+			glVertex3f(-425.0, spacingH, -750.5);
+			glVertex3f(-375.0, spacingH, -750.5);
+			glEnd();
+
+			glBegin(GL_POLYGON);
+			glVertex3f(-275.0, spacingG, -750.5);
+			glVertex3f(-325.0, spacingG, -750.5);
+			glVertex3f(-325.0, spacingH, -750.5);
+			glVertex3f(-275.0, spacingH, -750.5);
+			glEnd();
+
+			glBegin(GL_POLYGON);
+			glVertex3f(-175.0, spacingG, -750.5);
+			glVertex3f(-225.0, spacingG, -750.5);
+			glVertex3f(-225.0, spacingH, -750.5);
+			glVertex3f(-175.0, spacingH, -750.5);
+			glEnd();
+
+			glBegin(GL_POLYGON);
+			glVertex3f(-75.0, spacingG, -750.5);
+			glVertex3f(-125.0, spacingG, -750.5);
+			glVertex3f(-125.0, spacingH, -750.5);
+			glVertex3f(-75.0, spacingH, -750.5);
+			glEnd();
+
+			spacingG -= 50.0;
+			spacingH -= 50.0;
+		}
+
+		//detail atas
+		glColor3fv(color.grey);
+		glBegin(GL_POLYGON);
+		glVertex3f(-400.0, 350.5, -700.0);
+		glVertex3f(-450.0, 350.5, -700.0);
+		glVertex3f(-450.0, 350.5, -450.0);
+		glVertex3f(-400.0, 350.5, -450.0);
+		glEnd();
+		glColor3fv(color.lightGrey);
+		//belakang
+		glBegin(GL_POLYGON);
+		glVertex3f(-400.0, 350.5, -700.0);
+		glVertex3f(-450.0, 350.5, -700.0);
+		glVertex3f(-450.0, 360.5, -700.0);
+		glVertex3f(-400.0, 360.5, -700.0);
+		glEnd();
+		//depan
+		glBegin(GL_POLYGON);
+		glVertex3f(-450.0, 350.5, -450.0);
+		glVertex3f(-400.0, 350.5, -450.0);
+		glVertex3f(-400.0, 360.5, -450.0);
+		glVertex3f(-450.0, 360.5, -450.0);
+		glEnd();
+		//kiri
+		glBegin(GL_POLYGON);
+		glVertex3f(-450.0, 350.5, -700.0);
+		glVertex3f(-450.0, 350.5, -450.0);
+		glVertex3f(-450.0, 360.5, -450.0);
+		glVertex3f(-450.0, 360.5, -700.0);
+		glEnd();
+		//kanan
+		glBegin(GL_POLYGON);
+		glVertex3f(-400.0, 350.5, -700.0);
+		glVertex3f(-400.0, 350.5, -450.0);
+		glVertex3f(-400.0, 360.5, -450.0);
+		glVertex3f(-400.0, 360.5, -700.0);
+		glEnd();
+		glBegin(GL_POLYGON);
+		glVertex3f(-400.0, 360.5, -700.0);
+		glVertex3f(-450.0, 360.5, -700.0);
+		glVertex3f(-450.0, 360.5, -450.0);
+		glVertex3f(-400.0, 360.5, -450.0);
+		glEnd();
+
+		glColor3fv(color.grey);
+		glBegin(GL_POLYGON);
+		glVertex3f(-300.0, 350.5, -550.0);
+		glVertex3f(-350.0, 350.5, -550.0);
+		glVertex3f(-350.0, 350.5, -450.0);
+		glVertex3f(-300.0, 350.5, -450.0);
+		glEnd();
+		glColor3fv(color.lightGrey);
+		//belakang
+		glBegin(GL_POLYGON);
+		glVertex3f(-300.0, 350.5, -550.0);
+		glVertex3f(-350.0, 350.5, -550.0);
+		glVertex3f(-350.0, 360.5, -550.0);
+		glVertex3f(-300.0, 360.5, -550.0);
+		glEnd();
+		//depan
+		glBegin(GL_POLYGON);
+		glVertex3f(-350.0, 350.5, -450.0);
+		glVertex3f(-300.0, 350.5, -450.0);
+		glVertex3f(-300.0, 360.5, -450.0);
+		glVertex3f(-350.0, 360.5, -450.0);
+		glEnd();
+		//kiri
+		glBegin(GL_POLYGON);
+		glVertex3f(-350.0, 350.5, -550.0);
+		glVertex3f(-350.0, 350.5, -450.0);
+		glVertex3f(-350.0, 360.5, -450.0);
+		glVertex3f(-350.0, 360.5, -550.0);
+		glEnd();
+		//kanan
+		glBegin(GL_POLYGON);
+		glVertex3f(-300.0, 350.5, -550.0);
+		glVertex3f(-300.0, 350.5, -450.0);
+		glVertex3f(-300.0, 360.5, -450.0);
+		glVertex3f(-300.0, 360.5, -550.0);
+		glEnd();
+		glBegin(GL_POLYGON);
+		glVertex3f(-300.0, 360.5, -550.0);
+		glVertex3f(-350.0, 360.5, -550.0);
+		glVertex3f(-350.0, 360.5, -450.0);
+		glVertex3f(-300.0, 360.5, -450.0);
+		glEnd();
+	
 	}
 
 	void drawBuildingJ() {
@@ -2797,7 +2983,7 @@ public:
 		}
 	}
 
-	void perpotonganGaris(float ax, float ay, float bx, float by, float cx, float cy, float dx, float dy) {
+	void starObject(float ax, float ay, float bx, float by, float cx, float cy, float dx, float dy) {
 		float Mab, Cab, Yab, Mcd, Ccd, Ycd; // rumus awal
 		float px, py; // hasil
 
@@ -2928,11 +3114,11 @@ void display() {
 	obj.myTree(-220.0, 540);
 	obj.myTree(-300.0, 530);
 
-	obj.perpotonganGaris(-500.0, 1000.0, -550.0, 900.0, -500.0, 900.0, -550.0, 1000.0);
-	obj.perpotonganGaris(-300.0, 1300.0, -350.0, 1200.0, -300.0, 1200.0, -350.0, 1300.0);
-	obj.perpotonganGaris(-25.0, 1500.0, 25.0, 1400.0, -25.0, 1400.0, 25.0, 1500.0);
-	obj.perpotonganGaris(300.0, 1300.0, 350.0, 1200.0, 300.0, 1200.0, 350.0, 1300.0);
-	obj.perpotonganGaris(500.0, 1000.0, 550.0, 900.0, 500.0, 900.0, 550.0, 1000.0);
+	obj.starObject(-500.0, 1000.0, -550.0, 900.0, -500.0, 900.0, -550.0, 1000.0);
+	obj.starObject(-300.0, 1300.0, -350.0, 1200.0, -300.0, 1200.0, -350.0, 1300.0);
+	obj.starObject(-25.0, 1500.0, 25.0, 1400.0, -25.0, 1400.0, 25.0, 1500.0);
+	obj.starObject(300.0, 1300.0, 350.0, 1200.0, 300.0, 1200.0, 350.0, 1300.0);
+	obj.starObject(500.0, 1000.0, 550.0, 900.0, 500.0, 900.0, 550.0, 1000.0);
 
 	obj.tweening();
 
