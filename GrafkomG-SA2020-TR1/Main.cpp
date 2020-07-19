@@ -18,7 +18,6 @@ float mouseX, mouseY, mouseZ = 700;
 class myColor {
 public:
 	GLfloat glass[3] = { 0.45, 0.749, 0.83 };
-	GLfloat darkGlass[4] = { 0.4, 0.4, 0.4, 0.5 };
 	GLubyte lightglass[3] = { 208, 250, 249 };
 	GLfloat line[4] = { 1.0, 1.0, 1.0, 0.3 };
 	GLubyte ground[3] = { 86,67,22 };
@@ -27,7 +26,6 @@ public:
 	GLubyte street[3] = { 52,52,52 };
 	GLubyte lightstreet[3] = { 95,95,95 };
 	GLfloat star[3] = { 1.0, 0.7, 0.0 };
-	GLfloat buildingRoof[3] = { 0.9, 0.9, 0.9 };
 
 	// Absolute Color
 	GLfloat grey[3] = { 0.5, 0.5, 0.5 };
@@ -36,8 +34,6 @@ public:
 	GLfloat lightGrey[3] = { 0.8,0.8,0.8 };
 	GLfloat darkGrey[3] = { 0.6,0.6,0.6 };
 	GLfloat orange[3] = { 1.0, 0.5, 0.0 };
-	GLfloat yellow[3] = { 1.0, 0.8, 0.0 };
-	GLfloat darkRed[3] = { 0.3, 0.0, 0.0 };
 	GLubyte softBlue[3] = { 181, 234, 255 };
 	GLubyte darkBlue[3] = { 28, 78, 103 };
 };
@@ -130,7 +126,7 @@ void drawBuildingA() {
 	glVertex3f(375.0, 100.0, 350.0);
 	glEnd();
 
-	glColor3fv(color.yellow);
+	glColor3f(1.0, 0.8, 0.0);
 	//atapdepan
 	glBegin(GL_TRIANGLES);
 	glVertex3f(200.0, 100.0, 325.0); //kiri
@@ -138,7 +134,7 @@ void drawBuildingA() {
 	glVertex3f(287.5, 120.0, 340.0); //atas
 	glEnd();
 
-	glColor3fv(color.white);
+	glColor3f(1, 1, 1);
 	//kanan
 	glBegin(GL_POLYGON);
 	glVertex3f(375.0, 55.0, 330.0); //E
@@ -147,6 +143,7 @@ void drawBuildingA() {
 	glVertex3f(375.0, 100.0, 330.0); //E-up
 	glEnd();
 
+	glColor3f(1, 1, 1);
 	//kiri
 	glBegin(GL_POLYGON);
 	glVertex3f(200.0, 55.0, 100.0); //H
@@ -163,7 +160,7 @@ void drawBuildingA() {
 	glVertex3f(375.0, 100.0, 100.0); //G-up
 	glEnd();
 
-	glColor3fv(color.yellow);
+	glColor3f(1.0, 0.5, 0.7);
 	//atapbelakang
 	glBegin(GL_TRIANGLES);
 	glVertex3f(200.0, 100.0, 100.0); //kiri
@@ -171,7 +168,7 @@ void drawBuildingA() {
 	glVertex3f(287.5, 120.0, 100.0); //atas
 	glEnd();
 
-	glColor3fv(color.darkRed);
+	glColor3f(0.3, 0.0, 0.0);
 	//atapkanan
 	glBegin(GL_POLYGON);
 	glVertex3f(287.5, 120.0, 340.0); //tengah-depan-atas
@@ -180,6 +177,7 @@ void drawBuildingA() {
 	glVertex3f(287.5, 120.0, 100.0); // tengah-blkg atas
 	glEnd();
 
+	glColor3f(0.3, 0.0, 0.0);
 	//atapkiri
 	glBegin(GL_POLYGON);
 	glVertex3f(287.5, 120.0, 340.0); //tengah-depan-atas
@@ -188,7 +186,7 @@ void drawBuildingA() {
 	glVertex3f(287.5, 120.0, 100.0); // tengah-blkg atas
 	glEnd();
 
-	glColor3fv(color.orange);
+	glColor3f(1.0, 0.5, 0.0);
 	//pilar 1
 	glBegin(GL_POLYGON);
 	glVertex3f(370.0, 55.0, 346.5);
@@ -300,7 +298,7 @@ void drawBuildingA() {
 	glVertex3f(210.0, 80.0, 326.5);
 	glEnd();
 
-	glColor3fv(color.darkGrey);
+	glColor3f(0.3, 0.3, 0.3);
 	/*
 	glBegin(GL_POLYGON);
 	glVertex3f(310.0, 60.0, 341.0);
@@ -340,7 +338,7 @@ void drawBuildingA() {
 	glVertex3f(200.0, 100.0, 100.0);
 	glEnd();
 
-	glColor4fv(color.darkGlass);
+	glColor4f(0.4, 0.4, 0.4, 0.5);
 	//kaca depan
 	glBegin(GL_POLYGON);
 	glVertex3f(211.5, 75.0, 306.5);
@@ -391,7 +389,7 @@ void drawBuildingB() {
 	glVertex3f(375.0, 55.0, -300.0); //N
 	glEnd();
 
-	glColor3fv(color.buildingRoof);
+	glColor3f(0.9, 0.9, 0.9);
 	//atas
 	glBegin(GL_POLYGON);
 	glVertex3f(375.0, 650.0, 50.0); //I
@@ -453,7 +451,7 @@ void drawBuildingB() {
 	glEnd();
 
 	//detail
-	glColor4fv(color.darkGlass);
+	glColor4f(0.3, 0.3, 0.3, 0.3);
 	glBegin(GL_POLYGON);
 	glVertex3f(325.0, 55.0, 50.5); //I
 	glVertex3f(315.0, 55.0, 50.5); //J
@@ -473,7 +471,7 @@ void drawBuildingB() {
 	glVertex3f(275.0, 650.0, 50.5); //I-up
 	glEnd();
 
-	glColor4fv(color.line);
+	glColor4f(1.0, 1.0, 1.0, 0.3);
 	float spacingC = 630.0;
 	for (int i = 0; i < 60; i++) {
 		glBegin(GL_LINE_LOOP);
@@ -679,6 +677,14 @@ void drawBuildingC() {
 	glVertex3f(125.0, 55.0, 315.0); //O
 	glVertex3f(125.0, 550.0, 315.0); //O-up
 	glVertex3f(0.0, 550.0, 300.0); //P-up
+	glEnd();
+
+	glBegin(GL_POLYGON);
+	glColor3fv(color.lightGrey);
+	glVertex3f(15.0, 445.0, 310.0); //P
+	glVertex3f(55.0, 445.0, 315.0); //O
+	glVertex3f(55.0, 505.0, 315.0); //O-up
+	glVertex3f(15.0, 505.0, 310.0); //P-up
 	glEnd();
 	
 	//kiri
@@ -1222,48 +1228,6 @@ void drawBuildingD() {
 		spacingC -= 10.0;
 	}
 
-	//detail depan
-	glColor3fv(color.glass);
-	//depan1
-	glBegin(GL_POLYGON);
-	glVertex3f(-250.0, 55.0, 275.7); //S
-	glVertex3f(-350.0, 55.0, 265.7); //T
-	glVertex3f(-350.0, 195.0, 265.7); //T
-	glVertex3f(-250.0, 195.0, 275.7); //S
-	glEnd();
-	//depan2
-	glBegin(GL_POLYGON);
-	glVertex3f(-350.0, 55.0, 265.7); //T
-	glVertex3f(-400.0, 55.0, 250.7); //U
-	glVertex3f(-400.0, 195.0, 250.7); //U
-	glVertex3f(-350.0, 195.0, 265.7); //T
-	glEnd();
-	glColor3fv(color.white);
-	glBegin(GL_POLYGON);
-	glVertex3f(-350.0, 55.0, 266.5); //T
-	glVertex3f(-360.0, 55.0, 263.5); //U
-	glVertex3f(-360.0, 195.0, 263.5); //U
-	glVertex3f(-350.0, 195.0, 266.5); //T
-	glEnd();
-	glBegin(GL_POLYGON);
-	glVertex3f(-290.0, 55.0, 273.0); //S
-	glVertex3f(-300.0, 55.0, 270.9); //T
-	glVertex3f(-300.0, 195.0, 270.9); //T
-	glVertex3f(-290.0, 195.0, 273.0); //S
-	glEnd();
-	glBegin(GL_POLYGON);
-	glVertex3f(-250.0, 55.0, 275.9); //S
-	glVertex3f(-350.0, 55.0, 265.9); //T
-	glVertex3f(-350.0, 150.0, 265.9); //T
-	glVertex3f(-250.0, 150.0, 275.9); //S
-	glEnd();
-	//depan2
-	glBegin(GL_POLYGON);
-	glVertex3f(-350.0, 55.0, 265.9); //T
-	glVertex3f(-400.0, 55.0, 250.9); //U
-	glVertex3f(-400.0, 150.0, 250.9); //U
-	glVertex3f(-350.0, 150.0, 265.9); //T
-	glEnd();
 
 	//top detail
 	glColor3fv(color.lightGrey);
@@ -2390,6 +2354,7 @@ void drawBuildingG() {
 	glEnd();
 }
 
+<<<<<<< HEAD
 void drawBuildingH() {
 	myColor color;
 	glColor3fv(color.lightGrey);
@@ -2503,6 +2468,8 @@ void drawBuildingI() {
 	glEnd();
 }
 
+=======
+>>>>>>> 0e8b66cb186704783f8516ebe9b129426d1f4164
 void myTree(float startPoint, float zPoint) {
 	// Batang
 	glColor3ub(139, 69, 19);
@@ -2612,7 +2579,7 @@ void street() {
 	}
 }
 
-void starObject(float ax, float ay, float bx, float by, float cx, float cy, float dx, float dy) {
+void perpotonganGaris(float ax, float ay, float bx, float by, float cx, float cy, float dx, float dy) {
 	float Mab, Cab, Yab, Mcd, Ccd, Ycd; // rumus awal
 	float px, py; // hasil
 
@@ -2655,34 +2622,36 @@ void starObject(float ax, float ay, float bx, float by, float cx, float cy, floa
 }
 
 void tweening() {
+	myColor color;
 	float startShape[8][3] = {
-		{20, 500, 310}, {50, 500, 310}, {50, 490, 310}, {40, 490, 310}, {40, 450, 310}, {30, 450, 310},
-		{30, 490, 310}, {20, 490, 310}
+		{20, 500, 315}, {50, 500, 315}, {50, 490, 315}, {40, 490, 315}, {40, 450, 315}, {30, 450, 315},
+		{30, 490, 315}, {20, 490, 315}
 	};
 
 	float finalShape[8][3] = {
-		{20, 500, 310}, {50, 500, 310}, {50, 475, 310}, {50, 475, 310}, {30, 475, 310}, {30, 475, 310},
-		{30, 450, 310}, {20, 450, 310}
+		{20, 500, 315}, {50, 500, 315}, {50, 475, 315}, {50, 475, 315}, {30, 475, 315}, {30, 475, 315},
+		{30, 450, 315}, {20, 450, 315}
 	};
 
-	float intermediateShape[8][3];
+	float intermediateShape[12][3];
+	float intermediateShapeReverse[12][3];
 
 	static float tween = 0.0 - deltat;
 
 	if (tween < 1) {
 		tween += deltat;
-	}
+	}	
 
 	for (size_t i = 0; i < 8; i++) {
 		intermediateShape[i][0] = (1.0 - tween) * startShape[i][0] + tween * finalShape[i][0];
 		intermediateShape[i][1] = (1.0 - tween) * startShape[i][1] + tween * finalShape[i][1];
 		intermediateShape[i][2] = (1.0 - tween) * startShape[i][2] + tween * finalShape[i][2];
-	}
-
+	}	
+	
 	glVertexPointer(3, GL_FLOAT, 0, intermediateShape);
 
-	myColor color;
-	glColor3fv(color.grey);
+	glColor3fv(color.darkGrey);
+
 	for (size_t i = 0; i < 8000; i++) {
 		glDrawArrays(GL_LINE_LOOP, 0, 8);
 		glutPostRedisplay();
@@ -2711,8 +2680,12 @@ void display() {
 	drawBuildingE();
 	drawBuildingF();
 	drawBuildingG();
+<<<<<<< HEAD
 	drawBuildingH();
 	drawBuildingI();
+=======
+
+>>>>>>> 0e8b66cb186704783f8516ebe9b129426d1f4164
 
 	myTree(170.0, 340);
 	myTree(170.0, 130);
@@ -2731,11 +2704,11 @@ void display() {
 	myTree(-220.0, 540);
 	myTree(-300.0, 530);
 
-	starObject(-500.0, 1000.0, -550.0, 900.0, -500.0, 900.0, -550.0, 1000.0);
-	starObject(-300.0, 1300.0, -350.0, 1200.0, -300.0, 1200.0, -350.0, 1300.0);
-	starObject(-25.0, 1500.0, 25.0, 1400.0, -25.0, 1400.0, 25.0, 1500.0);
-	starObject(300.0, 1300.0, 350.0, 1200.0, 300.0, 1200.0, 350.0, 1300.0);
-	starObject(500.0, 1000.0, 550.0, 900.0, 500.0, 900.0, 550.0, 1000.0);
+	perpotonganGaris(-500.0, 1000.0, -550.0, 900.0, -500.0, 900.0, -550.0, 1000.0);
+	perpotonganGaris(-300.0, 1300.0, -350.0, 1200.0, -300.0, 1200.0, -350.0, 1300.0);
+	perpotonganGaris(-25.0, 1500.0, 25.0, 1400.0, -25.0, 1400.0, 25.0, 1500.0);
+	perpotonganGaris(300.0, 1300.0, 350.0, 1200.0, 300.0, 1200.0, 350.0, 1300.0);
+	perpotonganGaris(500.0, 1000.0, 550.0, 900.0, 500.0, 900.0, 550.0, 1000.0);
 
 	tweening();
 
