@@ -2509,6 +2509,46 @@ void drawBuildingI() {
 	glVertex3f(-25.0, 55.0, -400.0);
 	glEnd();
 
+	//depan
+	glBegin(GL_POLYGON);
+	glVertex3f(-500.0, 55.0, -400.0);
+	glVertex3f(-25.0, 55.0, -400.0);
+	glVertex3f(-25.0, 350.0, -400.0);
+	glVertex3f(-500.0, 350.0, -400.0);
+	glEnd();
+
+	//belakang
+	glBegin(GL_POLYGON);
+	glVertex3f(-25.0, 55.0, -750.0);
+	glVertex3f(-500.0, 55.0, -750.0);
+	glVertex3f(-500.0, 350.0, -750.0);
+	glVertex3f(-25.0, 350.0, -750.0);
+	glEnd();
+
+	//kanan
+	glBegin(GL_POLYGON);
+	glVertex3f(-25.0, 55.0, -750.0);
+	glVertex3f(-25.0, 55.0, -400.0);
+	glVertex3f(-25.0, 350.0, -400.0);
+	glVertex3f(-25.0, 350.0, -750.0);
+	glEnd();
+
+	//kiri
+	glBegin(GL_POLYGON);
+	glVertex3f(-500.0, 55.0, -750.0);
+	glVertex3f(-500.0, 55.0, -400.0);
+	glVertex3f(-500.0, 350.0, -400.0);
+	glVertex3f(-500.0, 350.0, -750.0);
+	glEnd();
+
+	glColor3fv(color.white);
+	//bawah
+	glBegin(GL_POLYGON);
+	glVertex3f(-25.0, 350.0, -750.0);
+	glVertex3f(-500.0, 350.0, -750.0);
+	glVertex3f(-500.0, 350.0, -400.0);
+	glVertex3f(-25.0, 350.0, -400.0);
+	glEnd();
 }
 
 void myTree(float startPoint, float zPoint) {
@@ -2721,8 +2761,6 @@ void display() {
 	drawBuildingE();
 	drawBuildingF();
 	drawBuildingG();
-	drawBuildingH();
-	drawBuildingI();
 
 	drawBuildingH();
 	drawBuildingI();
