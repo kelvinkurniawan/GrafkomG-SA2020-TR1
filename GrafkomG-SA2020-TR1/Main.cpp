@@ -8,6 +8,7 @@ class myConfiguration {
 public:
 	bool mouseDown = false;
 	bool manualLighting = false;
+	bool fscreen = false;
 
 	// Mouse controller
 	float xrot = 0.0f;
@@ -3182,6 +3183,17 @@ void keyFun(unsigned char key, int x, int y) {
 		}
 		break;
 
+	case 'f':
+		if (!config.fscreen) {
+			glutFullScreen();
+			config.fscreen = true;
+		}
+		else {
+			config.fscreen = false;
+			glutReshapeWindow(config.width, config.height);
+			glutPositionWindow(config.windowPositionX, config.windowPositionY);
+		}
+		break;
 		// moving z point
 	case 't':
 		config.mouseZ += 100.0f;
@@ -3326,6 +3338,7 @@ int main(int argc, char** argv) {
 	cout << " > Press r to enable/disable manual lighting" << endl;
 	cout << " > Press t/y to adjust the depth of lighting" << endl;
 	cout << " > Press left click and hold your mouse to rotate the object" << endl;
+	cout << " > Press f to toggle fullscreen" << endl;
 
 	myinit();
 	glutMainLoop();
