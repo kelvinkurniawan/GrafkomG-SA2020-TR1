@@ -2390,6 +2390,108 @@ void drawBuildingG() {
 	glEnd();
 }
 
+void drawBuildingH() {
+	myColor color;
+	glColor3fv(color.lightGrey);
+
+	//bawah
+	glBegin(GL_POLYGON);
+	glVertex3f(-25.0, 55.0, -100.0);
+	glVertex3f(-25.0, 55.0, -300.0);
+	glVertex3f(-300.0, 55.0, -300.0);
+	glVertex3f(-300.0, 55.0, -100.0);
+	glEnd();
+
+	//atas
+	glBegin(GL_POLYGON);
+	glVertex3f(-25.0, 450.0, -100.0);
+	glVertex3f(-25.0, 450.0, -300.0);
+	glVertex3f(-300.0, 450.0, -300.0);
+	glVertex3f(-300.0, 450.0, -100.0);
+	glEnd();
+
+	glColor3fv(color.white);
+	//depan
+	glBegin(GL_POLYGON);
+	glVertex3f(-25.0, 55.0, -100.0);
+	glVertex3f(-300.0, 55.0, -100.0);
+	glVertex3f(-300.0, 450.0, -100.0);
+	glVertex3f(-25.0, 450.0, -100.0);
+	glEnd();
+
+	//belakang
+	glBegin(GL_POLYGON);
+	glVertex3f(-25.0, 55.0, -300.0);
+	glVertex3f(-300.0, 55.0, -300.0);
+	glVertex3f(-300.0, 450.0, -300.0);
+	glVertex3f(-25.0, 450.0, -300.0);
+	glEnd();
+
+	//kanan
+	glBegin(GL_POLYGON);
+	glVertex3f(-25.0, 55.0, -100.0);
+	glVertex3f(-25.0, 55.0, -300.0);
+	glVertex3f(-25.0, 450.0, -300.0);
+	glVertex3f(-25.0, 450.0, -100.0);
+	glEnd();
+
+	//kiri
+	glBegin(GL_POLYGON);
+	glVertex3f(-300.0, 55.0, -300.0);
+	glVertex3f(-300.0, 55.0, -100.0);
+	glVertex3f(-300.0, 450.0, -100.0);
+	glVertex3f(-300.0, 450.0, -300.0);
+	glEnd();
+
+	//detail
+	glColor3fv(color.glass);
+	float spacing = 390.0;
+	float spacingB = 400.0;
+
+	for (int i = 0; i < 10; i++) {
+		glBegin(GL_POLYGON);
+		glVertex3f(-40.0, spacing, -99.5);
+		glVertex3f(-60.0, spacing, -99.5);
+		glVertex3f(-60.0, spacingB, -99.5);
+		glVertex3f(-40.0, spacingB, -99.5);
+		glEnd();
+
+		glBegin(GL_POLYGON);
+		glVertex3f(-265.0, spacing, -99.5);
+		glVertex3f(-285.0, spacing, -99.5);
+		glVertex3f(-285.0, spacingB, -99.5);
+		glVertex3f(-265.0, spacingB, -99.5);
+		glEnd();
+
+		spacing -= 20.0;
+		spacingB -= 20.0;
+	}
+
+	float spacingC = -235.0;
+	float spacingD = -245.0;
+	for (int i = 0; i < 7; i++) {
+		//depan
+		glBegin(GL_POLYGON);
+		glVertex3f(spacingC, 100.0, -99.5);
+		glVertex3f(spacingD, 100.0, -99.5);
+		glVertex3f(spacingD, 400.0, -99.5);
+		glVertex3f(spacingC, 400.0, -99.5);
+		glEnd();
+
+		spacingC += 25.0;
+		spacingD += 25.0;
+	}
+
+	glColor3fv(color.lightGrey);
+	glBegin(GL_POLYGON);
+	glVertex3f(-25.0, 55.0, -99.0);
+	glVertex3f(-300.0, 55.0, -99.0);
+	glVertex3f(-300.0, 200.0, -99.0);
+	glVertex3f(-25.0, 200.0, -99.0);
+	glEnd();
+
+}
+
 void myTree(float startPoint, float zPoint) {
 	// Batang
 	glColor3ub(139, 69, 19);
@@ -2542,17 +2644,17 @@ void starObject(float ax, float ay, float bx, float by, float cx, float cy, floa
 }
 
 void tweening() {
-	float startShape[12][3] = {
+	float startShape[8][3] = {
 		{20, 500, 310}, {50, 500, 310}, {50, 490, 310}, {40, 490, 310}, {40, 450, 310}, {30, 450, 310},
 		{30, 490, 310}, {20, 490, 310}
 	};
 
-	float finalShape[12][3] = {
+	float finalShape[8][3] = {
 		{20, 500, 310}, {50, 500, 310}, {50, 475, 310}, {50, 475, 310}, {30, 475, 310}, {30, 475, 310},
 		{30, 450, 310}, {20, 450, 310}
 	};
 
-	float intermediateShape[12][3];
+	float intermediateShape[8][3];
 
 	static float tween = 0.0 - deltat;
 
@@ -2598,7 +2700,7 @@ void display() {
 	drawBuildingE();
 	drawBuildingF();
 	drawBuildingG();
-
+	drawBuildingH();
 
 	myTree(170.0, 340);
 	myTree(170.0, 130);
