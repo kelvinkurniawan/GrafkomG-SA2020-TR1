@@ -6,7 +6,6 @@ using namespace std;
 bool mouseDown = false;
 bool manualLighting = false;
 
-
 float xrot = 0.0f;
 float yrot = 0.0f;
 
@@ -1228,6 +1227,48 @@ void drawBuildingD() {
 		spacingC -= 10.0;
 	}
 
+	//detail depan	
+	glColor3fv(color.glass);
+	//depan1	
+	glBegin(GL_POLYGON);
+	glVertex3f(-250.0, 55.0, 275.7); //S	
+	glVertex3f(-350.0, 55.0, 265.7); //T	
+	glVertex3f(-350.0, 195.0, 265.7); //T	
+	glVertex3f(-250.0, 195.0, 275.7); //S	
+	glEnd();
+	//depan2	
+	glBegin(GL_POLYGON);
+	glVertex3f(-350.0, 55.0, 265.7); //T	
+	glVertex3f(-400.0, 55.0, 250.7); //U	
+	glVertex3f(-400.0, 195.0, 250.7); //U	
+	glVertex3f(-350.0, 195.0, 265.7); //T	
+	glEnd();
+	glColor3fv(color.white);
+	glBegin(GL_POLYGON);
+	glVertex3f(-350.0, 55.0, 266.5); //T	
+	glVertex3f(-360.0, 55.0, 263.5); //U	
+	glVertex3f(-360.0, 195.0, 263.5); //U	
+	glVertex3f(-350.0, 195.0, 266.5); //T	
+	glEnd();
+	glBegin(GL_POLYGON);
+	glVertex3f(-290.0, 55.0, 273.0); //S	
+	glVertex3f(-300.0, 55.0, 270.9); //T	
+	glVertex3f(-300.0, 195.0, 270.9); //T	
+	glVertex3f(-290.0, 195.0, 273.0); //S	
+	glEnd();
+	glBegin(GL_POLYGON);
+	glVertex3f(-250.0, 55.0, 275.9); //S	
+	glVertex3f(-350.0, 55.0, 265.9); //T	
+	glVertex3f(-350.0, 150.0, 265.9); //T	
+	glVertex3f(-250.0, 150.0, 275.9); //S	
+	glEnd();
+	//depan2	
+	glBegin(GL_POLYGON);
+	glVertex3f(-350.0, 55.0, 265.9); //T	
+	glVertex3f(-400.0, 55.0, 250.9); //U	
+	glVertex3f(-400.0, 150.0, 250.9); //U	
+	glVertex3f(-350.0, 150.0, 265.9); //T	
+	glEnd();
 
 	//top detail
 	glColor3fv(color.lightGrey);
@@ -2354,8 +2395,12 @@ void drawBuildingG() {
 	glEnd();
 }
 
+<<<<<<< HEAD
 <<<<<< < HEAD
 	void drawBuildingH() {
+=======
+void drawBuildingH() {
+>>>>>>> 65d6f0432d4c309e841ab43347373b8eb5286336
 	myColor color;
 	glColor3fv(color.lightGrey);
 
@@ -2460,16 +2505,22 @@ void drawBuildingG() {
 void drawBuildingI() {
 	myColor color;
 	glColor3fv(color.glass);
+
+	//bawah
 	glBegin(GL_POLYGON);
 	glVertex3f(-25.0, 55.0, -750.0);
 	glVertex3f(-500.0, 55.0, -750.0);
 	glVertex3f(-500.0, 55.0, -400.0);
 	glVertex3f(-25.0, 55.0, -400.0);
 	glEnd();
+
 }
 
+<<<<<<< HEAD
 ====== =
 >>>>>> > 0e8b66cb186704783f8516ebe9b129426d1f4164
+=======
+>>>>>>> 65d6f0432d4c309e841ab43347373b8eb5286336
 void myTree(float startPoint, float zPoint) {
 	// Batang
 	glColor3ub(139, 69, 19);
@@ -2680,12 +2731,17 @@ void display() {
 	drawBuildingE();
 	drawBuildingF();
 	drawBuildingG();
+<<<<<<< HEAD
 	<<<<<< < HEAD
 		drawBuildingH();
 	drawBuildingI();
 	====== =
 
 		>>>>>> > 0e8b66cb186704783f8516ebe9b129426d1f4164
+=======
+	drawBuildingH();
+	drawBuildingI();
+>>>>>>> 65d6f0432d4c309e841ab43347373b8eb5286336
 
 		myTree(170.0, 340);
 	myTree(170.0, 130);
