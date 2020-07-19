@@ -9,13 +9,28 @@ public:
 	bool mouseDown = false;
 	bool manualLighting = false;
 
+	// Mouse controller
 	float xrot = 0.0f;
 	float yrot = 0.0f;
-
 	float xdiff = 0.0f;
 	float ydiff = 0.0f;
 
+	// Lighting controller
 	float mouseX, mouseY, mouseZ = 700;
+
+	// Window controller
+	float width = 1920;
+	float height = 1080;
+	float windowPositionX = -1;
+	float windowPositionY = -1;
+
+	// Project Controller
+
+	GLfloat ambientLight[4] = { 0.2, 0.2, 0.2, 1.0 };
+	GLfloat diffuseLight[4] = { 0.8f, 0.8f, 0.8, 1.0f };
+	GLfloat specularLight[4] = { 0, 0, 0, 1 };
+	GLfloat emission[4] = { 0.5f, 0.5f, 0.5f, 1.0f };
+	GLfloat position[4] = { 400.0f, 100.0f, 500.0f, 0.5 };
 };
 
 class myColor {
@@ -3275,17 +3290,12 @@ void myinit() {
 	glEnable(GL_BLEND);
 	glEnable(GL_NORMALIZE);
 
-	GLfloat ambientLight[] = { 0.2, 0.2, 0.2, 1.0 };
-	GLfloat diffuseLight[] = { 0.8f, 0.8f, 0.8, 1.0f };
-	GLfloat specularLight[] = { 0, 0, 0, 1 };
-	GLfloat emission[] = { 0.5f, 0.5f, 0.5f, 1.0f };
-	GLfloat position[] = { 400.0f, 100.0f, 500.0f, 0.5 };
 
-	glLightfv(GL_LIGHT0, GL_AMBIENT, ambientLight);
-	glLightfv(GL_LIGHT0, GL_DIFFUSE, diffuseLight);
-	glLightfv(GL_LIGHT0, GL_SPECULAR, specularLight);
-	glLightfv(GL_LIGHT0, GL_EMISSION, emission);
-	glLightfv(GL_LIGHT0, GL_POSITION, position);
+	glLightfv(GL_LIGHT0, GL_AMBIENT, config.ambientLight);
+	glLightfv(GL_LIGHT0, GL_DIFFUSE, config.diffuseLight);
+	glLightfv(GL_LIGHT0, GL_SPECULAR, config.specularLight);
+	glLightfv(GL_LIGHT0, GL_EMISSION, config.emission);
+	glLightfv(GL_LIGHT0, GL_POSITION, config.position);
 
 	glEnable(GL_LIGHTING);
 	glEnable(GL_LIGHT0);
@@ -3295,8 +3305,8 @@ void myinit() {
 int main(int argc, char** argv) {
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
-	glutInitWindowSize(1920, 1080);
-	glutInitWindowPosition(-1, -1);
+	glutInitWindowSize(config.width, config.height);
+	glutInitWindowPosition(config.windowPositionX, config.windowPositionY);
 	glutCreateWindow("TR - Grafkom Asdos");
 
 	glutDisplayFunc(display);
