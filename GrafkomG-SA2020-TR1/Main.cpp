@@ -2565,8 +2565,8 @@ void drawBuildingI() {
 	glBegin(GL_POLYGON);
 	glVertex3f(-25.0, 55.0, -750.0);
 	glVertex3f(-500.0, 55.0, -750.0);
-	glVertex3f(-500.0, 55.0, -400.0);
-	glVertex3f(-25.0, 55.0, -400.0);
+	glVertex3f(-500.0, 55.0, -600.0);
+	glVertex3f(-25.0, 55.0, -600.0);
 	glEnd();
 
 	//depan
@@ -2608,6 +2608,60 @@ void drawBuildingI() {
 	glVertex3f(-500.0, 350.0, -750.0);
 	glVertex3f(-500.0, 350.0, -400.0);
 	glVertex3f(-25.0, 350.0, -400.0);
+	glEnd();
+}
+
+void drawBuildingJ() {
+	myColor color;
+	glColor3fv(color.glass);
+
+	//bawah
+	glBegin(GL_POLYGON);
+	glVertex3f(200.0, 55.0, -750.0);
+	glVertex3f(20.0, 55.0, -750.0);
+	glVertex3f(20.0, 55.0, -600.0);
+	glVertex3f(200.0, 55.0, -600.0);
+	glEnd();
+
+	//depan
+	glBegin(GL_POLYGON);
+	glVertex3f(20.0, 55.0, -600.0);
+	glVertex3f(200.0, 55.0, -600.0);
+	glVertex3f(200.0, 400.0, -600.0);
+	glVertex3f(20.0, 400.0, -600.0);
+	glEnd();
+
+	//belakang
+	glBegin(GL_POLYGON);
+	glVertex3f(200.0, 55.0, -750.0);
+	glVertex3f(20.0, 55.0, -750.0);
+	glVertex3f(20.0, 400.0, -750.0);
+	glVertex3f(200.0, 400.0, -750.0);
+	glEnd();
+
+	//kanan
+	glBegin(GL_POLYGON);
+	glVertex3f(200.0, 55.0, -750.0);
+	glVertex3f(200.0, 55.0, -600.0);
+	glVertex3f(200.0, 400.0, -600.0);
+	glVertex3f(200.0, 400.0, -750.0);
+	glEnd();
+
+	//kiri
+	glBegin(GL_POLYGON);
+	glVertex3f(20.0, 55.0, -750.0);
+	glVertex3f(20.0, 55.0, -600.0);
+	glVertex3f(20.0, 400.0, -600.0);
+	glVertex3f(20.0, 400.0, -750.0);
+	glEnd();
+
+	glColor3fv(color.white);
+	//atas
+	glBegin(GL_POLYGON);
+	glVertex3f(200.0, 400.0, -750.0);
+	glVertex3f(20.0, 400.0, -750.0);
+	glVertex3f(20.0, 400.0, -600.0);
+	glVertex3f(200.0, 400.0, -600.0);
 	glEnd();
 }
 
@@ -2824,6 +2878,7 @@ void display() {
 
 	drawBuildingH();
 	drawBuildingI();
+	drawBuildingJ();
 
 	myTree(170.0, 340);
 	myTree(170.0, 130);
