@@ -20,6 +20,7 @@ public:
 	GLubyte groundAccent[3] = { 75,53,0 };
 	GLubyte street[3] = { 52,52,52 };
 	GLubyte lightstreet[3] = { 95,95,95 };
+	GLfloat star[3] = { 1.0, 0.7, 0.0 };
 
 	// Absolute Color
 	GLfloat grey[3] = { 0.5, 0.5, 0.5 };
@@ -46,25 +47,25 @@ void drawBuildingBase() {
 
 	//belakang
 	glBegin(GL_POLYGON);
-	glVertex3f(-600.0, 0.0, -600.0);
-	glVertex3f(400.0, 0.0, -600.0);
-	glVertex3f(400.0, 50.0, -600.0);
-	glVertex3f(-600.0, 50.0, -600.0);
+	glVertex3f(-625.0, 0.0, -800.0);
+	glVertex3f(400.0, 0.0, -800.0);
+	glVertex3f(400.0, 50.0, -800.0);
+	glVertex3f(-625.0, 50.0, -800.0);
 	glEnd();
 
 	//kanan
 	glBegin(GL_POLYGON);
-	glVertex3f(400.0, 0.0, -600.0);
+	glVertex3f(400.0, 0.0, -800.0);
 	glVertex3f(400.0, 0.0, 600.0);
 	glVertex3f(400.0, 50.0, 600.0);
-	glVertex3f(400.0, 50.0, -600.0);
+	glVertex3f(400.0, 50.0, -800.0);
 	glEnd();
 
 	//kiri
 	glBegin(GL_POLYGON);
 	glVertex3f(-400.0, 0.0, 600.0);
-	glVertex3f(-600.0, 0.0, -600.0);
-	glVertex3f(-600.0, 50.0, -600.0);
+	glVertex3f(-625.0, 0.0, -800.0);
+	glVertex3f(-625.0, 50.0, -800.0);
 	glVertex3f(-400.0, 50.0, 600.0);
 	glEnd();
 
@@ -72,8 +73,8 @@ void drawBuildingBase() {
 	glBegin(GL_POLYGON);
 	glVertex3f(-400.0, 0.0, 600.0);
 	glVertex3f(400.0, 0.0, 600.0);
-	glVertex3f(400.0, 0.0, -600.0);
-	glVertex3f(-600.0, 0.0, -600.0);
+	glVertex3f(400.0, 0.0, -800.0);
+	glVertex3f(-625.0, 0.0, -800.0);
 	glEnd();
 	//atas
 	glBegin(GL_POLYGON);
@@ -82,9 +83,9 @@ void drawBuildingBase() {
 	glColor3ubv(color.darkground);
 	glVertex3f(400.0, 50.0, 600.0);
 	glColor3ubv(color.ground);
-	glVertex3f(400.0, 50.0, -600.0);
+	glVertex3f(400.0, 50.0, -800.0);
 	glColor3ubv(color.darkground);
-	glVertex3f(-600.0, 50.0, -600.0);
+	glVertex3f(-625.0, 50.0, -800.0);
 	glEnd();
 
 }
@@ -1829,7 +1830,7 @@ void drawBuildingF() {
 	glBegin(GL_POLYGON);
 	glVertex3f(0.0, 55.0, -300.0); //kiri
 	glVertex3f(0.0, 55.0, 50.0); // depan
-	glColor3fv(color.lightGrey);
+	glColor3fv(color.lightGrey);	
 	glVertex3f(0.0, 200.0, 50.0); // depan
 	glVertex3f(0.0, 200.0, -300.0); //kiri
 	glEnd();
@@ -1956,14 +1957,17 @@ void drawBuildingG() {
 	glEnd();
 
 	//belakang
+	glColor3f(0.81, 0.77, 0.7);
 	glBegin(GL_POLYGON);
 	glVertex3f(-450.0, 55.0, 0.0);
 	glVertex3f(125.0, 55.0, 0.0);
+	glColor3fv(color.darkGrey);
 	glVertex3f(125.0, 200.0, 0.0);
 	glVertex3f(-450.0, 200.0, 0.0);
 	glEnd();
 
 	//kiri
+	glColor3f(0.81, 0.77, 0.7);
 	glBegin(GL_POLYGON);
 	glVertex3f(-400.0, 55.0, 200.0); //V
 	glVertex3f(-450.0, 55.0, 0.0);
@@ -2046,6 +2050,47 @@ void drawBuildingG() {
 		spacingB += 20.0;
 	}
 
+	glColor3fv(color.glass);
+	glBegin(GL_POLYGON);
+	glVertex3f(-400.5, 55.0, 175.0); //V
+	glVertex3f(-429.9, 55.0, 85.0);
+	glVertex3f(-429.9, 185.0, 85.0);
+	glVertex3f(-400.5, 185.0, 175.0); //V
+	glEnd();
+	glBegin(GL_POLYGON);
+	glVertex3f(-432.0, 75.0, 75.0); //V
+	glVertex3f(-450.5, 75.0, 5.0);
+	glVertex3f(-450.5, 120.0, 5.0);
+	glVertex3f(-432.0, 120.0, 75.0); //V
+	glEnd();
+
+	float spacingC = 175.0;
+	float spacingD = 185.0;
+	for (int i = 0; i < 5; i++) {
+		glBegin(GL_POLYGON);
+		glVertex3f(-432.0, spacingC, 75.0); //V
+		glVertex3f(-450.5, spacingC, 5.0);
+		glVertex3f(-450.5, spacingD, 5.0);
+		glVertex3f(-432.0, spacingD, 75.0); //V
+		glEnd();
+
+		spacingC -= 15;
+		spacingD -= 15;
+	}
+
+	float spacingE = 165.0;
+	float spacingF = 170.0;
+	for (int i = 0; i < 5; i++) {
+		glBegin(GL_POLYGON);
+		glVertex3f(-403.0, spacingE, 195.0); //V
+		glVertex3f(-420.0, spacingE, 125.0);
+		glVertex3f(-420.0, spacingF, 125.0);
+		glVertex3f(-403.0, spacingF, 195.0); //V
+		glEnd();
+
+		spacingE -= 20;
+		spacingF -= 20;
+	}
 }
 
 void myTree(float startPoint, float zPoint) {
@@ -2157,6 +2202,48 @@ void street() {
 	}
 }
 
+void perpotonganGaris(float ax, float ay, float bx, float by, float cx, float cy, float dx, float dy) {
+	float Mab, Cab, Yab, Mcd, Ccd, Ycd; // rumus awal
+	float px, py; // hasil
+
+	Mab = (by - ay) / (bx - ax);
+	Mcd = (dy - cy) / (dx - cx);
+	Cab = ay - (Mab * ax);
+	Ccd = cy - (Mcd * cx);
+
+	px = (Ccd - Cab) / (Mab - Mcd);
+	py = (Mab * px + Cab);
+
+	myColor color;
+	glColor3fv(color.star);
+
+	glBegin(GL_POLYGON);
+	glVertex3f(ax, ay, 0.0);
+	glVertex3f(px, py, 10.0);
+	glVertex3f(bx, by, 0.0);
+	glVertex3f(px, py, -10.0);
+	glEnd();
+	glBegin(GL_POLYGON);
+	glVertex3f(ax, ay, 0.0);
+	glVertex3f(px, py + 10, 10.0);
+	glVertex3f(bx, by, 0.0);
+	glVertex3f(px, py - 10, -10.0);
+	glEnd();
+
+	glBegin(GL_POLYGON);
+	glVertex3f(cx, cy, 0.0);
+	glVertex3f(px, py, 10.0);
+	glVertex3f(dx, dy, 0.0);
+	glVertex3f(px, py, -10.0);
+	glEnd();
+	glBegin(GL_POLYGON);
+	glVertex3f(cx, cy, 0.0);
+	glVertex3f(px, py + 10, 10.0);
+	glVertex3f(dx, dy, 0.0);
+	glVertex3f(px, py - 10, -10.0);
+	glEnd();
+}
+
 void display() {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -2185,6 +2272,12 @@ void display() {
 	myTree(-90.0, 550);
 	myTree(-220.0, 540);
 	myTree(-300.0, 530);
+
+	perpotonganGaris(-500.0, 1000.0, -550.0, 900.0, -500.0, 900.0, -550.0, 1000.0);
+	perpotonganGaris(-300.0, 1300.0, -350.0, 1200.0, -300.0, 1200.0, -350.0, 1300.0);
+	perpotonganGaris(-25.0, 1500.0, 25.0, 1400.0, -25.0, 1400.0, 25.0, 1500.0);
+	perpotonganGaris(300.0, 1300.0, 350.0, 1200.0, 300.0, 1200.0, 350.0, 1300.0);
+	perpotonganGaris(500.0, 1000.0, 550.0, 900.0, 500.0, 900.0, 550.0, 1000.0);
 
 	drawBuildingBase();
 	glPopMatrix();
@@ -2287,8 +2380,8 @@ void reshape(int width, int height) {
 
 void myinit() {
 	glClearColor(0.93, 0.86, 0.64, 1.0);
-	//glPointSize(2.0);
-	//glLineWidth(2.5);
+	glPointSize(5.0);
+	glLineWidth(2.5);
 	glMatrixMode(GL_PROJECTION);
 	glEnable(GL_DEPTH_TEST);
 	gluOrtho2D(0, 500.0, -500.0, 500.0);
