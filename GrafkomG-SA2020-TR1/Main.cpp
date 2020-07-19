@@ -2248,6 +2248,7 @@ void display() {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	glPushMatrix();
+	glEnable(GL_COLOR_MATERIAL);
 	drawBuildingA();
 	drawBuildingB();
 	drawBuildingC();
@@ -2255,6 +2256,7 @@ void display() {
 	drawBuildingE();
 	drawBuildingF();
 	drawBuildingG();
+
 
 	myTree(170.0, 340);
 	myTree(170.0, 130);
@@ -2280,6 +2282,7 @@ void display() {
 	perpotonganGaris(500.0, 1000.0, 550.0, 900.0, 500.0, 900.0, 550.0, 1000.0);
 
 	drawBuildingBase();
+	glDisable(GL_COLOR_MATERIAL);
 	glPopMatrix();
 
 	glutSwapBuffers();
@@ -2385,21 +2388,17 @@ void myinit() {
 	glMatrixMode(GL_PROJECTION);
 	glEnable(GL_DEPTH_TEST);
 	gluOrtho2D(0, 500.0, -500.0, 500.0);
-	//glEnable(GL_LINE_SMOOTH);
-	//glEnable(GL_POINT_SMOOTH);
+	glEnable(GL_LINE_SMOOTH);
+	glEnable(GL_POINT_SMOOTH);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	glEnable(GL_BLEND);
-	glEnable(GL_COLOR_MATERIAL);
 
-	/*
-	glEnable(GL_LIGHTING);
-	glEnable(GL_LIGHT0); 
 
 	GLfloat ambientLight[] = { 0.2, 0.2, 0.2, 1.0 };
 	GLfloat diffuseLight[] = { 0.8f, 0.8f, 0.8, 1.0f };
 	GLfloat specularLight[] = { 0, 0, 0, 1 };
 	GLfloat emission[] = { 0.5f, 0.5f, 0.5f, 1.0f };
-	GLfloat position[] = { 0.0f, -10.0f, 1.0f, 0.0f };
+	GLfloat position[] = { 5.0f, -20.0f, 1.0f, 0.0f };
 
 	glLightfv(GL_LIGHT0, GL_AMBIENT, ambientLight);
 	glLightfv(GL_LIGHT0, GL_DIFFUSE, diffuseLight);
@@ -2407,7 +2406,9 @@ void myinit() {
 	glLightfv(GL_LIGHT0, GL_EMISSION, emission);
 	glLightfv(GL_LIGHT0, GL_POSITION, position);
 
-	*/
+	glEnable(GL_LIGHTING);
+	glEnable(GL_LIGHT0);
+
 }
 
 void mouseWheel(int button, int dir, int x, int y){
