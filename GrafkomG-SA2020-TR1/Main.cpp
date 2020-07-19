@@ -2395,12 +2395,7 @@ void drawBuildingG() {
 	glEnd();
 }
 
-<<<<<<< HEAD
-<<<<<< < HEAD
-	void drawBuildingH() {
-=======
 void drawBuildingH() {
->>>>>>> 65d6f0432d4c309e841ab43347373b8eb5286336
 	myColor color;
 	glColor3fv(color.lightGrey);
 
@@ -2516,11 +2511,6 @@ void drawBuildingI() {
 
 }
 
-<<<<<<< HEAD
-====== =
->>>>>> > 0e8b66cb186704783f8516ebe9b129426d1f4164
-=======
->>>>>>> 65d6f0432d4c309e841ab43347373b8eb5286336
 void myTree(float startPoint, float zPoint) {
 	// Batang
 	glColor3ub(139, 69, 19);
@@ -2731,19 +2721,13 @@ void display() {
 	drawBuildingE();
 	drawBuildingF();
 	drawBuildingG();
-<<<<<<< HEAD
-	<<<<<< < HEAD
-		drawBuildingH();
-	drawBuildingI();
-	====== =
-
-		>>>>>> > 0e8b66cb186704783f8516ebe9b129426d1f4164
-=======
 	drawBuildingH();
 	drawBuildingI();
->>>>>>> 65d6f0432d4c309e841ab43347373b8eb5286336
 
-		myTree(170.0, 340);
+	drawBuildingH();
+	drawBuildingI();
+
+	myTree(170.0, 340);
 	myTree(170.0, 130);
 	myTree(70.0, -400);
 	myTree(150.0, -500);
