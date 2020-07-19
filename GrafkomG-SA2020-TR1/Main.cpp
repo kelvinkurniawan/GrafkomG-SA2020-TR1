@@ -642,7 +642,8 @@ void drawBuildingC() {
 	glVertex3f(0.0, 55.0, 35.0); //Q
 	glEnd();
 
-	glColor3fv(color.white);
+	//(color.white);
+	glColor3f(0.9, 0.9, 0.9);
 	//atas
 	glBegin(GL_POLYGON);
 	glVertex3f(0.0, 550.0, 300.0); //P
@@ -945,8 +946,9 @@ void drawBuildingD() {
 	glEnd();
 
 	myColor color;
-	glColor3fv(color.lightGrey);
-
+	//glColor3fv(color.lightGrey);
+	//glColor3fv(color.white);
+	glColor3f(0.9, 0.9, 0.9);
 	//atas
 	glBegin(GL_POLYGON);
 	glVertex3f(-250.0, 650.0, 275.0); //S
@@ -1188,6 +1190,298 @@ void drawBuildingD() {
 
 		spacingC -= 10.0;
 	}
+
+
+	//top detail
+	glColor3fv(color.lightGrey);
+	//atas kotak 1
+	glBegin(GL_POLYGON);
+	glVertex3f(-270.0, 660.0, 230.0); //S
+	glVertex3f(-280.0, 660.0, 230.0); //U
+	glVertex3f(-280.0, 660.0, 250.0); //V
+	glVertex3f(-270.0, 660.0, 250.0); //W
+	glEnd();
+	//kanan kotak 1
+	glBegin(GL_POLYGON);
+	glVertex3f(-270.0, 660.0, 230.0); //S
+	glVertex3f(-270.0, 660.0, 250.0); //U
+	glVertex3f(-270.0, 650.0, 250.0); //V
+	glVertex3f(-270.0, 650.0, 230.0); //W
+	glEnd();
+	//kiri kotak 1
+	glBegin(GL_POLYGON);
+	glVertex3f(-280.0, 660.0, 230.0); //S
+	glVertex3f(-280.0, 660.0, 250.0); //U
+	glVertex3f(-280.0, 650.0, 250.0); //V
+	glVertex3f(-280.0, 650.0, 230.0); //W
+	glEnd();
+	//belakang kotak 1
+	glBegin(GL_POLYGON);
+	glVertex3f(-280.0, 660.0, 230.0); //S
+	glVertex3f(-270.0, 660.0, 230.0); //U
+	glVertex3f(-270.0, 650.0, 230.0); //V
+	glVertex3f(-280.0, 650.0, 230.0); //W
+	glEnd();
+	//depan kotak 1
+	glBegin(GL_POLYGON);
+	glVertex3f(-280.0, 660.0, 250.0); //S
+	glVertex3f(-270.0, 660.0, 250.0); //U
+	glVertex3f(-270.0, 650.0, 250.0); //V
+	glVertex3f(-280.0, 650.0, 250.0); //W
+	glEnd();
+
+	//atas kotak 2
+	glBegin(GL_POLYGON);
+	glVertex3f(-290.0, 655.0, 230.0); //S
+	glVertex3f(-295.0, 655.0, 230.0); //U
+	glVertex3f(-295.0, 655.0, 250.0); //V
+	glVertex3f(-290.0, 655.0, 250.0); //W
+	glEnd();
+	//kanan kotak 2
+	glBegin(GL_POLYGON);
+	glVertex3f(-290.0, 655.0, 230.0); //S
+	glVertex3f(-290.0, 655.0, 250.0); //U
+	glVertex3f(-290.0, 650.0, 250.0); //V
+	glVertex3f(-290.0, 650.0, 230.0); //W
+	glEnd();
+	//kiri kotak 2
+	glBegin(GL_POLYGON);
+	glVertex3f(-295.0, 655.0, 230.0); //S
+	glVertex3f(-295.0, 655.0, 250.0); //U
+	glVertex3f(-295.0, 650.0, 250.0); //V
+	glVertex3f(-295.0, 650.0, 230.0); //W
+	glEnd();
+	//belakang kotak 2
+	glBegin(GL_POLYGON);
+	glVertex3f(-295.0, 655.0, 230.0); //S
+	glVertex3f(-290.0, 655.0, 230.0); //U
+	glVertex3f(-290.0, 650.0, 230.0); //V
+	glVertex3f(-295.0, 650.0, 230.0); //W
+	glEnd();
+	//depan kotak 2
+	glBegin(GL_POLYGON);
+	glVertex3f(-295.0, 655.0, 250.0); //S
+	glVertex3f(-290.0, 655.0, 250.0); //U
+	glVertex3f(-290.0, 650.0, 250.0); //V
+	glVertex3f(-295.0, 650.0, 250.0); //W
+	glEnd();
+
+	//atas kotak 3
+	glBegin(GL_POLYGON);
+	glVertex3f(-295.0, 660.0, 230.0); //S
+	glVertex3f(-305.0, 660.0, 230.0); //U
+	glVertex3f(-305.0, 660.0, 250.0); //V
+	glVertex3f(-295.0, 660.0, 250.0); //W
+	glEnd();
+	//kanan kotak 3
+	glBegin(GL_POLYGON);
+	glVertex3f(-295.0, 660.0, 230.0); //S
+	glVertex3f(-295.0, 660.0, 250.0); //U
+	glVertex3f(-295.0, 650.0, 250.0); //V
+	glVertex3f(-295.0, 650.0, 230.0); //W
+	glEnd();
+	//kiri kotak 3
+	glBegin(GL_POLYGON);
+	glVertex3f(-305.0, 660.0, 230.0); //S
+	glVertex3f(-305.0, 660.0, 250.0); //U
+	glVertex3f(-305, 650.0, 250.0); //V
+	glVertex3f(-305.0, 650.0, 230.0); //W
+	glEnd();
+	//belakang kotak 3
+	glBegin(GL_POLYGON);
+	glVertex3f(-305.0, 660.0, 230.0); //S
+	glVertex3f(-295.0, 660.0, 230.0); //U
+	glVertex3f(-295.0, 650.0, 230.0); //V
+	glVertex3f(-305.0, 650.0, 230.0); //W
+	glEnd();
+	//depan kotak 3
+	glBegin(GL_POLYGON);
+	glVertex3f(-305.0, 660.0, 250.0); //S
+	glVertex3f(-295.0, 660.0, 250.0); //U
+	glVertex3f(-295.0, 650.0, 250.0); //V
+	glVertex3f(-305, 650.0, 250.0); //W
+	glEnd();
+
+	//atas kotak 4
+	glBegin(GL_POLYGON);
+	glVertex3f(-315.0, 655.0, 230.0); //S
+	glVertex3f(-325.0, 655.0, 230.0); //U
+	glVertex3f(-325.0, 655.0, 250.0); //V
+	glVertex3f(-315.0, 655.0, 250.0); //W
+	glEnd();
+	//kanan kotak 4
+	glBegin(GL_POLYGON);
+	glVertex3f(-315.0, 655.0, 230.0); //S
+	glVertex3f(-315.0, 655.0, 250.0); //U
+	glVertex3f(-315.0, 650.0, 250.0); //V
+	glVertex3f(-315.0, 650.0, 230.0); //W
+	glEnd();
+	//kiri kotak 4
+	glBegin(GL_POLYGON);
+	glVertex3f(-325.0, 655.0, 230.0); //S
+	glVertex3f(-325.0, 655.0, 250.0); //U
+	glVertex3f(-325, 650.0, 250.0); //V
+	glVertex3f(-325.0, 650.0, 230.0); //W
+	glEnd();
+	//belakang kotak 4
+	glBegin(GL_POLYGON);
+	glVertex3f(-325.0, 655.0, 230.0); //S
+	glVertex3f(-315.0, 655.0, 230.0); //U
+	glVertex3f(-315.0, 650.0, 230.0); //V
+	glVertex3f(-325.0, 650.0, 230.0); //W
+	glEnd();
+	//depan kotak 4
+	glBegin(GL_POLYGON);
+	glVertex3f(-325.0, 655.0, 250.0); //S
+	glVertex3f(-315.0, 655.0, 250.0); //U
+	glVertex3f(-315.0, 650.0, 250.0); //V
+	glVertex3f(-325, 650.0, 250.0); //W
+	glEnd();
+
+	//atas kotak 5
+	glBegin(GL_POLYGON);
+	glVertex3f(-320.0, 655.0, 220.0); //S
+	glVertex3f(-325.0, 655.0, 220.0); //U
+	glVertex3f(-325.0, 655.0, 230.0); //V
+	glVertex3f(-320.0, 655.0, 230.0); //W
+	glEnd();
+	//kanan kotak 5
+	glBegin(GL_POLYGON);
+	glVertex3f(-320.0, 655.0, 220.0); //S
+	glVertex3f(-320.0, 655.0, 230.0); //U
+	glVertex3f(-320.0, 650.0, 230.0); //V
+	glVertex3f(-320.0, 650.0, 220.0); //W
+	glEnd();
+	//kiri kotak 5
+	glBegin(GL_POLYGON);
+	glVertex3f(-325.0, 655.0, 220.0); //S
+	glVertex3f(-325.0, 655.0, 230.0); //U
+	glVertex3f(-325.0, 650.0, 230.0); //V
+	glVertex3f(-325.0, 650.0, 220.0); //W
+	glEnd();
+	//belakang kotak 5
+	glBegin(GL_POLYGON);
+	glVertex3f(-325.0, 655.0, 220.0); //S
+	glVertex3f(-320.0, 655.0, 220.0); //U
+	glVertex3f(-320.0, 650.0, 220.0); //V
+	glVertex3f(-325.0, 650.0, 220.0); //W
+	glEnd();
+	//depan kotak 5
+	glBegin(GL_POLYGON);
+	glVertex3f(-325.0, 655.0, 230.0); //S
+	glVertex3f(-320.0, 655.0, 230.0); //U
+	glVertex3f(-320.0, 650.0, 230.0); //V
+	glVertex3f(-325, 650.0, 230.0); //W
+	glEnd();
+
+	//atas kotak 6
+	glBegin(GL_POLYGON);
+	glVertex3f(-330.0, 655.0, 220.0); //S
+	glVertex3f(-350.0, 655.0, 220.0); //U
+	glVertex3f(-350.0, 655.0, 230.0); //V
+	glVertex3f(-330.0, 655.0, 230.0); //W
+	glEnd();
+	//kanan kotak 6
+	glBegin(GL_POLYGON);
+	glVertex3f(-330.0, 655.0, 220.0); //S
+	glVertex3f(-330.0, 655.0, 230.0); //U
+	glVertex3f(-330.0, 650.0, 230.0); //V
+	glVertex3f(-330.0, 650.0, 220.0); //W
+	glEnd();
+	//kiri kotak 6
+	glBegin(GL_POLYGON);
+	glVertex3f(-350.0, 655.0, 220.0); //S
+	glVertex3f(-350.0, 655.0, 230.0); //U
+	glVertex3f(-350.0, 650.0, 230.0); //V
+	glVertex3f(-350.0, 650.0, 220.0); //W
+	glEnd();
+	//belakang kotak 6
+	glBegin(GL_POLYGON);
+	glVertex3f(-350.0, 655.0, 220.0); //S
+	glVertex3f(-330.0, 655.0, 220.0); //U
+	glVertex3f(-330.0, 650.0, 220.0); //V
+	glVertex3f(-350.0, 650.0, 220.0); //W
+	glEnd();
+	//depan kotak 6
+	glBegin(GL_POLYGON);
+	glVertex3f(-350.0, 655.0, 230.0); //S
+	glVertex3f(-330.0, 655.0, 230.0); //U
+	glVertex3f(-330.0, 650.0, 230.0); //V
+	glVertex3f(-350.0, 650.0, 230.0); //W
+	glEnd();
+
+	//atas kotak 7
+	glBegin(GL_POLYGON);
+	glVertex3f(-340.0, 655.0, 210.0); //S
+	glVertex3f(-350.0, 655.0, 210.0); //U
+	glVertex3f(-350.0, 655.0, 230.0); //V
+	glVertex3f(-340.0, 655.0, 230.0); //W
+	glEnd();
+	//kanan kotak 7
+	glBegin(GL_POLYGON);
+	glVertex3f(-340.0, 655.0, 210.0); //S
+	glVertex3f(-340.0, 655.0, 230.0); //U
+	glVertex3f(-340.0, 650.0, 230.0); //V
+	glVertex3f(-340.0, 650.0, 210.0); //W
+	glEnd();
+	//kiri kotak 7
+	glBegin(GL_POLYGON);
+	glVertex3f(-350.0, 655.0, 210.0); //S
+	glVertex3f(-350.0, 655.0, 230.0); //U
+	glVertex3f(-350.0, 650.0, 230.0); //V
+	glVertex3f(-350.0, 650.0, 210.0); //W
+	glEnd();
+	//belakang kotak 7
+	glBegin(GL_POLYGON);
+	glVertex3f(-350.0, 655.0, 210.0); //S
+	glVertex3f(-340.0, 655.0, 210.0); //U
+	glVertex3f(-340.0, 650.0, 210.0); //V
+	glVertex3f(-350.0, 650.0, 210.0); //W
+	glEnd();
+	//depan kotak 7
+	glBegin(GL_POLYGON);
+	glVertex3f(-350.0, 655.0, 230.0); //S
+	glVertex3f(-340.0, 655.0, 230.0); //U
+	glVertex3f(-340.0, 650.0, 230.0); //V
+	glVertex3f(-350, 650.0, 230.0); //W
+	glEnd();
+
+	//atas kotak 8
+	glBegin(GL_POLYGON);
+	glVertex3f(-360.0, 655.0, 230.0); //S
+	glVertex3f(-370.0, 655.0, 230.0); //U
+	glVertex3f(-370.0, 655.0, 250.0); //V
+	glVertex3f(-360.0, 655.0, 250.0); //W
+	glEnd();
+	//kanan kotak 8
+	glBegin(GL_POLYGON);
+	glVertex3f(-360.0, 655.0, 230.0); //S
+	glVertex3f(-360.0, 655.0, 250.0); //U
+	glVertex3f(-360.0, 650.0, 250.0); //V
+	glVertex3f(-360.0, 650.0, 230.0); //W
+	glEnd();
+	//kiri kotak 8
+	glBegin(GL_POLYGON);
+	glVertex3f(-370.0, 655.0, 230.0); //S
+	glVertex3f(-370.0, 655.0, 250.0); //U
+	glVertex3f(-370.0, 650.0, 250.0); //V
+	glVertex3f(-370.0, 650.0, 230.0); //W
+	glEnd();
+	//belakang kotak 8
+	glBegin(GL_POLYGON);
+	glVertex3f(-370.0, 655.0, 230.0); //S
+	glVertex3f(-360.0, 655.0, 230.0); //U
+	glVertex3f(-360.0, 650.0, 230.0); //V
+	glVertex3f(-370.0, 650.0, 230.0); //W
+	glEnd();
+	//depan kotak 8
+	glBegin(GL_POLYGON);
+	glVertex3f(-370.0, 655.0, 250.0); //S
+	glVertex3f(-360.0, 655.0, 250.0); //U
+	glVertex3f(-360.0, 650.0, 250.0); //V
+	glVertex3f(-370.0, 650.0, 250.0); //W
+	glEnd();
+
 }
 
 void drawBuildingE() {
