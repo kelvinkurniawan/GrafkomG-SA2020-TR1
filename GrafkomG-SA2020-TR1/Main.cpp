@@ -3,6 +3,11 @@
 #define deltat .001
 using namespace std;
 
+bool redOn = true;
+bool yellowOn = false;
+bool greenOn = false;
+
+float redLight = 1000, yellowLight = 0, greenLight = 0;
 
 class myConfiguration {
 public:
@@ -36,6 +41,7 @@ public:
 	GLfloat specularLight[4] = { 0, 0, 0, 1 };
 	GLfloat emission[4] = { 0.5f, 0.5f, 0.5f, 1.0f };
 	GLfloat position[4] = { 400.0f, 100.0f, 500.0f, 0.5 };
+
 };
 
 class myColor {
@@ -51,6 +57,9 @@ public:
 	GLfloat star[3] = { 1.0, 0.7, 0.0 };
 
 	// Absolute Color
+	GLfloat red[3] = { 1, 0, 0 };
+	GLfloat yellow[3] = { 1, 1, 0 };
+	GLfloat green[3] = { 0, 1, 0 };
 	GLfloat grey[3] = { 0.5, 0.5, 0.5 };
 	GLfloat black[3] = { 0,0,0 };
 	GLfloat white[3] = { 1,1,1 };
@@ -3154,6 +3163,69 @@ public:
 		}
 	}
 
+	void trafficLight() {
+		myColor color;
+		myConfiguration config;
+
+		glBegin(GL_QUADS);
+		glColor3ubv(color.hardGrey);
+		glVertex3f(-465.0, 55.0, 325.0);
+		glVertex3f(-460.0, 55.0, 325.0);
+		glVertex3f(-460.0, 200.0, 325.0);
+		glVertex3f(-465.0, 200, 325.0);
+
+		glVertex3f(-465.0, 55.0, 330.0);
+		glVertex3f(-460.0, 55.0, 330.0);
+		glVertex3f(-460.0, 200.0, 330.0);
+		glVertex3f(-465.0, 200, 330.0);
+
+		glVertex3f(-465.0, 55.0, 330.0);
+		glVertex3f(-465.0, 55.0, 325.0);
+		glVertex3f(-465.0, 200., 325.0);
+		glVertex3f(-465.0, 200, 330.0);
+
+		glVertex3f(-460.0, 55.0, 330.0);
+		glVertex3f(-460.0, 55.0, 325.0);
+		glVertex3f(-460.0, 200., 325.0);
+		glVertex3f(-460.0, 200, 330.0);
+
+		if (redOn) 
+			glColor3fv(color.red);
+		
+		else 
+			glColor3fv(color.black);
+		
+		glVertex3f(-459.0, 180, 330.0);
+		glVertex3f(-459.0, 180, 325.0);
+		glVertex3f(-459.0, 190., 325.0);
+		glVertex3f(-459.0, 190, 330.0);
+
+		if (yellowOn) 
+			glColor3fv(color.yellow);
+		
+		else 
+			glColor3fv(color.black);
+		
+
+		glVertex3f(-459.0, 175, 330.0);
+		glVertex3f(-459.0, 175, 325.0);
+		glVertex3f(-459.0, 165., 325.0);
+		glVertex3f(-459.0, 165, 330.0);
+
+		if (greenOn) 
+			glColor3fv(color.green);
+		
+		else 
+			glColor3fv(color.black);
+		
+		glVertex3f(-459.0, 160, 330.0);
+		glVertex3f(-459.0, 160, 325.0);
+		glVertex3f(-459.0, 150., 325.0);
+		glVertex3f(-459.0, 150, 330.0);
+
+		glEnd();
+	}
+
 	void starObject(float ax, float ay, float bx, float by, float cx, float cy, float dx, float dy) {
 		float Mab, Cab, Yab, Mcd, Ccd, Ycd; // rumus awal
 		float px, py; // hasil
@@ -3272,19 +3344,20 @@ void display() {
 	obj.myTree(-100.0, 340);
 	obj.myTree(-200.0, 340);
 	obj.myTree(-330.0, 340);
-	obj.myTree(-330.0, -100);
 	obj.myTree(-420.0, -250);
 	obj.myTree(-120.0, -50);
-	obj.myTree(-500.0, -100);
-
-	obj.street();
-	obj.anotherStreet();
-
 	obj.myTree(300.0, 580);
 	obj.myTree(120.0, 575);
 	obj.myTree(-90.0, 550);
 	obj.myTree(-220.0, 540);
 	obj.myTree(-300.0, 530);
+	obj.myTree(-770.0, 550);
+	obj.myTree(-670.0, 530);
+	obj.myTree(-470.0, 530);
+
+	obj.street();
+	obj.anotherStreet();
+	obj.trafficLight();
 
 	obj.starObject(-500.0 + config.deltaStar1, 1000.0, -550.0 + config.deltaStar1, 900.0, -500.0 + config.deltaStar1, 900.0, -550.0 + config.deltaStar1, 1000.0);
 	obj.starObject(-300.0 + config.deltaStar2, 1300.0, -350.0 + config.deltaStar2, 1200.0, -300.0 + config.deltaStar2, 1200.0, -350.0 + config.deltaStar2, 1300.0);
@@ -3446,8 +3519,44 @@ void mouseMotionActive(int x, int y) {
 }
 
 void timer(int) {
-	glutPostRedisplay();
 	glutTimerFunc(1000 / 30, timer, 0);
+	
+	if (redLight > 0) {
+		redOn = true;
+		yellowOn = false;
+		greenOn = false;
+
+		if (redLight > 0) 
+			redLight -= 10;
+		
+		if (redLight < 50) 
+			yellowLight = 1000;
+		
+
+	}else if (yellowLight > 0) {
+		redOn = false;
+		yellowOn = true;
+		greenOn = false;
+
+		if (yellowLight > 0) 
+			yellowLight -= 10;
+		
+		if (yellowLight < 50) 
+			greenLight = 1000;
+		
+
+	}else if (greenLight > 0) {
+		redOn = false;
+		yellowOn = false;
+		greenOn = true;
+
+		if (greenLight > 0) 
+			greenLight -= 10;
+		
+		if (greenLight < 50) 
+			redLight = 1000;
+		
+	}
 
 	{
 		if (config.deltaStar1 > -100 && config.moveLeft1)
@@ -3529,6 +3638,7 @@ void timer(int) {
 			config.moveLeft5 = true;
 		}
 	}
+	glutPostRedisplay();
 
 }
 
