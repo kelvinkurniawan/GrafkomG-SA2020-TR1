@@ -95,29 +95,30 @@ public:
 
 		//kiri
 		glBegin(GL_POLYGON);
-		glVertex3f(-400.0, 0.0, 600.0);
-		glVertex3f(-625.0, 0.0, -800.0);
-		glVertex3f(-625.0, 50.0, -800.0);
-		glVertex3f(-400.0, 50.0, 600.0);
+		glVertex3f(-800.0, 0.0, 600.0);
+		glVertex3f(-1025.0, 0.0, -800.0);
+		glVertex3f(-1025.0, 50.0, -800.0);
+		glVertex3f(-800.0, 50.0, 600.0);
 		glEnd();
 
 		//bawah
 		glBegin(GL_POLYGON);
-		glVertex3f(-400.0, 0.0, 600.0);
+		glVertex3f(-800.0, 0.0, 600.0);
 		glVertex3f(400.0, 0.0, 600.0);
 		glVertex3f(400.0, 0.0, -800.0);
-		glVertex3f(-625.0, 0.0, -800.0);
+		glVertex3f(-1025.0, 0.0, -800.0);
 		glEnd();
+
 		//atas
 		glBegin(GL_POLYGON);
 		glColor3ubv(color.ground);
-		glVertex3f(-400.0, 50.0, 600.0);
+		glVertex3f(-800.0, 50.0, 600.0);
 		glColor3ubv(color.darkground);
 		glVertex3f(400.0, 50.0, 600.0);
 		glColor3ubv(color.ground);
 		glVertex3f(400.0, 50.0, -800.0);
 		glColor3ubv(color.darkground);
-		glVertex3f(-625.0, 50.0, -800.0);
+		glVertex3f(-1025.0, 50.0, -800.0);
 		glEnd();
 
 	}
@@ -3093,24 +3094,24 @@ public:
 	}
 
 	void street() {
-
 		myColor color;
+
 		glBegin(GL_QUADS);
 		glColor3ubv(color.lightstreet);
-		glVertex3f(-435.0, 55.0, 360.0);
+		glVertex3f(-830.0, 55.0, 360.0);
 		glColor3ubv(color.street);
 		glVertex3f(400.0, 55.0, 400.0);
 		glColor3ubv(color.street);
 		glVertex3f(400.0, 55.0, 520.0);
 		glColor3ubv(color.lightstreet);
-		glVertex3f(-420.0, 55.0, 480.0);
+		glVertex3f(-820.0, 55.0, 480.0);
 		glEnd();
 
 		float width = 35.0f;
 		float margin = 80.0f;
 		float deltaZ = 0.0f;
-		float startPoint = -400.0f;
-		for (int i = 0; i < 11; i++) {
+		float startPoint = -800.0f;
+		for (int i = 0; i < 16; i++) {
 			glBegin(GL_QUADS);
 			glColor3fv(color.white);
 			glVertex3f(startPoint, 56.0, 410.0 + deltaZ);
@@ -3120,7 +3121,36 @@ public:
 			glEnd();
 
 			startPoint += margin;
-			deltaZ += 5.0;
+			deltaZ += 2.75;
+		}
+	}
+
+	void anotherStreet() {
+		myColor color;
+
+		glBegin(GL_QUADS);
+		glColor3ubv(color.lightstreet);
+		glVertex3f(-575.0, 56.0, 375.0);
+		glVertex3f(-475.0, 56.0, 375.0);
+		glColor3ubv(color.street);
+		glVertex3f(-675.0, 55.0, -800.0);
+		glVertex3f(-775.0, 55.0, -800.0);
+		glEnd();
+
+		float zMargin = 0;
+		float xMargin = 0;
+
+		for (int i = 0; i < 7; i++) {
+			glBegin(GL_QUADS);
+			glColor3fv(color.white);
+			glVertex3f(-525.0 - xMargin, 57.0, 375.0 - zMargin);
+			glVertex3f(-520.0 - xMargin, 57.0, 375.0 - zMargin);
+			glVertex3f(-535.0 - xMargin, 57.0, 300.0 - zMargin);
+			glVertex3f(-540.0 - xMargin, 57.0, 300.0 - zMargin);
+			glEnd();
+
+			zMargin += 180.0f;
+			xMargin += 30.0f;
 		}
 	}
 
@@ -3248,6 +3278,7 @@ void display() {
 	obj.myTree(-500.0, -100);
 
 	obj.street();
+	obj.anotherStreet();
 
 	obj.myTree(300.0, 580);
 	obj.myTree(120.0, 575);
