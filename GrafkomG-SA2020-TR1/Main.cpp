@@ -9,6 +9,9 @@ bool greenOn = false;
 
 float redLight = 1000, yellowLight = 0, greenLight = 0;
 
+float treeAnimation = 0;
+float treeAnimationLeft = true;
+
 class myConfiguration {
 public:
 	bool mouseDown = false;
@@ -3063,33 +3066,33 @@ public:
 		glEnd();
 
 		glBegin(GL_QUADS);
-		glVertex3f(startPoint - 20, 180, zPoint + 40);
-		glVertex3f(startPoint + 20, 180, zPoint + 40);
-		glVertex3f(startPoint + 20, 180, zPoint - 40);
-		glVertex3f(startPoint - 20, 180, zPoint - 40);
+		glVertex3f(startPoint - 20 + treeAnimation, 180, zPoint + 40);
+		glVertex3f(startPoint + 20 + treeAnimation, 180, zPoint + 40);
+		glVertex3f(startPoint + 20 + treeAnimation, 180, zPoint - 40);
+		glVertex3f(startPoint - 20 + treeAnimation, 180, zPoint - 40);
 		glEnd();
 
 		glBegin(GL_QUADS);
 		glColor3ub(27, 78, 24);
 		glVertex3f(startPoint - 20, 90, zPoint + 40);
 		glColor3ub(19, 51, 17);
-		glVertex3f(startPoint - 20, 180, zPoint + 40);
-		glVertex3f(startPoint - 20, 180, zPoint - 40);
+		glVertex3f(startPoint - 20 + treeAnimation, 180, zPoint + 40);
+		glVertex3f(startPoint - 20 + treeAnimation, 180, zPoint - 40);
 		glVertex3f(startPoint - 20, 90, zPoint - 40);
 		glEnd();
 
 		glBegin(GL_QUADS);
 		glVertex3f(startPoint + 20, 90, zPoint + 40);
-		glVertex3f(startPoint + 20, 180, zPoint + 40);
-		glVertex3f(startPoint + 20, 180, zPoint - 40);
+		glVertex3f(startPoint + 20 + treeAnimation, 180, zPoint + 40);
+		glVertex3f(startPoint + 20 + treeAnimation, 180, zPoint - 40);
 		glVertex3f(startPoint + 20, 90, zPoint - 40);
 		glEnd();
 
 		glBegin(GL_QUADS);
 		glVertex3f(startPoint - 20, 90, zPoint - 40);
 		glVertex3f(startPoint + 20, 90, zPoint - 40);
-		glVertex3f(startPoint + 20, 180, zPoint - 40);
-		glVertex3f(startPoint - 20, 180, zPoint - 40);
+		glVertex3f(startPoint + 20 + treeAnimation, 180, zPoint - 40);
+		glVertex3f(startPoint - 20 + treeAnimation, 180, zPoint - 40);
 		glEnd();
 
 		glBegin(GL_QUADS);
@@ -3097,8 +3100,8 @@ public:
 		glVertex3f(startPoint - 20, 90, zPoint + 40);
 		glColor3ub(19, 51, 17);
 		glVertex3f(startPoint + 20, 90, zPoint + 40);
-		glVertex3f(startPoint + 20, 180, zPoint + 40);
-		glVertex3f(startPoint - 20, 180, zPoint + 40);
+		glVertex3f(startPoint + 20 + treeAnimation, 180, zPoint + 40);
+		glVertex3f(startPoint - 20 + treeAnimation, 180, zPoint + 40);
 		glEnd();
 	}
 
@@ -3269,7 +3272,7 @@ public:
 	}
 
 	void tweening() {
-		myColor color;
+
 		float startShape[8][3] = {
 			{20, 500, 315}, {50, 500, 315}, {50, 490, 315}, {40, 490, 315}, {40, 450, 315}, {30, 450, 315},
 			{30, 490, 315}, {20, 490, 315}
@@ -3280,8 +3283,9 @@ public:
 			{30, 450, 315}, {20, 450, 315}
 		};
 
+		myColor color;
+
 		float intermediateShape[12][3];
-		float intermediateShapeReverse[12][3];
 
 		static float tween = 0.0 - deltat;
 
@@ -3520,122 +3524,145 @@ void mouseMotionActive(int x, int y) {
 
 void timer(int) {
 	glutTimerFunc(1000 / 30, timer, 0);
-	
-	if (redLight > 0) {
-		redOn = true;
-		yellowOn = false;
-		greenOn = false;
+	{
 
-		if (redLight > 0) 
-			redLight -= 10;
-		
-		if (redLight < 50) 
-			yellowLight = 1000;
-		
+		if (treeAnimation < 5 && !treeAnimationLeft) {
+			treeAnimation += 0.2;
+		}
+		else {
+			treeAnimationLeft = true;
+		}
 
-	}else if (yellowLight > 0) {
-		redOn = false;
-		yellowOn = true;
-		greenOn = false;
+		if (treeAnimation > -5 && treeAnimationLeft) {
+			treeAnimation -= 0.2;
+		}
+		else {
+			treeAnimationLeft = false;
+		}		
 
-		if (yellowLight > 0) 
-			yellowLight -= 10;
-		
-		if (yellowLight < 50) 
-			greenLight = 1000;
-		
-
-	}else if (greenLight > 0) {
-		redOn = false;
-		yellowOn = false;
-		greenOn = true;
-
-		if (greenLight > 0) 
-			greenLight -= 10;
-		
-		if (greenLight < 50) 
-			redLight = 1000;
-		
+		cout << treeAnimation << endl;
 	}
 
 	{
-		if (config.deltaStar1 > -100 && config.moveLeft1)
-		{
-			config.deltaStar1 -= 1.5;
+		if (redLight > 0) {
+			redOn = true;
+			yellowOn = false;
+			greenOn = false;
+
+			if (redLight > 0)
+				redLight -= 10;
+
+			if (redLight < 50)
+				yellowLight = 1000;
+
+
 		}
-		else {
-			config.moveLeft1 = false;
+		else if (yellowLight > 0) {
+			redOn = false;
+			yellowOn = true;
+			greenOn = false;
+
+			if (yellowLight > 0)
+				yellowLight -= 10;
+
+			if (yellowLight < 50)
+				greenLight = 1000;
+
+
 		}
-		if (config.deltaStar1 < 1000 && !config.moveLeft1)
-		{
-			config.deltaStar1 += 1.5;
-		}
-		else {
-			config.moveLeft1 = true;
-		}
-	}
+		else if (greenLight > 0) {
+			redOn = false;
+			yellowOn = false;
+			greenOn = true;
+
+			if (greenLight > 0)
+				greenLight -= 10;
+
+			if (greenLight < 50)
+				redLight = 1000;
+
+		}} // Traffic Light
 	{
-		if (config.deltaStar2 > -600 && config.moveLeft2)
+
 		{
-			config.deltaStar2 -= 1;
+			if (config.deltaStar1 > -100 && config.moveLeft1)
+			{
+				config.deltaStar1 -= 1.5;
+			}
+			else {
+				config.moveLeft1 = false;
+			}
+			if (config.deltaStar1 < 1000 && !config.moveLeft1)
+			{
+				config.deltaStar1 += 1.5;
+			}
+			else {
+				config.moveLeft1 = true;
+			}
 		}
-		else {
-			config.moveLeft2 = false;
-		}
-		if (config.deltaStar2 < 900 && !config.moveLeft2)
 		{
-			config.deltaStar2 += 1;
+			if (config.deltaStar2 > -600 && config.moveLeft2)
+			{
+				config.deltaStar2 -= 1;
+			}
+			else {
+				config.moveLeft2 = false;
+			}
+			if (config.deltaStar2 < 900 && !config.moveLeft2)
+			{
+				config.deltaStar2 += 1;
+			}
+			else {
+				config.moveLeft2 = true;
+			}
 		}
-		else {
-			config.moveLeft2 = true;
-		}
-	}
-	{
-		if (config.deltaStar3 > -375 && config.moveLeft3)
 		{
-			config.deltaStar3 -= 0.5;
+			if (config.deltaStar3 > -375 && config.moveLeft3)
+			{
+				config.deltaStar3 -= 0.5;
+			}
+			else {
+				config.moveLeft3 = false;
+			}
+			if (config.deltaStar3 < 625 && !config.moveLeft3)
+			{
+				config.deltaStar3 += 0.5;
+			}
+			else {
+				config.moveLeft3 = true;
+			}
 		}
-		else {
-			config.moveLeft3 = false;
-		}
-		if (config.deltaStar3 < 625 && !config.moveLeft3)
 		{
-			config.deltaStar3 += 0.5;
+			if (config.deltaStar4 > -700 && config.moveLeft4)
+			{
+				config.deltaStar4 -= 2;
+			}
+			else {
+				config.moveLeft4 = false;
+			}
+			if (config.deltaStar4 < 300 && !config.moveLeft4)
+			{
+				config.deltaStar4 += 2;
+			}
+			else {
+				config.moveLeft4 = true;
+			}
 		}
-		else {
-			config.moveLeft3 = true;
-		}
-	}
-	{
-		if (config.deltaStar4 > -700 && config.moveLeft4)
 		{
-			config.deltaStar4 -= 2;
-		}
-		else {
-			config.moveLeft4 = false;
-		}
-		if (config.deltaStar4 < 300 && !config.moveLeft4)
-		{
-			config.deltaStar4 += 2;
-		}
-		else {
-			config.moveLeft4 = true;
-		}
-	}
-	{
-		if (config.deltaStar5 > -1000 && config.moveLeft5)
-		{
-			config.deltaStar5 -= 2.5;
-		}
-		else {
-			config.moveLeft5 = false;
-		}
-		if (config.deltaStar5 < 100 && !config.moveLeft5)
-		{
-			config.deltaStar5 += 2.5;
-		}
-		else {
-			config.moveLeft5 = true;
+			if (config.deltaStar5 > -1000 && config.moveLeft5)
+			{
+				config.deltaStar5 -= 2.5;
+			}
+			else {
+				config.moveLeft5 = false;
+			}
+			if (config.deltaStar5 < 100 && !config.moveLeft5)
+			{
+				config.deltaStar5 += 2.5;
+			}
+			else {
+				config.moveLeft5 = true;
+			}
 		}
 	}
 	glutPostRedisplay();
