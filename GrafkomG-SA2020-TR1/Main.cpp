@@ -3437,13 +3437,286 @@ public:
 
 	void gasStation() {
 		myColor color;
-		glColor3ubv(color.darkBlue);
+		glColor3fv(color.lightGrey);
 		glBegin(GL_POLYGON);
 		glVertex3f(-600.0, 55.5, 300.0);
 		glVertex3f(-685.0, 55.5, -200.0);
+		glColor3fv(color.grey);
 		glVertex3f(-985.0, 55.5, -200.0);
 		glVertex3f(-900.0, 55.5, 300.0);
 		glEnd();
+
+		//atap
+		{
+			glBegin(GL_POLYGON);
+			glVertex3f(-600.0, 150.5, 300.0);
+			glVertex3f(-685.0, 150.5, -200.0);
+			glVertex3f(-985.0, 150.5, -200.0);
+			glVertex3f(-900.0, 150.5, 300.0);
+			glEnd();
+			glBegin(GL_POLYGON);
+			glVertex3f(-600.0, 160.5, 300.0);
+			glVertex3f(-685.0, 160.5, -200.0);
+			glVertex3f(-985.0, 160.5, -200.0);
+			glVertex3f(-900.0, 160.5, 300.0);
+			glEnd();
+			glColor3fv(color.white);
+			glBegin(GL_POLYGON);
+			glVertex3f(-600.0, 150.5, 300.0);
+			glVertex3f(-685.0, 150.5, -200.0);
+			glVertex3f(-685.0, 160.5, -200.0);
+			glVertex3f(-600.0, 160.5, 300.0);
+			glEnd();
+			glBegin(GL_POLYGON);
+			glVertex3f(-985.0, 160.5, -200.0);
+			glVertex3f(-900.0, 160.5, 300.0);
+			glVertex3f(-900.0, 150.5, 300.0);
+			glVertex3f(-985.0, 150.5, -200.0);
+			glEnd();
+			glBegin(GL_POLYGON);
+			glVertex3f(-685.0, 150.5, -200.0);
+			glVertex3f(-985.0, 150.5, -200.0);
+			glVertex3f(-985.0, 160.5, -200.0);
+			glVertex3f(-685.0, 160.5, -200.0);
+			glEnd();
+			glBegin(GL_POLYGON);
+			glVertex3f(-600.0, 150.5, 300.0);
+			glVertex3f(-900.0, 150.5, 300.0);
+			glVertex3f(-900.0, 160.5, 300.0);
+			glVertex3f(-600.0, 160.5, 300.0);
+			glEnd();
+		}
+
+		//pos-1
+		glColor3fv(color.lightGrey);
+		glBegin(GL_POLYGON);
+		glVertex3f(-707.5, 55.9, 125.0);
+		glVertex3f(-700.0, 55.9, 175.0);
+		glVertex3f(-850.0, 55.9, 175.0);
+		glVertex3f(-857.5, 55.9, 125.0);
+		glEnd();
+		//tiang
+		{
+			glColor3fv(color.white);
+			glBegin(GL_POLYGON);
+			glVertex3f(-707.5, 55.9, 145.0);
+			glVertex3f(-700.0, 55.9, 155.0);
+			glVertex3f(-700.0, 150.5, 155.0);
+			glVertex3f(-707.5, 150.5, 145.0);
+			glEnd();
+			glBegin(GL_POLYGON);
+			glVertex3f(-707.5, 55.9, 145.0);
+			glVertex3f(-712.5, 55.9, 145.0);
+			glVertex3f(-712.5, 150.5, 145.0);
+			glVertex3f(-707.5, 150.5, 145.0);
+			glEnd();
+			glBegin(GL_POLYGON);
+			glVertex3f(-700.0, 55.9, 155.0);
+			glVertex3f(-705.0, 55.9, 155.0);
+			glVertex3f(-705.0, 150.0, 155.0);
+			glVertex3f(-700.0, 150.5, 155.0);
+			glEnd();
+			glBegin(GL_POLYGON);
+			glVertex3f(-712.5, 55.9, 145.0);
+			glVertex3f(-705.0, 55.9, 155.0);
+			glVertex3f(-705.0, 150.5, 155.0);
+			glVertex3f(-712.5, 150.5, 145.0);
+			glEnd();
+
+			glBegin(GL_POLYGON);
+			glVertex3f(-850.0, 55.9, 155.0);
+			glVertex3f(-857.5, 55.9, 145.0);
+			glVertex3f(-857.5, 150.5, 145.0);
+			glVertex3f(-850.0, 150.5, 155.0);
+			glEnd();
+			glBegin(GL_POLYGON);
+			glVertex3f(-857.5, 55.9, 145.0);
+			glVertex3f(-862.5, 55.9, 145.0);
+			glVertex3f(-862.5, 150.5, 145.0);
+			glVertex3f(-857.5, 150.5, 145.0);
+			glEnd();
+			glBegin(GL_POLYGON);
+			glVertex3f(-850.0, 55.9, 155.0);
+			glVertex3f(-855.0, 55.9, 155.0);
+			glVertex3f(-855.0, 150.5, 155.0);
+			glVertex3f(-850.0, 150.5, 155.0);
+			glEnd();
+			glBegin(GL_POLYGON);
+			glVertex3f(-862.5, 55.9, 145.0);
+			glVertex3f(-855.0, 55.9, 155.0);
+			glVertex3f(-855.0, 150.5, 155.0);
+			glVertex3f(-862.5, 150.5, 145.0);
+			glEnd();
+		}
+
+		//pom
+		{
+			glColor3fv(color.darkGrey);
+			glBegin(GL_POLYGON);
+			glVertex3f(-757.5, 55.9, 145.0);
+			glVertex3f(-750.0, 55.9, 155.0);
+			glVertex3f(-750.0, 100.5, 155.0);
+			glVertex3f(-757.5, 100.5, 145.0);
+			glEnd();
+			glBegin(GL_POLYGON);
+			glVertex3f(-757.5, 55.9, 145.0);
+			glVertex3f(-762.5, 55.9, 145.0);
+			glVertex3f(-762.5, 100.5, 145.0);
+			glVertex3f(-757.5, 100.5, 145.0);
+			glEnd();
+			glBegin(GL_POLYGON);
+			glVertex3f(-750.0, 55.9, 155.0);
+			glVertex3f(-755.0, 55.9, 155.0);
+			glVertex3f(-755.0, 100.0, 155.0);
+			glVertex3f(-750.0, 100.5, 155.0);
+			glEnd();
+			glBegin(GL_POLYGON);
+			glVertex3f(-762.5, 55.9, 145.0);
+			glVertex3f(-755.0, 55.9, 155.0);
+			glVertex3f(-755.0, 100.5, 155.0);
+			glVertex3f(-762.5, 100.5, 145.0);
+			glEnd();
+
+			glBegin(GL_POLYGON);
+			glVertex3f(-800.0, 55.9, 155.0);
+			glVertex3f(-807.5, 55.9, 145.0);
+			glVertex3f(-807.5, 100.5, 145.0);
+			glVertex3f(-800.0, 100.5, 155.0);
+			glEnd();
+			glBegin(GL_POLYGON);
+			glVertex3f(-807.5, 55.9, 145.0);
+			glVertex3f(-812.5, 55.9, 145.0);
+			glVertex3f(-812.5, 100.5, 145.0);
+			glVertex3f(-807.5, 100.5, 145.0);
+			glEnd();
+			glBegin(GL_POLYGON);
+			glVertex3f(-800.0, 55.9, 155.0);
+			glVertex3f(-805.0, 55.9, 155.0);
+			glVertex3f(-805.0, 100.5, 155.0);
+			glVertex3f(-800.0, 100.5, 155.0);
+			glEnd();
+			glBegin(GL_POLYGON);
+			glVertex3f(-812.5, 55.9, 145.0);
+			glVertex3f(-805.0, 55.9, 155.0);
+			glVertex3f(-805.0, 100.5, 155.0);
+			glVertex3f(-812.5, 100.5, 145.0);
+			glEnd();
+		}
+
+		//pos-2
+		glColor3fv(color.lightGrey);
+		glBegin(GL_POLYGON);
+		glVertex3f(-737.5, 55.9, -75.0);
+		glVertex3f(-730.0, 55.9, -25.0);
+		glVertex3f(-880.0, 55.9, -25.0);
+		glVertex3f(-887.5, 55.9, -75.0);
+		glEnd();
+		//tiang
+		{
+			glBegin(GL_POLYGON);
+			glVertex3f(-737.5, 55.9, -55.0);
+			glVertex3f(-730.0, 55.9, -45.0);
+			glVertex3f(-730.0, 150.5, -45.0);
+			glVertex3f(-737.5, 150.5, -55.0);
+			glEnd();
+			glBegin(GL_POLYGON);
+			glVertex3f(-737.5, 55.9, -55.0);
+			glVertex3f(-742.5, 55.9, -45.0);
+			glVertex3f(-742.5, 150.5, -45.0);
+			glVertex3f(-737.5, 150.5, -55.0);
+			glEnd();
+			glBegin(GL_POLYGON);
+			glVertex3f(-730.0, 55.9, -45.0);
+			glVertex3f(-735.0, 55.9, -45.0);
+			glVertex3f(-735.0, 150.5, -45.0);
+			glVertex3f(-730.0, 150.5, -45.0);
+			glEnd();
+			glBegin(GL_POLYGON);
+			glVertex3f(-742.5, 55.9, -45.0);
+			glVertex3f(-735.0, 55.9, -45.0);
+			glVertex3f(-735.0, 150.5, -55.0);
+			glVertex3f(-742.5, 150.5, -55.0);
+			glEnd();
+
+			glBegin(GL_POLYGON);
+			glVertex3f(-880.0, 55.9, -45.0);
+			glVertex3f(-887.5, 55.9, -55.0);
+			glVertex3f(-887.5, 150.5, -55.0);
+			glVertex3f(-880.0, 150.5, -45.0);
+			glEnd();
+			glBegin(GL_POLYGON);
+			glVertex3f(-887.5, 55.9, -55.0);
+			glVertex3f(-892.5, 55.9, -55.0);
+			glVertex3f(-892.5, 150.5, -55.0);
+			glVertex3f(-887.5, 150.5, -55.0);
+			glEnd(); 
+			glBegin(GL_POLYGON);
+			glVertex3f(-880.0, 55.9, -45.0);
+			glVertex3f(-885.0, 55.9, -55.0);
+			glVertex3f(-885.0, 150.5, -55.0);
+			glVertex3f(-880.0, 150.5, -45.0);
+			glEnd();
+			glBegin(GL_POLYGON);
+			glVertex3f(-892.5, 55.9, -45.0);
+			glVertex3f(-885.0, 55.9, -55.0);
+			glVertex3f(-885.0, 150.5, -55.0);
+			glVertex3f(-892.5, 150.5, -45.0);
+			glEnd();
+		} 
+
+		//pom
+		{
+			glColor3fv(color.darkGrey);
+			glBegin(GL_POLYGON);
+			glVertex3f(-787.5, 55.9, -55.0);
+			glVertex3f(-780.0, 55.9, -45.0);
+			glVertex3f(-780.0, 100.5, -45.0);
+			glVertex3f(-787.5, 100.5, -55.0);
+			glEnd();
+			glBegin(GL_POLYGON);
+			glVertex3f(-787.5, 55.9, -55.0);
+			glVertex3f(-792.5, 55.9, -45.0);
+			glVertex3f(-792.5, 100.5, -45.0);
+			glVertex3f(-787.5, 100.5, -55.0);
+			glEnd();
+			glBegin(GL_POLYGON);
+			glVertex3f(-780.0, 55.9, -45.0);
+			glVertex3f(-785.0, 55.9, -45.0);
+			glVertex3f(-785.0, 100.5, -45.0);
+			glVertex3f(-780.0, 100.5, -45.0);
+			glEnd();
+			glBegin(GL_POLYGON);
+			glVertex3f(-792.5, 55.9, -45.0);
+			glVertex3f(-785.0, 55.9, -45.0);
+			glVertex3f(-785.0, 100.5, -55.0);
+			glVertex3f(-792.5, 100.5, -55.0);
+			glEnd();
+
+			glBegin(GL_POLYGON);
+			glVertex3f(-830.0, 55.9, -45.0);
+			glVertex3f(-837.5, 55.9, -55.0);
+			glVertex3f(-837.5, 100.5, -55.0);
+			glVertex3f(-830.0, 100.5, -45.0);
+			glEnd();
+			glBegin(GL_POLYGON);
+			glVertex3f(-837.5, 55.9, -55.0);
+			glVertex3f(-842.5, 55.9, -55.0);
+			glVertex3f(-842.5, 100.5, -55.0);
+			glVertex3f(-837.5, 100.5, -55.0);
+			glEnd();
+			glBegin(GL_POLYGON);
+			glVertex3f(-830.0, 55.9, -45.0);
+			glVertex3f(-835.0, 55.9, -55.0);
+			glVertex3f(-835.0, 100.5, -55.0);
+			glVertex3f(-830.0, 100.5, -45.0);
+			glEnd();
+			glBegin(GL_POLYGON);
+			glVertex3f(-842.5, 55.9, -45.0);
+			glVertex3f(-835.0, 55.9, -55.0);
+			glVertex3f(-835.0, 100.5, -55.0);
+			glVertex3f(-842.5, 100.5, -45.0);
+			glEnd();
+		}
 	}
 };
 
