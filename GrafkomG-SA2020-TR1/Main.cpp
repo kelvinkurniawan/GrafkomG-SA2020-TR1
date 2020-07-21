@@ -1,6 +1,7 @@
 #include <iostream>
 #include <GL/freeglut.h>
 #include<time.h> 
+#include <cmath>
 #define deltat .001
 using namespace std;
 
@@ -17,8 +18,10 @@ bool sunlightAutoMovement = false;
 float sunlightPosition = 0;
 
 float carSpeed[5] = { 3, 3, 3, 3, 3 }; 
-float carPositionX[5] = { 0, -100, 800, 500, 600 };
+float carPositionX[5] = { 0, 300, 600, 600, 1200 };
+float carPositionZ[5] = { 400, 475, 400, 475, 400 };
 float carColor[5] = { 1 , 1 , 3, 4, 4 };
+float deltaCar[5] = { 0,0,0,0,0 };
  
 class myConfiguration {
 public:
@@ -92,18 +95,18 @@ public:
 		glColor3ubv(color.groundAccent);
 		//Depan
 		glBegin(GL_POLYGON);
-		glVertex3f(-400.0, 0.0, 600.0);
+		glVertex3f(-900.0, 0.0, 600.0);
 		glVertex3f(400.0, 0.0, 600.0);
 		glVertex3f(400.0, 50.0, 600.0);
-		glVertex3f(-400.0, 50.0, 600.0);
+		glVertex3f(-900.0, 50.0, 600.0);
 		glEnd();
 
 		//belakang
 		glBegin(GL_POLYGON);
-		glVertex3f(-625.0, 0.0, -800.0);
+		glVertex3f(-825.0, 0.0, -800.0);
 		glVertex3f(400.0, 0.0, -800.0);
 		glVertex3f(400.0, 50.0, -800.0);
-		glVertex3f(-625.0, 50.0, -800.0);
+		glVertex3f(-825.0, 50.0, -800.0);
 		glEnd();
 
 		//kanan
@@ -116,30 +119,30 @@ public:
 
 		//kiri
 		glBegin(GL_POLYGON);
-		glVertex3f(-800.0, 0.0, 600.0);
-		glVertex3f(-1025.0, 0.0, -800.0);
-		glVertex3f(-1025.0, 50.0, -800.0);
-		glVertex3f(-800.0, 50.0, 600.0);
+		glVertex3f(-900.0, 0.0, 600.0);
+		glVertex3f(-1125.0, 0.0, -800.0);
+		glVertex3f(-1125.0, 50.0, -800.0);
+		glVertex3f(-900.0, 50.0, 600.0);
 		glEnd();
 
 		//bawah
 		glBegin(GL_POLYGON);
-		glVertex3f(-800.0, 0.0, 600.0);
+		glVertex3f(-900.0, 0.0, 600.0);
 		glVertex3f(400.0, 0.0, 600.0);
 		glVertex3f(400.0, 0.0, -800.0);
-		glVertex3f(-1025.0, 0.0, -800.0);
+		glVertex3f(-1125.0, 0.0, -800.0);
 		glEnd();
 
 		//atas
 		glBegin(GL_POLYGON);
 		glColor3ubv(color.ground);
-		glVertex3f(-800.0, 50.0, 600.0);
+		glVertex3f(-900.0, 50.0, 600.0);
 		glColor3ubv(color.darkground);
 		glVertex3f(400.0, 50.0, 600.0);
 		glColor3ubv(color.ground);
 		glVertex3f(400.0, 50.0, -800.0);
 		glColor3ubv(color.darkground);
-		glVertex3f(-1025.0, 50.0, -800.0);
+		glVertex3f(-1125.0, 50.0, -800.0);
 		glEnd();
 
 	}
@@ -3119,13 +3122,13 @@ public:
 
 		glBegin(GL_QUADS);
 		glColor3ubv(color.lightstreet);
-		glVertex3f(-830.0, 55.0, 360.0);
+		glVertex3f(-930.0, 55.0, 360.0);
 		glColor3ubv(color.street);
 		glVertex3f(400.0, 55.0, 400.0);
 		glColor3ubv(color.street);
 		glVertex3f(400.0, 55.0, 520.0);
 		glColor3ubv(color.lightstreet);
-		glVertex3f(-820.0, 55.0, 480.0);
+		glVertex3f(-920.0, 55.0, 480.0);
 		glEnd();
 
 		float width = 35.0f;
@@ -3449,19 +3452,23 @@ public:
 
 		//atap
 		{
+			glColor3fv(color.lightGrey);
 			glBegin(GL_POLYGON);
 			glVertex3f(-600.0, 150.5, 300.0);
 			glVertex3f(-685.0, 150.5, -200.0);
 			glVertex3f(-985.0, 150.5, -200.0);
 			glVertex3f(-900.0, 150.5, 300.0);
 			glEnd();
+
 			glBegin(GL_POLYGON);
 			glVertex3f(-600.0, 160.5, 300.0);
 			glVertex3f(-685.0, 160.5, -200.0);
 			glVertex3f(-985.0, 160.5, -200.0);
+			glColor3fv(color.white);
 			glVertex3f(-900.0, 160.5, 300.0);
 			glEnd();
-			glColor3fv(color.white);
+
+			glColor3fv(color.red);
 			glBegin(GL_POLYGON);
 			glVertex3f(-600.0, 150.5, 300.0);
 			glVertex3f(-685.0, 150.5, -200.0);
@@ -3552,7 +3559,7 @@ public:
 
 		//pom
 		{
-			glColor3fv(color.darkGrey);
+			glColor3fv(color.red);
 			glBegin(GL_POLYGON);
 			glVertex3f(-757.5, 55.9, 145.0);
 			glVertex3f(-750.0, 55.9, 155.0);
@@ -3667,7 +3674,7 @@ public:
 
 		//pom
 		{
-			glColor3fv(color.darkGrey);
+			glColor3fv(color.red);
 			glBegin(GL_POLYGON);
 			glVertex3f(-787.5, 55.9, -55.0);
 			glVertex3f(-780.0, 55.9, -45.0);
@@ -3939,11 +3946,11 @@ void display() {
 	obj.gasStation();
 	obj.indomaretStore();
 
-	obj.carObject(carPositionX[0], 400, carColor[0]);
-	obj.carObject(carPositionX[1], 475, carColor[1]);
-	obj.carObject(carPositionX[2], 475, carColor[2]);
-	obj.carObject(carPositionX[3], 400, carColor[3]);
-	obj.carObject(carPositionX[4], 475, carColor[4]);
+	obj.carObject(carPositionX[0], carPositionZ[0], carColor[0]);
+	obj.carObject(carPositionX[1], carPositionZ[1], carColor[1]);
+	obj.carObject(carPositionX[2], carPositionZ[2], carColor[2]);
+	obj.carObject(carPositionX[3], carPositionZ[3], carColor[3]);
+	obj.carObject(carPositionX[4], carPositionZ[4], carColor[4]);
 
 	obj.starObject(-500.0 + config.deltaStar1, 1000.0, -550.0 + config.deltaStar1, 900.0, -500.0 + config.deltaStar1, 900.0, -550.0 + config.deltaStar1, 1000.0);
 	obj.starObject(-300.0 + config.deltaStar2, 1300.0, -350.0 + config.deltaStar2, 1200.0, -300.0 + config.deltaStar2, 1200.0, -350.0 + config.deltaStar2, 1300.0);
@@ -4129,17 +4136,67 @@ void timer(int) {
 	{
 		for (int i = 0; i < 5; i++) {
 			carPositionX[i] -= carSpeed[i];
+
+			/*
+			if (carPositionX[1] - carPositionX[3] == 50) {
+				carSpeed[3] -= 0.2;
+				cout << carSpeed[3] << " > 2 diperlambat" << endl;
+			}
+
+			if (carPositionX[3] - carPositionX[1] == 50) {
+				carSpeed[1] -= 0.2;
+				cout << carSpeed[1] << " > 1 diperlambat" << endl;
+			}
+			*/
+
+			
+			for (int j = 0; j < 5; j++) {
+				float range = carPositionX[i] - carPositionX[j];
+				if (carPositionZ[i] == carPositionZ[j]) {
+					if (abs(range) < 50 && i != j){
+						if (carSpeed[i] == 0) {
+							carSpeed[i] = carSpeed[j];
+						}
+						else {
+							if (carPositionX[i] > -300) {
+								if (carPositionZ[i] == 400) {
+									carPositionZ[i] = 475;
+								}
+								else {
+									carPositionZ[i] = 400;
+								}
+							}
+							else {
+								carSpeed[i] = carSpeed[j];
+							}
+						}
+						// cout << "car " << i << " & car " << j << " = " << abs(range) << endl;
+						// cout << "mobil " << i << " dan " << j << " mepet " << "dengan jarak " << abs(range) << endl;
+					}
+					if (abs(range) < 40 && abs(range) > -40 && i != j) {
+						carPositionX[i] -= 50;
+						carPositionX[j] += 100;
+						// cout << "car " << i << " & car " << j << " = " << abs(range) << endl;
+						cout << "mobil " << i << " dan " << j << " mepet " << "dengan jarak " << abs(range) << endl;
+					}
+				}
+			}
+
+
 			if (carPositionX[i] < -415 && carPositionX[i] > -470 && redOn) {
 				carSpeed[i] = 0;
 			}
+
 			if (carPositionX[i] < -415 && carPositionX[i] > -470 && greenOn) {
 				carSpeed[i] = rand() % ((4 - 2) + 1) + 2;
 			}
+
 			if (carPositionX[i] < -800) {
 				carPositionX[i] = 380;
-				carSpeed[i] = rand() % ((4 - 2) + 1) + 2;;
+				carSpeed[i] = rand() % ((4 - 2) + 1) + 2;
 				carColor[i] = rand() % ((8 - 1) + 1) + 1;
 			}
+
 		}
 	}
 
@@ -4186,8 +4243,6 @@ void timer(int) {
 
 			if (redLight < 50)
 				yellowLight = 500;
-
-
 		}
 		else if (yellowLight > 0) {
 			redOn = false;
