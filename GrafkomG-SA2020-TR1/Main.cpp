@@ -1,5 +1,6 @@
 #include <iostream>
 #include <GL/freeglut.h>
+#include<time.h> 
 #define deltat .001
 using namespace std;
 
@@ -14,6 +15,9 @@ float treeAnimationLeft = true;
 
 bool sunlightAutoMovement = false;
 float sunlightPosition = 0;
+
+float carSpeed[5] = { 3, 3, 3, 3, 3 }; 
+float carPositionX[5] = { 0, -100, 800, 500, 600 };
 
 class myConfiguration {
 public:
@@ -3459,10 +3463,11 @@ void display() {
 	obj.anotherStreet();
 	obj.trafficLight();
 
-	obj.carObject(-100.0, 400.0);
-	obj.carObject(-300.0, 400.0);
-	obj.carObject(-50.0, 475.0);
-	obj.carObject(250.0, 475.0);
+	obj.carObject(carPositionX[0], 400);
+	obj.carObject(carPositionX[1], 475);
+	obj.carObject(carPositionX[2], 475);
+	obj.carObject(carPositionX[3], 400);
+	obj.carObject(carPositionX[4], 475);
 
 	obj.starObject(-500.0 + config.deltaStar1, 1000.0, -550.0 + config.deltaStar1, 900.0, -500.0 + config.deltaStar1, 900.0, -550.0 + config.deltaStar1, 1000.0);
 	obj.starObject(-300.0 + config.deltaStar2, 1300.0, -350.0 + config.deltaStar2, 1200.0, -300.0 + config.deltaStar2, 1200.0, -350.0 + config.deltaStar2, 1300.0);
@@ -3644,6 +3649,22 @@ void mouseMotionActive(int x, int y) {
 
 void timer(int) {
 	glutTimerFunc(1000 / 30, timer, 0);
+	// Car
+	{
+		for (int i = 0; i < 5; i++) {
+			carPositionX[i] -= carSpeed[i];
+			if (carPositionX[i] < -415 && carPositionX[i] > -470 && redOn) {
+				carSpeed[i] = 0;
+			}
+			if (carPositionX[i] < -415 && carPositionX[i] > -470 && greenOn) {
+				carSpeed[i] = rand() % ((4 - 2) + 1) + 2;
+			}
+			if (carPositionX[i] < -1000) {
+				carPositionX[i] = 400;
+				carSpeed[i] = 2;
+			}
+		}
+	}
 
 	// Sunlight
 	{
