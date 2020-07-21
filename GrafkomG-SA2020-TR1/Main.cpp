@@ -18,7 +18,8 @@ float sunlightPosition = 0;
 
 float carSpeed[5] = { 3, 3, 3, 3, 3 }; 
 float carPositionX[5] = { 0, -100, 800, 500, 600 };
-
+float carColor[5] = { 1 , 1 , 3, 4, 4 };
+ 
 class myConfiguration {
 public:
 	bool mouseDown = false;
@@ -3318,7 +3319,7 @@ public:
 		glEnableClientState(GL_VERTEX_ARRAY);
 	}
 
-	void carObject(float xCoord, float zCoord) {
+	void carObject(float xCoord, float zCoord, int colorOption) {
 		myColor color;
 
 		//bawah
@@ -3346,7 +3347,18 @@ public:
 		glVertex3f(xCoord + 35.0, 65.5, zCoord + 25.0);
 		glEnd();
 
-		glColor3ubv(color.darkBlue);
+		if (colorOption == 1) 
+			glColor3fv(color.orange);
+		
+		if (colorOption == 2) 
+			glColor3fv(color.white);
+		
+		if (colorOption == 3)
+			glColor3fv(color.darkGrey);
+
+		if (colorOption == 4)
+			glColor3ubv(color.darkBlue);
+
 		glBegin(GL_POLYGON);
 		glVertex3f(xCoord, 65.5, zCoord + 25.0);
 		glVertex3f(xCoord, 65.5, zCoord);
@@ -3463,11 +3475,11 @@ void display() {
 	obj.anotherStreet();
 	obj.trafficLight();
 
-	obj.carObject(carPositionX[0], 400);
-	obj.carObject(carPositionX[1], 475);
-	obj.carObject(carPositionX[2], 475);
-	obj.carObject(carPositionX[3], 400);
-	obj.carObject(carPositionX[4], 475);
+	obj.carObject(carPositionX[0], 400, carColor[0]);
+	obj.carObject(carPositionX[1], 475, carColor[1]);
+	obj.carObject(carPositionX[2], 475, carColor[2]);
+	obj.carObject(carPositionX[3], 400, carColor[3]);
+	obj.carObject(carPositionX[4], 475, carColor[4]);
 
 	obj.starObject(-500.0 + config.deltaStar1, 1000.0, -550.0 + config.deltaStar1, 900.0, -500.0 + config.deltaStar1, 900.0, -550.0 + config.deltaStar1, 1000.0);
 	obj.starObject(-300.0 + config.deltaStar2, 1300.0, -350.0 + config.deltaStar2, 1200.0, -300.0 + config.deltaStar2, 1200.0, -350.0 + config.deltaStar2, 1300.0);
@@ -3662,6 +3674,7 @@ void timer(int) {
 			if (carPositionX[i] < -1000) {
 				carPositionX[i] = 400;
 				carSpeed[i] = 2;
+				carColor[i] = rand() % ((4 - 1) + 1) + 1;
 			}
 		}
 	}
