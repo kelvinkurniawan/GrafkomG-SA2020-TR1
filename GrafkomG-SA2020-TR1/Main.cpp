@@ -3434,6 +3434,17 @@ public:
 		glVertex3f(xCoord + 27.5, 65.7, zCoord + 25.0);
 		glEnd();
 	}
+
+	void gasStation() {
+		myColor color;
+		glColor3ubv(color.darkBlue);
+		glBegin(GL_POLYGON);
+		glVertex3f(-600.0, 55.5, 300.0);
+		glVertex3f(-685.0, 55.5, -200.0);
+		glVertex3f(-985.0, 55.5, -200.0);
+		glVertex3f(-900.0, 55.5, 300.0);
+		glEnd();
+	}
 };
 
 myConfiguration config;
@@ -3486,6 +3497,7 @@ void display() {
 	obj.street();
 	obj.anotherStreet();
 	obj.trafficLight();
+	obj.gasStation();
 
 	obj.carObject(carPositionX[0], 400, carColor[0]);
 	obj.carObject(carPositionX[1], 475, carColor[1]);
