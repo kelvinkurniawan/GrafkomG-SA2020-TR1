@@ -80,6 +80,7 @@ public:
 	GLubyte softBlue[3] = { 181, 234, 255 };
 	GLubyte darkBlue[3] = { 28, 78, 103 };
 	GLubyte hardGrey[3] = { 153,153,153 };
+	GLfloat blue[3] = { 0,0,1 };
 };
 
 class myObject {
@@ -3445,6 +3446,171 @@ public:
 		glVertex3f(-900.0, 55.5, 300.0);
 		glEnd();
 	}
+
+	void indomaretStore() {
+		myColor color;
+
+		glColor3fv(color.lightGrey);
+		// bawah
+		glBegin(GL_POLYGON);
+		glVertex3f(-700.0, 55.5, -250.0);
+		glVertex3f(-760.0, 55.5, -600.0);
+		glVertex3f(-960.0, 55.5, -600.0);
+		glVertex3f(-900.0, 55.5, -250.0);
+		glEnd();
+
+		// atas
+		glBegin(GL_POLYGON);
+		glVertex3f(-700.0, 200.5, -250.0);
+		glVertex3f(-760.0, 200.5, -600.0);
+		glVertex3f(-960.0, 200.5, -600.0);
+		glVertex3f(-900.0, 200.5, -250.0);
+		glEnd();
+
+		// kanan
+		glBegin(GL_POLYGON);
+		glVertex3f(-700.0, 55.5, -250.0);
+		glVertex3f(-760.0, 55.5, -600.0);
+		glVertex3f(-760.0, 200.5, -600.0);
+		glVertex3f(-700.0, 200.5, -250.0);
+		glEnd();
+
+		// kiri
+		glBegin(GL_POLYGON);
+		glVertex3f(-900.0, 55.5, -250.0);
+		glVertex3f(-960.0, 55.5, -600.0);
+		glVertex3f(-960.0, 200.5, -600.0);
+		glVertex3f(-900.0, 200.5, -250.0);
+		glEnd();
+
+		// belakang
+		glBegin(GL_POLYGON);
+		glVertex3f(-760.0, 55.5, -600.0);
+		glVertex3f(-760.0, 200.5, -600.0);
+		glVertex3f(-960.0, 200.5, -600.0);
+		glVertex3f(-960.0, 55.5, -600.0);
+		glEnd();
+
+		// depan
+		glBegin(GL_POLYGON);
+		glVertex3f(-700.0, 55.5, -250.0);
+		glVertex3f(-700.0, 200.5, -250.0);
+		glVertex3f(-900.0, 200.5, -250.0);
+		glColor3fv(color.white);
+		glVertex3f(-900.0, 55.5, -250.0);
+		glEnd();
+
+		// Atap
+
+		glColor3fv(color.white);
+		// bawah
+		glBegin(GL_POLYGON);
+		glVertex3f(-675.0, 200.5, -225.0);
+		glVertex3f(-735.0, 200.5, -625.0);
+		glVertex3f(-985.0, 200.5, -625.0);
+		glVertex3f(-925.0, 200.5, -225.0);
+		glEnd();
+
+		// atas
+		glColor3fv(color.lightGrey);
+		glBegin(GL_POLYGON);
+		glVertex3f(-675.0, 240.5, -225.0);
+		glVertex3f(-735.0, 240.5, -625.0);
+		glVertex3f(-985.0, 240.5, -625.0);
+		glVertex3f(-925.0, 240.5, -225.0);
+		glEnd();
+
+		glColor3fv(color.white);
+		// kanan
+		glBegin(GL_POLYGON);
+		glVertex3f(-675.0, 200.5, -225.0);
+		glVertex3f(-735.0, 200.5, -625.0);
+		glVertex3f(-735.0, 240.5, -625.0);
+		glVertex3f(-675.0, 240.5, -225.0);
+		glEnd();
+
+		// kiri
+		glBegin(GL_POLYGON);
+		glVertex3f(-875.0, 200.5, -225.0);
+		glVertex3f(-985.0, 200.5, -625.0);
+		glVertex3f(-985.0, 240.5, -625.0);
+		glVertex3f(-875.0, 240.5, -225.0);
+		glEnd();
+
+		// belakang
+		glBegin(GL_POLYGON);
+		glVertex3f(-735.0, 200.5, -625.0);
+		glVertex3f(-735.0, 240.5, -625.0);
+		glVertex3f(-985.0, 240.5, -625.0);
+		glVertex3f(-985.0, 200.5, -625.0);
+		glEnd();
+
+		// depan
+		glBegin(GL_POLYGON);
+		glVertex3f(-675.0, 200.5, -225.0);
+		glColor3fv(color.lightGrey);
+		glVertex3f(-675.0, 240.5, -225.0);
+		glColor3fv(color.white);
+		glVertex3f(-925.0, 240.5, -225.0);
+		glVertex3f(-925.0, 200.5, -225.0);
+		glEnd();
+
+		// warna - warni
+		// kuning
+		glColor3fv(color.yellow);
+		glBegin(GL_POLYGON);
+		glVertex3f(-674.0, 200.5, -225.0);
+		glVertex3f(-734.0, 200.5, -625.0);
+		glVertex3f(-734.0, 213.5, -625.0);
+		glVertex3f(-674.0, 213.5, -225.0);
+		glEnd();
+		// biru
+		glColor3fv(color.blue);
+		glBegin(GL_POLYGON);
+		glVertex3f(-674.0, 214.5, -225.0);
+		glVertex3f(-734.0, 214.5, -625.0);
+		glVertex3f(-734.0, 227.5, -625.0);
+		glVertex3f(-674.0, 227.5, -225.0);
+		glEnd();
+		// merah
+		glColor3fv(color.red);
+		glBegin(GL_POLYGON);
+		glVertex3f(-674.0, 228.5, -225.0);
+		glVertex3f(-734.0, 228.5, -625.0);
+		glVertex3f(-734.0, 240.5, -625.0);
+		glVertex3f(-674.0, 240.5, -225.0);
+		glEnd();
+
+		// Kaca depan indomaret - kanan objek
+		glColor3fv(color.glass);
+		glBegin(GL_POLYGON);
+		glVertex3f(-700.0, 55.5, -250);
+		glVertex3f(-725.0, 55.5, -400.0);
+		glVertex3f(-725.0, 200.5, -400.0);
+		glVertex3f(-700.0, 200.5, -250.0);
+		glEnd();
+
+		glBegin(GL_POLYGON);
+		glVertex3f(-733.0, 55.5, -450.0);
+		glVertex3f(-760.0, 55.5, -600.0);
+		glVertex3f(-760.0, 200.5, -600.0);
+		glVertex3f(-733.0, 200.5, -450.0);
+		glEnd();
+		
+		float marginBottom = 0;
+		for (int i = 0; i < 10; i++) {
+			glColor3fv(color.lightGrey);
+			glBegin(GL_POLYGON);
+			glVertex3f(-699.0, 205.5 - marginBottom, -250.0);
+			glVertex3f(-758.0, 205.5 - marginBottom, -600.0);
+			glVertex3f(-758.0, 200.5 - marginBottom, -600.0);
+			glVertex3f(-699.0, 200.5 - marginBottom, -250.0);
+			glEnd();
+
+			marginBottom += 20;
+		}
+
+	}
 };
 
 myConfiguration config;
@@ -3498,6 +3664,7 @@ void display() {
 	obj.anotherStreet();
 	obj.trafficLight();
 	obj.gasStation();
+	obj.indomaretStore();
 
 	obj.carObject(carPositionX[0], 400, carColor[0]);
 	obj.carObject(carPositionX[1], 475, carColor[1]);
