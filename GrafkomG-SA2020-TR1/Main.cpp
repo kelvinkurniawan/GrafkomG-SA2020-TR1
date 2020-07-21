@@ -3862,8 +3862,8 @@ void timer(int) {
 			if (carPositionX[i] < -415 && carPositionX[i] > -470 && greenOn) {
 				carSpeed[i] = rand() % ((4 - 2) + 1) + 2;
 			}
-			if (carPositionX[i] < -1000) {
-				carPositionX[i] = 400;
+			if (carPositionX[i] < -800) {
+				carPositionX[i] = 380;
 				carSpeed[i] = rand() % ((4 - 2) + 1) + 2;;
 				carColor[i] = rand() % ((8 - 1) + 1) + 1;
 			}
