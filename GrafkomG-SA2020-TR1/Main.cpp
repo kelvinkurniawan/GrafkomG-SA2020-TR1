@@ -3546,6 +3546,8 @@ void mouseMotionActive(int x, int y) {
 
 void timer(int) {
 	glutTimerFunc(1000 / 30, timer, 0);
+
+	// Sunlight
 	{
 		if (sunlightAutoMovement) {
 			sunlightPosition += 5;
@@ -3558,7 +3560,7 @@ void timer(int) {
 		}
 	}
 
-
+	// Tree Animation
 	{
 
 		if (treeAnimation < 5 && !treeAnimationLeft) {
@@ -3575,6 +3577,8 @@ void timer(int) {
 			treeAnimationLeft = false;
 		}		
 	}
+
+	// Traffic light
 	{
 		if (redLight > 0) {
 			redOn = true;
@@ -3585,7 +3589,7 @@ void timer(int) {
 				redLight -= 10;
 
 			if (redLight < 50)
-				yellowLight = 1000;
+				yellowLight = 500;
 
 
 		}
@@ -3614,89 +3618,92 @@ void timer(int) {
 				redLight = 1000;
 
 		}} // Traffic Light
+
+	// Star
 	{
 
 		{
-			if (config.deltaStar1 > -100 && config.moveLeft1)
+			if (config.deltaStar1 > -500 && config.moveLeft1)
 			{
-				config.deltaStar1 -= 1.5;
+				config.deltaStar1 -= 0.8;
 			}
 			else {
 				config.moveLeft1 = false;
 			}
 			if (config.deltaStar1 < 1000 && !config.moveLeft1)
 			{
-				config.deltaStar1 += 1.5;
+				config.deltaStar1 += 0.8;
 			}
 			else {
 				config.moveLeft1 = true;
 			}
 		}
 		{
-			if (config.deltaStar2 > -600 && config.moveLeft2)
+			if (config.deltaStar2 > -1000 && config.moveLeft2)
 			{
-				config.deltaStar2 -= 1;
+				config.deltaStar2 -= 0.5;
 			}
 			else {
 				config.moveLeft2 = false;
 			}
 			if (config.deltaStar2 < 900 && !config.moveLeft2)
 			{
-				config.deltaStar2 += 1;
+				config.deltaStar2 += 0.5;
 			}
 			else {
 				config.moveLeft2 = true;
 			}
 		}
 		{
-			if (config.deltaStar3 > -375 && config.moveLeft3)
+			if (config.deltaStar3 > -875 && config.moveLeft3)
 			{
-				config.deltaStar3 -= 0.5;
+				config.deltaStar3 -= 0.2;
 			}
 			else {
 				config.moveLeft3 = false;
 			}
 			if (config.deltaStar3 < 625 && !config.moveLeft3)
 			{
-				config.deltaStar3 += 0.5;
+				config.deltaStar3 += 0.2;
 			}
 			else {
 				config.moveLeft3 = true;
 			}
 		}
 		{
-			if (config.deltaStar4 > -700 && config.moveLeft4)
+			if (config.deltaStar4 > -1100 && config.moveLeft4)
 			{
-				config.deltaStar4 -= 2;
+				config.deltaStar4 -= 0.3;
 			}
 			else {
 				config.moveLeft4 = false;
 			}
 			if (config.deltaStar4 < 300 && !config.moveLeft4)
 			{
-				config.deltaStar4 += 2;
+				config.deltaStar4 += 0.3;
 			}
 			else {
 				config.moveLeft4 = true;
 			}
 		}
 		{
-			if (config.deltaStar5 > -1000 && config.moveLeft5)
+			if (config.deltaStar5 > -1400 && config.moveLeft5)
 			{
-				config.deltaStar5 -= 2.5;
+				config.deltaStar5 -= 0.4;
 			}
 			else {
 				config.moveLeft5 = false;
 			}
 			if (config.deltaStar5 < 100 && !config.moveLeft5)
 			{
-				config.deltaStar5 += 2.5;
+				config.deltaStar5 += 0.4;
 			}
 			else {
 				config.moveLeft5 = true;
 			}
 		}
 	}
+
 	glutPostRedisplay();
 
 }
