@@ -3313,6 +3313,99 @@ public:
 
 		glEnableClientState(GL_VERTEX_ARRAY);
 	}
+
+	void carObject(float xCoord, float zCoord) {
+		myColor color;
+
+		//bawah
+		glColor3fv(color.glass);
+		glBegin(GL_POLYGON);
+		glVertex3f(xCoord, 55.5, zCoord);
+		glVertex3f(xCoord, 55.5, zCoord + 25.0);
+		glVertex3f(xCoord + 35.0, 55.5, zCoord + 25.0);
+		glVertex3f(xCoord + 35.0, 55.5, zCoord);
+		glEnd();
+
+		//depan-mobil
+		glBegin(GL_POLYGON);
+		glVertex3f(xCoord, 55.5, zCoord);
+		glVertex3f(xCoord, 55.5, zCoord + 25.0);
+		glVertex3f(xCoord, 65.5, zCoord + 25.0);
+		glVertex3f(xCoord, 65.5, zCoord);
+		glEnd();
+
+		//blkg-mobil
+		glBegin(GL_POLYGON);
+		glVertex3f(xCoord + 35.0, 55.5, zCoord + 25.0);
+		glVertex3f(xCoord + 35.0, 55.5, zCoord);
+		glVertex3f(xCoord + 35.0, 65.5, zCoord);
+		glVertex3f(xCoord + 35.0, 65.5, zCoord + 25.0);
+		glEnd();
+
+		glColor3ubv(color.darkBlue);
+		glBegin(GL_POLYGON);
+		glVertex3f(xCoord, 65.5, zCoord + 25.0);
+		glVertex3f(xCoord, 65.5, zCoord);
+		glVertex3f(xCoord + 35.0, 65.5, zCoord);
+		glVertex3f(xCoord + 35.0, 65.5, zCoord + 25.0);
+		glEnd();
+
+		//samping-mobil
+		glBegin(GL_POLYGON);
+		glVertex3f(xCoord, 65.5, zCoord);
+		glVertex3f(xCoord + 35.0, 65.5, zCoord);
+		glVertex3f(xCoord + 35.0, 55.5, zCoord);
+		glVertex3f(xCoord, 55.5, zCoord);
+		glEnd();
+		glBegin(GL_POLYGON);
+		glVertex3f(xCoord, 65.5, zCoord + 25.0);
+		glVertex3f(xCoord + 35.0, 65.5, zCoord + 25.0);
+		glVertex3f(xCoord + 35.0, 55.5, zCoord + 25.0);
+		glVertex3f(xCoord, 55.5, zCoord + 25.0);
+		glEnd();
+
+		//kaca
+		glColor3fv(color.white);
+		glBegin(GL_POLYGON);
+		glVertex3f(xCoord + 7.5, 65.7, zCoord);
+		glVertex3f(xCoord + 7.5, 65.7, zCoord + 25.0);
+		glVertex3f(xCoord + 27.5, 65.7, zCoord + 25.0);
+		glVertex3f(xCoord + 27.5, 65.7, zCoord);
+		glEnd();
+		glColor3fv(color.glass);
+		glBegin(GL_POLYGON);
+		glVertex3f(xCoord + 7.5, 65.7, zCoord);
+		glVertex3f(xCoord + 7.5, 65.7, zCoord + 25.0);
+		glVertex3f(xCoord + 10.0, 75.7, zCoord + 25.0);
+		glVertex3f(xCoord + 10.0, 75.7, zCoord);
+		glEnd();
+		glBegin(GL_POLYGON);
+		glVertex3f(xCoord + 27.5, 65.7, zCoord);
+		glVertex3f(xCoord + 27.5, 65.7, zCoord + 25.0);
+		glVertex3f(xCoord + 25.0, 75.7, zCoord + 25.0);
+		glVertex3f(xCoord + 25.0, 75.7, zCoord);
+		glEnd();
+		glColor3fv(color.white);
+		glBegin(GL_POLYGON);
+		glVertex3f(xCoord + 10.0, 75.7, zCoord);
+		glVertex3f(xCoord + 10.0, 75.7, zCoord + 25.0);
+		glVertex3f(xCoord + 25.0, 75.7, zCoord + 25.0);
+		glVertex3f(xCoord + 25.0, 75.7, zCoord);
+		glEnd();
+		glColor3fv(color.glass);
+		glBegin(GL_POLYGON);
+		glVertex3f(xCoord + 7.5, 65.7, zCoord);
+		glVertex3f(xCoord + 10.0, 75.7, zCoord);
+		glVertex3f(xCoord + 25.0, 75.7, zCoord);
+		glVertex3f(xCoord + 27.5, 65.7, zCoord);
+		glEnd();
+		glBegin(GL_POLYGON);
+		glVertex3f(xCoord + 7.5, 65.7, zCoord + 25.0);
+		glVertex3f(xCoord + 10.0, 75.7, zCoord + 25.0);
+		glVertex3f(xCoord + 25.0, 75.7, zCoord + 25.0);
+		glVertex3f(xCoord + 27.5, 65.7, zCoord + 25.0);
+		glEnd();
+	}
 };
 
 myConfiguration config;
@@ -3365,6 +3458,11 @@ void display() {
 	obj.street();
 	obj.anotherStreet();
 	obj.trafficLight();
+
+	obj.carObject(-100.0, 400.0);
+	obj.carObject(-300.0, 400.0);
+	obj.carObject(-50.0, 475.0);
+	obj.carObject(250.0, 475.0);
 
 	obj.starObject(-500.0 + config.deltaStar1, 1000.0, -550.0 + config.deltaStar1, 900.0, -500.0 + config.deltaStar1, 900.0, -550.0 + config.deltaStar1, 1000.0);
 	obj.starObject(-300.0 + config.deltaStar2, 1300.0, -350.0 + config.deltaStar2, 1200.0, -300.0 + config.deltaStar2, 1200.0, -350.0 + config.deltaStar2, 1300.0);
