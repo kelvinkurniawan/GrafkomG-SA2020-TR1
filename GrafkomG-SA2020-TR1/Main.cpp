@@ -3359,6 +3359,18 @@ public:
 		if (colorOption == 4)
 			glColor3ubv(color.darkBlue);
 
+		if (colorOption == 5)
+			glColor3fv(color.grey);
+
+		if (colorOption == 6)
+			glColor3fv(color.glass);
+
+		if (colorOption == 7)
+			glColor3fv(color.yellow);
+
+		if (colorOption == 8)
+			glColor3fv(color.red);
+
 		glBegin(GL_POLYGON);
 		glVertex3f(xCoord, 65.5, zCoord + 25.0);
 		glVertex3f(xCoord, 65.5, zCoord);
@@ -3673,8 +3685,8 @@ void timer(int) {
 			}
 			if (carPositionX[i] < -1000) {
 				carPositionX[i] = 400;
-				carSpeed[i] = 2;
-				carColor[i] = rand() % ((4 - 1) + 1) + 1;
+				carSpeed[i] = rand() % ((4 - 2) + 1) + 2;;
+				carColor[i] = rand() % ((8 - 1) + 1) + 1;
 			}
 		}
 	}
