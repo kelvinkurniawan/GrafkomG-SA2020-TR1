@@ -3891,6 +3891,175 @@ public:
 		}
 
 	}
+
+	void parkingArea() {
+		myColor color;
+
+		glBegin(GL_QUADS);
+		glColor3ubv(color.lightstreet);
+		glVertex3f(-520, 55.0, -55);
+		glColor3ubv(color.street);
+		glVertex3f(-320, 55.0, -55);
+		glVertex3f(-320, 55.0, -350);
+		glVertex3f(-560, 55.0, -350);
+		glEnd();
+
+		glBegin(GL_QUADS);
+		glColor3fv(color.white);
+		glVertex3f(-520, 105.5, -55);
+		glColor3fv(color.lightGrey);
+		glVertex3f(-320, 105.5, -55);
+		glVertex3f(-320, 155.5, -202.5);
+		glVertex3f(-540, 155.5, -202.5);
+		glEnd();
+
+		glBegin(GL_QUADS);
+		glColor3fv(color.lightGrey);
+		glVertex3f(-540.5, 155.5, -202);
+		glVertex3f(-320, 155.5, -202);
+		glVertex3f(-320, 105.5, -350);
+		glVertex3f(-560, 105.5, -350);
+		glEnd();
+
+		glBegin(GL_QUADS);
+		glColor3fv(color.grey);
+		glVertex3f(-520, 105.5, -55);
+		glVertex3f(-320, 105.5, -55);
+		glVertex3f(-320, 105.5, -350);
+		glVertex3f(-560, 105.5, -350);
+		glEnd();
+
+		glBegin(GL_TRIANGLES);
+		glColor3fv(color.grey);
+		glVertex3f(-520, 105.5, -55);
+		glVertex3f(-540, 155.5, -202.5);
+		glVertex3f(-560, 105.5, -350);
+		glEnd();
+
+		glBegin(GL_TRIANGLES);
+		glColor3fv(color.grey);
+		glVertex3f(-320, 105.5, -55);
+		glVertex3f(-320, 155.5, -202.5);
+		glVertex3f(-320, 105.5, -350);
+		glEnd();
+
+		//pilar depan kiri
+		glBegin(GL_QUADS);
+		glColor3fv(color.grey);
+		glVertex3f(-505, 55.0, -70);
+		glVertex3f(-507.5, 55.0, -70);
+		glVertex3f(-507.5, 105.0, -70);
+		glVertex3f(-505, 105.0, -70);
+		glEnd();
+
+		glBegin(GL_QUADS);
+		glVertex3f(-505, 55.0, -72.5);
+		glVertex3f(-507.5, 55.0, -72.5);
+		glVertex3f(-507.5, 105.0, -72.5);
+		glVertex3f(-505, 105.0, -72.5);
+		glEnd();
+
+		glBegin(GL_QUADS);
+		glVertex3f(-505, 55.0, -70);
+		glVertex3f(-505, 55.0, -70);
+		glVertex3f(-505, 105.0, -72.5);
+		glVertex3f(-505, 105.0, -72.5);
+		glEnd();
+
+		glBegin(GL_QUADS);
+		glVertex3f(-507.5, 55.0, -70);
+		glVertex3f(-507.5, 55.0, -70);
+		glVertex3f(-507.5, 105.0, -72.5);
+		glVertex3f(-507.5, 105.0, -72.5);
+		glEnd();
+
+		// pilar depan kanan		
+		glBegin(GL_QUADS);
+		glVertex3f(-335, 55.0, -70);
+		glVertex3f(-337.5, 55.0, -70);
+		glVertex3f(-337.5, 105.0, -70);
+		glVertex3f(-335, 105.0, -70);
+		glEnd();
+
+		glBegin(GL_QUADS);
+		glVertex3f(-335, 55.0, -72.5);
+		glVertex3f(-337.5, 55.0, -72.5);
+		glVertex3f(-337.5, 105.0, -72.5);
+		glVertex3f(-335, 105.0, -72.5);
+		glEnd();
+
+		glBegin(GL_QUADS);
+		glVertex3f(-335, 55.0, -70);
+		glVertex3f(-335, 55.0, -72.5);
+		glVertex3f(-335, 105.0, -72.5);
+		glVertex3f(-335, 105.0, -70);
+		glEnd();
+
+		glBegin(GL_QUADS);
+		glVertex3f(-337.5, 55.0, -72.5);
+		glVertex3f(-337.5, 55.0, -72.5);
+		glVertex3f(-337.5, 105.0, -72.5);
+		glVertex3f(-337.5, 105.0, -72.5);
+		glEnd();
+
+		// Belakang kanan	
+		glBegin(GL_QUADS);
+		glVertex3f(-335, 55.0, -335);
+		glVertex3f(-337.5, 55.0, -335);
+		glVertex3f(-337.5, 105.0, -335);
+		glVertex3f(-335, 105.0, -335);
+		glEnd();
+
+		glBegin(GL_QUADS);
+		glVertex3f(-335, 55.0, -337.5);
+		glVertex3f(-337.5, 55.0, -337.5);
+		glVertex3f(-337.5, 105.0, -337.5);
+		glVertex3f(-335, 105.0, -337.5);
+		glEnd();
+
+		glBegin(GL_QUADS);
+		glVertex3f(-335, 55.0, -335);
+		glVertex3f(-335, 55.0, -337.5);
+		glVertex3f(-335, 105.0, -337.5);
+		glVertex3f(-335, 105.0, -335);
+		glEnd();
+
+		glBegin(GL_QUADS);
+		glVertex3f(-337.5, 55.0, -337.5);
+		glVertex3f(-337.5, 55.0, -337.5);
+		glVertex3f(-337.5, 105.0, -337.5);
+		glVertex3f(-337.5, 105.0, -337.5);
+		glEnd();
+
+		// Belakang kiri
+		glBegin(GL_QUADS);
+		glVertex3f(-545, 55.0, -335);
+		glVertex3f(-547.5, 55.0, -335);
+		glVertex3f(-547.5, 105.0, -335);
+		glVertex3f(-545, 105.0, -335);
+		glEnd();
+
+		glBegin(GL_QUADS);
+		glVertex3f(-545, 55.0, -337.5);
+		glVertex3f(-547.5, 55.0, -337.5);
+		glVertex3f(-547.5, 105.0, -337.5);
+		glVertex3f(-545, 105.0, -337.5);
+		glEnd();
+
+		glBegin(GL_QUADS);
+		glVertex3f(-545, 55.0, -335);
+		glVertex3f(-545, 55.0, -337.5);
+		glVertex3f(-545, 105.0, -337.5);
+		glVertex3f(-545, 105.0, -335);
+		glEnd();
+
+		glBegin(GL_QUADS);
+		glVertex3f(-547.5, 55.0, -337.5);
+		glVertex3f(-547.5, 55.0, -337.5);
+		glVertex3f(-547.5, 105.0, -337.5);
+		glVertex3f(-547.5, 105.0, -337.5);
+		glEnd();
+	}
 };
 
 myConfiguration config;
@@ -3929,7 +4098,7 @@ void display() {
 	obj.myTree(-100.0, 340);
 	obj.myTree(-200.0, 340);
 	obj.myTree(-330.0, 340);
-	obj.myTree(-420.0, -250);
+	obj.myTree(-580.0, -550);
 	obj.myTree(-120.0, -50);
 	obj.myTree(300.0, 580);
 	obj.myTree(120.0, 575);
@@ -3945,6 +4114,7 @@ void display() {
 	obj.trafficLight();
 	obj.gasStation();
 	obj.indomaretStore();
+	obj.parkingArea();
 
 	obj.carObject(carPositionX[0], carPositionZ[0], carColor[0]);
 	obj.carObject(carPositionX[1], carPositionZ[1], carColor[1]);
@@ -4186,7 +4356,7 @@ void timer(int) {
 				carSpeed[i] = rand() % ((4 - 2) + 1) + 2;
 			}
 
-			if (carPositionX[i] < -800) {
+			if (carPositionX[i] < -960) {
 				carPositionX[i] = 380;
 				carSpeed[i] = rand() % ((4 - 2) + 1) + 2;
 				carColor[i] = rand() % ((8 - 1) + 1) + 1;
@@ -4360,7 +4530,7 @@ void myinit() {
 	glLineWidth(2.5);
 	glMatrixMode(GL_PROJECTION);
 	glEnable(GL_DEPTH_TEST);
-	gluOrtho2D(0, 500.0, -500.0, 500.0);
+	//gluOrtho2D(0, 500.0, -500.0, 500.0);
 	glEnable(GL_LINE_SMOOTH);
 	glEnable(GL_POINT_SMOOTH);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
