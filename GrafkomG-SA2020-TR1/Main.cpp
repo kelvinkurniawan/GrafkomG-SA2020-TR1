@@ -4136,24 +4136,10 @@ void timer(int) {
 	{
 		for (int i = 0; i < 5; i++) {
 			carPositionX[i] -= carSpeed[i];
-
-			/*
-			if (carPositionX[1] - carPositionX[3] == 50) {
-				carSpeed[3] -= 0.2;
-				cout << carSpeed[3] << " > 2 diperlambat" << endl;
-			}
-
-			if (carPositionX[3] - carPositionX[1] == 50) {
-				carSpeed[1] -= 0.2;
-				cout << carSpeed[1] << " > 1 diperlambat" << endl;
-			}
-			*/
-
-			
 			for (int j = 0; j < 5; j++) {
 				float range = carPositionX[i] - carPositionX[j];
 				if (carPositionZ[i] == carPositionZ[j]) {
-					if (abs(range) < 50 && i != j){
+					if (abs(range) < 50 && i != j) {
 						if (carSpeed[i] == 0) {
 							carSpeed[i] = carSpeed[j];
 						}
@@ -4161,23 +4147,32 @@ void timer(int) {
 							if (carPositionX[i] > -300) {
 								if (carPositionZ[i] == 400) {
 									carPositionZ[i] = 475;
+									break;
 								}
 								else {
 									carPositionZ[i] = 400;
+									break;
 								}
 							}
 							else {
 								carSpeed[i] = carSpeed[j];
+								break;
 							}
 						}
 						// cout << "car " << i << " & car " << j << " = " << abs(range) << endl;
 						// cout << "mobil " << i << " dan " << j << " mepet " << "dengan jarak " << abs(range) << endl;
 					}
 					if (abs(range) < 40 && abs(range) > -40 && i != j) {
-						carPositionX[i] -= 50;
-						carPositionX[j] += 100;
+						if (carSpeed[i] > 0.0) {
+							carSpeed[i] -= 0.002;
+						}
+						else {
+							break;
+						}
+						//carPositionX[i] -= 50;
+						//carPositionX[j] += 100;
 						// cout << "car " << i << " & car " << j << " = " << abs(range) << endl;
-						cout << "mobil " << i << " dan " << j << " mepet " << "dengan jarak " << abs(range) << endl;
+						// cout << "mobil " << i << " dan " << j << " mepet " << "dengan jarak " << abs(range) << endl;
 					}
 				}
 			}
