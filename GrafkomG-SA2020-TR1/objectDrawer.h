@@ -5,6 +5,8 @@
 
 #define deltat .001
 
+GLuint _textureID;
+
 float treeAnimation = 0;
 float treeAnimationLeft = true;
 
@@ -3982,5 +3984,97 @@ public:
 		glVertex3f(-547.5, 105.0, -337.5);
 		glVertex3f(-547.5, 105.0, -337.5);
 		glEnd();
+	}
+
+	void billboard() {
+
+		glBegin(GL_QUADS);
+		glColor3ubv(color.hardGrey);
+		glVertex3f(-618.0, 55.0, 550.0);
+		glVertex3f(-613.0, 55.0, 550.0);
+		glVertex3f(-613.0, 105.0, 550.0);
+		glVertex3f(-618.0, 105.0, 550.0);
+		glEnd();
+
+		glBegin(GL_QUADS);
+		glVertex3f(-618.0, 55.0, 555.0);
+		glVertex3f(-613.0, 55.0, 555.0);
+		glVertex3f(-613.0, 105.0, 555.0);
+		glVertex3f(-618.0, 105.0, 555.0);
+		glEnd();
+
+		glBegin(GL_QUADS);
+		glVertex3f(-618.0, 55.0, 555.0);
+		glVertex3f(-618.0, 55.0, 550.0);
+		glVertex3f(-618.0, 105.0, 550.0);
+		glVertex3f(-618.0, 105.0, 555.0);
+		glEnd();
+
+		glBegin(GL_QUADS);
+		glVertex3f(-613.0, 55.0, 555.0);
+		glVertex3f(-613.0, 55.0, 550.0);
+		glVertex3f(-613.0, 105.0, 550.0);
+		glVertex3f(-613.0, 105.0, 555.0);
+		glEnd();
+
+		// Papan
+
+		glBegin(GL_QUADS);
+		glColor3ubv(color.hardGrey);
+		glVertex3f(-635.5, 105.5, 500.0);
+		glVertex3f(-630.5, 105.5, 500.0);
+		glVertex3f(-630.5, 200.0, 500.0);
+		glVertex3f(-635.5, 200.0, 500.0);
+		glEnd();
+
+		glBegin(GL_QUADS);
+		glColor3ubv(color.hardGrey);
+		glVertex3f(-595.5, 105.5, 605.0);
+		glVertex3f(-600.5, 105.5, 605.0);
+		glVertex3f(-600.5, 200.0, 605.0);
+		glVertex3f(-595.5, 200.0, 605.0);
+		glEnd();
+
+		glBegin(GL_QUADS);
+		glColor3ubv(color.hardGrey);
+		glVertex3f(-595.5, 200.5, 605.0);
+		glVertex3f(-630.5, 200.5, 500.0);
+		glVertex3f(-635.5, 200.5, 500.0);
+		glVertex3f(-600.5, 200.5, 605.0);
+		glEnd();
+
+		glBegin(GL_QUADS);
+		glColor3ubv(color.hardGrey);
+		glVertex3f(-595.5, 105.5, 605.0);
+		glVertex3f(-630.5, 105.5, 500.0);
+		glVertex3f(-635.5, 105.5, 500.0);
+		glVertex3f(-600.5, 105.5, 605.0);
+		glEnd();
+
+		glBegin(GL_QUADS);
+		glColor3fv(color.white);
+		glVertex3f(-635.5, 105.5, 500.0);
+		glVertex3f(-600.5, 105.5, 605.0);
+		glVertex3f(-600.5, 200.0, 605.0);
+		glVertex3f(-635.5, 200.0, 500.0);
+		glEnd();
+
+		glEnable(GL_TEXTURE_2D);
+		glBindTexture(GL_TEXTURE_2D, _textureID);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+		glBegin(GL_QUADS);
+		glTexCoord2f(1, 0);
+		glVertex3f(-630.5, 105.5, 500.0);
+		glTexCoord2f(0, 0);
+		glVertex3f(-595.5, 105.5, 605.0);
+		glTexCoord2f(0, 1);
+		glVertex3f(-595.5, 200.0, 605.0);
+		glTexCoord2f(1, 1);
+		glVertex3f(-630.5, 200.0, 500.0);
+		glEnd();
+
+		glDisable(GL_TEXTURE_2D);
 	}
 };

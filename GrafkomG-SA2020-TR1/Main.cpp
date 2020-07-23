@@ -14,7 +14,7 @@ using namespace std;
 
 myConfiguration config;
 myColor color;
-myObject obj;
+myObject obj; 
 
 void reshape(int width, int height) {
 	glMatrixMode(GL_PROJECTION);
@@ -298,6 +298,7 @@ void display() {
 	obj.gasStation();
 	obj.indomaretStore();
 	obj.parkingArea();
+	obj.billboard();
 
 	obj.carObject(carPositionX[0], carPositionZ[0], carColor[0]);
 	obj.carObject(carPositionX[1], carPositionZ[1], carColor[1]);
@@ -312,9 +313,9 @@ void display() {
 	obj.starObject(500.0 + config.deltaStar5, 1000.0, 550.0 + config.deltaStar5, 900.0, 500.0 + config.deltaStar5, 900.0, 550.0 + config.deltaStar5, 1000.0);
 
 	obj.tweening();
-
 	obj.drawBuildingBase();
 	glDisable(GL_COLOR_MATERIAL);
+
 	glPopMatrix();
 
 	glutSwapBuffers();
@@ -480,18 +481,17 @@ void mouseMotionActive(int x, int y) {
 // Inisialisasi
 
 void myinit() {
+
 	glClearColor(0.93, 0.86, 0.64, 1.0);
 	glPointSize(5.0);
 	glLineWidth(2.5);
 	glMatrixMode(GL_PROJECTION);
 	glEnable(GL_DEPTH_TEST);
-	//gluOrtho2D(0, 500.0, -500.0, 500.0);
 	glEnable(GL_LINE_SMOOTH);
 	glEnable(GL_POINT_SMOOTH);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	glEnable(GL_BLEND);
 	glEnable(GL_NORMALIZE);
-
 
 	glLightfv(GL_LIGHT0, GL_AMBIENT, config.ambientLight);
 	glLightfv(GL_LIGHT0, GL_DIFFUSE, config.diffuseLight);
@@ -502,6 +502,7 @@ void myinit() {
 	glEnable(GL_LIGHTING);
 	glEnable(GL_LIGHT0);
 
+	_textureID = loadBMPImage("./resources/transmart_carrefour.bmp");
 }
 
 int main(int argc, char** argv) {

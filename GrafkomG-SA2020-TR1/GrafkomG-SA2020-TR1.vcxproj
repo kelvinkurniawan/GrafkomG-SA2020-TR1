@@ -151,6 +151,9 @@
     <ClInclude Include="myConfiguration.h" />
     <ClInclude Include="objectDrawer.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="resources\transmart_carrefour.bmp" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
