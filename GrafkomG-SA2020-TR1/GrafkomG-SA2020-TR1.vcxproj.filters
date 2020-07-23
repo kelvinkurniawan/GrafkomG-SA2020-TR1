@@ -19,4 +19,18 @@
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="loadImage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="objectDrawer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="colorOption.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="myConfiguration.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
 </Project>
