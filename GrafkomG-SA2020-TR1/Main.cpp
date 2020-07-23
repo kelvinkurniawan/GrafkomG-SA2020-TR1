@@ -10,12 +10,244 @@
 #include "colorOption.h";
 #include "myConfiguration.h";
 
-
 using namespace std;
 
 myConfiguration config;
 myColor color;
 myObject obj;
+
+void reshape(int width, int height) {
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+	gluPerspective(50.0, width / height, 5.0, 1000.0);
+	glTranslatef(-25.0, -100.0, -500.0);
+	glMatrixMode(GL_MODELVIEW); 
+	glViewport(0, 0, (GLsizei)width, (GLsizei)width);
+}
+
+void timer(int) {
+	glutTimerFunc(1000 / 30, timer, 0);
+	// Car
+	{
+		for (int i = 0; i < 5; i++) {
+			carPositionX[i] -= carSpeed[i];
+			for (int j = 0; j < 5; j++) {
+				float range = carPositionX[i] - carPositionX[j];
+				if (carPositionZ[i] == carPositionZ[j]) {
+					if (abs(range) < 50 && i != j) {
+						if (carSpeed[i] == 0) {
+							carSpeed[i] = carSpeed[j];
+						}
+						else {
+							if (carPositionX[i] > -300) {
+								if (carPositionZ[i] == 400) {
+									carPositionZ[i] = 475;
+									break;
+								}
+								else {
+									carPositionZ[i] = 400;
+									break;
+								}
+							}
+							else {
+								carSpeed[i] = carSpeed[j];
+								break;
+							}
+						}
+						// cout << "car " << i << " & car " << j << " = " << abs(range) << endl;
+						// cout << "mobil " << i << " dan " << j << " mepet " << "dengan jarak " << abs(range) << endl;
+					}
+					if (abs(range) < 40 && abs(range) > -40 && i != j) {
+						if (carSpeed[i] > 0.0) {
+							carSpeed[i] -= 0.002;
+						}
+						else {
+							break;
+						}
+						//carPositionX[i] -= 50;
+						//carPositionX[j] += 100;
+						// cout << "car " << i << " & car " << j << " = " << abs(range) << endl;
+						// cout << "mobil " << i << " dan " << j << " mepet " << "dengan jarak " << abs(range) << endl;
+					}
+				}
+			}
+
+
+			if (carPositionX[i] < -415 && carPositionX[i] > -470 && redOn) {
+				carSpeed[i] = 0;
+			}
+
+			if (carPositionX[i] < -415 && carPositionX[i] > -470 && greenOn) {
+				carSpeed[i] = rand() % ((4 - 2) + 1) + 2;
+			}
+
+			if (carPositionX[i] < -960) {
+				carPositionX[i] = 380;
+				carSpeed[i] = rand() % ((4 - 2) + 1) + 2;
+				carColor[i] = rand() % ((8 - 1) + 1) + 1;
+			}
+
+		}
+	}
+
+	// Sunlight
+	{
+		if (sunlightAutoMovement) {
+			sunlightPosition += 5;
+
+			if (sunlightPosition > 800)
+				sunlightPosition = -1200;
+
+			GLfloat sunlightMovement[4] = { sunlightPosition, 100.0f, 500.0f, 0.5 };
+			glLightfv(GL_LIGHT0, GL_POSITION, sunlightMovement);
+		}
+	}
+
+	// Tree Animation
+	{
+
+		if (treeAnimation < 5 && !treeAnimationLeft) {
+			treeAnimation += 0.2;
+		}
+		else {
+			treeAnimationLeft = true;
+		}
+
+		if (treeAnimation > -5 && treeAnimationLeft) {
+			treeAnimation -= 0.2;
+		}
+		else {
+			treeAnimationLeft = false;
+		}
+	}
+
+	// Traffic light
+	{
+		if (redLight > 0) {
+			redOn = true;
+			yellowOn = false;
+			greenOn = false;
+
+			if (redLight > 0)
+				redLight -= 10;
+
+			if (redLight < 50)
+				yellowLight = 500;
+		}
+		else if (yellowLight > 0) {
+			redOn = false;
+			yellowOn = true;
+			greenOn = false;
+
+			if (yellowLight > 0)
+				yellowLight -= 10;
+
+			if (yellowLight < 50)
+				greenLight = 1000;
+
+
+		}
+		else if (greenLight > 0) {
+			redOn = false;
+			yellowOn = false;
+			greenOn = true;
+
+			if (greenLight > 0)
+				greenLight -= 10;
+
+			if (greenLight < 50)
+				redLight = 1000;
+
+		}} // Traffic Light
+
+	// Star
+	{
+
+		{
+			if (config.deltaStar1 > -500 && config.moveLeft1)
+			{
+				config.deltaStar1 -= 0.8;
+			}
+			else {
+				config.moveLeft1 = false;
+			}
+			if (config.deltaStar1 < 1000 && !config.moveLeft1)
+			{
+				config.deltaStar1 += 0.8;
+			}
+			else {
+				config.moveLeft1 = true;
+			}
+		}
+		{
+			if (config.deltaStar2 > -1000 && config.moveLeft2)
+			{
+				config.deltaStar2 -= 0.5;
+			}
+			else {
+				config.moveLeft2 = false;
+			}
+			if (config.deltaStar2 < 900 && !config.moveLeft2)
+			{
+				config.deltaStar2 += 0.5;
+			}
+			else {
+				config.moveLeft2 = true;
+			}
+		}
+		{
+			if (config.deltaStar3 > -875 && config.moveLeft3)
+			{
+				config.deltaStar3 -= 0.2;
+			}
+			else {
+				config.moveLeft3 = false;
+			}
+			if (config.deltaStar3 < 625 && !config.moveLeft3)
+			{
+				config.deltaStar3 += 0.2;
+			}
+			else {
+				config.moveLeft3 = true;
+			}
+		}
+		{
+			if (config.deltaStar4 > -1100 && config.moveLeft4)
+			{
+				config.deltaStar4 -= 0.3;
+			}
+			else {
+				config.moveLeft4 = false;
+			}
+			if (config.deltaStar4 < 300 && !config.moveLeft4)
+			{
+				config.deltaStar4 += 0.3;
+			}
+			else {
+				config.moveLeft4 = true;
+			}
+		}
+		{
+			if (config.deltaStar5 > -1400 && config.moveLeft5)
+			{
+				config.deltaStar5 -= 0.4;
+			}
+			else {
+				config.moveLeft5 = false;
+			}
+			if (config.deltaStar5 < 100 && !config.moveLeft5)
+			{
+				config.deltaStar5 += 0.4;
+			}
+			else {
+				config.moveLeft5 = true;
+			}
+		}
+	}
+
+	glutPostRedisplay();
+
+}
 
 void display() {
 
@@ -87,6 +319,8 @@ void display() {
 
 	glutSwapBuffers();
 }
+
+// Action Controller
 
 void keyFun(unsigned char key, int x, int y) {
 	switch (key) {
@@ -224,14 +458,6 @@ void mouseMotion(int x, int y) {
 
 }
 
-void reshape(int width, int height) {
-	glMatrixMode(GL_PROJECTION);
-	glLoadIdentity();
-	gluPerspective(50.0, width / height, 5.0, 1000.0);
-	glTranslatef(-25.0, -100.0, -500.0);
-	glMatrixMode(GL_MODELVIEW);
-}
-
 void mouseWheel(int button, int dir, int x, int y) {
 
 	if (dir > 0) {
@@ -251,229 +477,7 @@ void mouseMotionActive(int x, int y) {
 	glutPostRedisplay();
 }
 
-void timer(int) {
-	glutTimerFunc(1000 / 30, timer, 0);
-	// Car
-	{
-		for (int i = 0; i < 5; i++) {
-			carPositionX[i] -= carSpeed[i];
-			for (int j = 0; j < 5; j++) {
-				float range = carPositionX[i] - carPositionX[j];
-				if (carPositionZ[i] == carPositionZ[j]) {
-					if (abs(range) < 50 && i != j) {
-						if (carSpeed[i] == 0) {
-							carSpeed[i] = carSpeed[j];
-						}
-						else {
-							if (carPositionX[i] > -300) {
-								if (carPositionZ[i] == 400) {
-									carPositionZ[i] = 475;
-									break;
-								}
-								else {
-									carPositionZ[i] = 400;
-									break;
-								}
-							}
-							else {
-								carSpeed[i] = carSpeed[j];
-								break;
-							}
-						}
-						// cout << "car " << i << " & car " << j << " = " << abs(range) << endl;
-						// cout << "mobil " << i << " dan " << j << " mepet " << "dengan jarak " << abs(range) << endl;
-					}
-					if (abs(range) < 40 && abs(range) > -40 && i != j) {
-						if (carSpeed[i] > 0.0) {
-							carSpeed[i] -= 0.002;
-						}
-						else {
-							break;
-						}
-						//carPositionX[i] -= 50;
-						//carPositionX[j] += 100;
-						// cout << "car " << i << " & car " << j << " = " << abs(range) << endl;
-						// cout << "mobil " << i << " dan " << j << " mepet " << "dengan jarak " << abs(range) << endl;
-					}
-				}
-			}
-
-
-			if (carPositionX[i] < -415 && carPositionX[i] > -470 && redOn) {
-				carSpeed[i] = 0;
-			}
-
-			if (carPositionX[i] < -415 && carPositionX[i] > -470 && greenOn) {
-				carSpeed[i] = rand() % ((4 - 2) + 1) + 2;
-			}
-
-			if (carPositionX[i] < -960) {
-				carPositionX[i] = 380;
-				carSpeed[i] = rand() % ((4 - 2) + 1) + 2;
-				carColor[i] = rand() % ((8 - 1) + 1) + 1;
-			}
-
-		}
-	}
-
-	// Sunlight
-	{
-		if (sunlightAutoMovement) {
-			sunlightPosition += 5;
-
-			if (sunlightPosition > 800)
-				sunlightPosition = -1200;
-
-			GLfloat sunlightMovement[4] = { sunlightPosition, 100.0f, 500.0f, 0.5 };
-			glLightfv(GL_LIGHT0, GL_POSITION, sunlightMovement);
-		}
-	}
-
-	// Tree Animation
-	{
-
-		if (treeAnimation < 5 && !treeAnimationLeft) {
-			treeAnimation += 0.2;
-		}
-		else {
-			treeAnimationLeft = true;
-		}
-
-		if (treeAnimation > -5 && treeAnimationLeft) {
-			treeAnimation -= 0.2;
-		}
-		else {
-			treeAnimationLeft = false;
-		}		
-	}
-
-	// Traffic light
-	{
-		if (redLight > 0) {
-			redOn = true;
-			yellowOn = false;
-			greenOn = false;
-
-			if (redLight > 0)
-				redLight -= 10;
-
-			if (redLight < 50)
-				yellowLight = 500;
-		}
-		else if (yellowLight > 0) {
-			redOn = false;
-			yellowOn = true;
-			greenOn = false;
-
-			if (yellowLight > 0)
-				yellowLight -= 10;
-
-			if (yellowLight < 50)
-				greenLight = 1000;
-
-
-		}
-		else if (greenLight > 0) {
-			redOn = false;
-			yellowOn = false;
-			greenOn = true;
-
-			if (greenLight > 0)
-				greenLight -= 10;
-
-			if (greenLight < 50)
-				redLight = 1000;
-
-		}} // Traffic Light
-
-	// Star
-	{
-
-		{
-			if (config.deltaStar1 > -500 && config.moveLeft1)
-			{
-				config.deltaStar1 -= 0.8;
-			}
-			else {
-				config.moveLeft1 = false;
-			}
-			if (config.deltaStar1 < 1000 && !config.moveLeft1)
-			{
-				config.deltaStar1 += 0.8;
-			}
-			else {
-				config.moveLeft1 = true;
-			}
-		}
-		{
-			if (config.deltaStar2 > -1000 && config.moveLeft2)
-			{
-				config.deltaStar2 -= 0.5;
-			}
-			else {
-				config.moveLeft2 = false;
-			}
-			if (config.deltaStar2 < 900 && !config.moveLeft2)
-			{
-				config.deltaStar2 += 0.5;
-			}
-			else {
-				config.moveLeft2 = true;
-			}
-		}
-		{
-			if (config.deltaStar3 > -875 && config.moveLeft3)
-			{
-				config.deltaStar3 -= 0.2;
-			}
-			else {
-				config.moveLeft3 = false;
-			}
-			if (config.deltaStar3 < 625 && !config.moveLeft3)
-			{
-				config.deltaStar3 += 0.2;
-			}
-			else {
-				config.moveLeft3 = true;
-			}
-		}
-		{
-			if (config.deltaStar4 > -1100 && config.moveLeft4)
-			{
-				config.deltaStar4 -= 0.3;
-			}
-			else {
-				config.moveLeft4 = false;
-			}
-			if (config.deltaStar4 < 300 && !config.moveLeft4)
-			{
-				config.deltaStar4 += 0.3;
-			}
-			else {
-				config.moveLeft4 = true;
-			}
-		}
-		{
-			if (config.deltaStar5 > -1400 && config.moveLeft5)
-			{
-				config.deltaStar5 -= 0.4;
-			}
-			else {
-				config.moveLeft5 = false;
-			}
-			if (config.deltaStar5 < 100 && !config.moveLeft5)
-			{
-				config.deltaStar5 += 0.4;
-			}
-			else {
-				config.moveLeft5 = true;
-			}
-		}
-	}
-
-	glutPostRedisplay();
-
-}
+// Inisialisasi
 
 void myinit() {
 	glClearColor(0.93, 0.86, 0.64, 1.0);
