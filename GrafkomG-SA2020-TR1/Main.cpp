@@ -22,7 +22,7 @@ void reshape(int width, int height) {
 	gluPerspective(50.0, width / height, 5.0, 1000.0);
 	glTranslatef(-25.0, -100.0, -500.0);
 	glMatrixMode(GL_MODELVIEW); 
-	glViewport(0, 0, (GLsizei)width, (GLsizei)width);
+	glViewport(0, 0, config.width, config.height);
 }
 
 void timer(int) {
@@ -405,6 +405,12 @@ void keyFun(unsigned char key, int x, int y) {
 	case '2':
 		glScalef(0.975, 0.975, 0.975);
 		break;
+
+	case 'p':
+		for (int i = 0; i < 5; i++) {
+			carSpeed[i] = 3;
+		}
+		break;
 	}
 	glutPostRedisplay();
 }
@@ -481,8 +487,6 @@ void mouseMotionActive(int x, int y) {
 // Inisialisasi
 
 void myinit() {
-
-	glClearColor(0.93, 0.86, 0.64, 1.0);
 	glPointSize(5.0);
 	glLineWidth(2.5);
 	glMatrixMode(GL_PROJECTION);

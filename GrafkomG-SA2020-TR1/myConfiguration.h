@@ -4,6 +4,7 @@ public:
 	bool mouseDown = false;
 	bool manualLighting = false;
 	bool fscreen = false;
+	bool nightMode = false;
 
 	// Mouse controller
 	float xrot = 0.0f;
