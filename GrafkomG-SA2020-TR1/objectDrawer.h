@@ -3209,6 +3209,11 @@ public:
 		glVertex3f(dx, dy, 0.0);
 		glVertex3f(px, py - 10, -10.0);
 		glEnd();
+
+
+		glBegin(GL_POINTS);
+		glVertex3f(px, py, 10.0);
+		glEnd();
 	}
 
 	void tweening() {

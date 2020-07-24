@@ -20,7 +20,8 @@ void reshape(int width, int height) {
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	gluPerspective(50.0, width / height, 5.0, 1000.0);
-	glTranslatef(-25.0, -100.0, -500.0);
+	glTranslatef(-25.0, -150.0, -500.0);
+	glScalef(0.15, 0.15, 0.15);
 	glMatrixMode(GL_MODELVIEW); 
 	glViewport(0, 0, config.width, config.height);
 }
@@ -384,7 +385,7 @@ void keyFun(unsigned char key, int x, int y) {
 		break;
 
 	case 'n':
-		if (config.nightMode){
+		if (config.nightMode) {
 			config.nightMode = false;
 		}
 		else {
@@ -423,12 +424,6 @@ void keyFun(unsigned char key, int x, int y) {
 		break;
 	case '2':
 		glScalef(0.975, 0.975, 0.975);
-		break;
-
-	case 'p':
-		for (int i = 0; i < 5; i++) {
-			carSpeed[i] = 3;
-		}
 		break;
 	}
 	glutPostRedisplay();
@@ -506,7 +501,7 @@ void mouseMotionActive(int x, int y) {
 // Inisialisasi
 
 void myinit() {
-	glPointSize(5.0);
+	glPointSize(10.0);
 	glLineWidth(2.5);
 	glMatrixMode(GL_PROJECTION);
 	glEnable(GL_DEPTH_TEST);
