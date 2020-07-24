@@ -22,7 +22,7 @@ void reshape(int width, int height) {
 	gluPerspective(50.0, width / height, 5.0, 1000.0);
 	glTranslatef(-25.0, -100.0, -500.0);
 	glMatrixMode(GL_MODELVIEW); 
-	glViewport(0, 0, (GLsizei)width, (GLsizei)width);
+	glViewport(0, 0, config.width, config.height);
 }
 
 void timer(int) {
@@ -250,6 +250,12 @@ void timer(int) {
 }
 
 void display() {
+	if (config.nightMode) {
+		glClearColor(0, 0, 0, 1.0);
+	}
+	else {
+		glClearColor(0.93, 0.86, 0.64, 1.0);
+	}
 
 	if (config.manualLighting) {
 		GLfloat position[] = { config.mouseX, config.mouseY, config.mouseZ, 1 };
@@ -352,7 +358,7 @@ void keyFun(unsigned char key, int x, int y) {
 		// enable manual lighting
 	case 'r':
 		if (!config.manualLighting) {
-			config.manualLighting = true; 
+			config.manualLighting = true;
 			sunlightAutoMovement = false;
 			cout << "Manual Lighting enabled!" << endl;
 		}
@@ -377,6 +383,15 @@ void keyFun(unsigned char key, int x, int y) {
 		}
 		break;
 
+	case 'n':
+		if (config.nightMode){
+			config.nightMode = false;
+		}
+		else {
+			config.nightMode = true;
+		}
+		break;
+
 	case 'f':
 		if (!config.fscreen) {
 			glutFullScreen();
@@ -390,7 +405,11 @@ void keyFun(unsigned char key, int x, int y) {
 			cout << "Fullscreen disabled!" << endl;
 		}
 		break;
-
+	case 'p':
+		for (int i = 0; i < 5; i++) {
+			carSpeed[i] = 3;
+		}
+		break;
 		// moving z point
 	case 't':
 		config.mouseZ += 100.0f;
@@ -481,8 +500,6 @@ void mouseMotionActive(int x, int y) {
 // Inisialisasi
 
 void myinit() {
-
-	glClearColor(0.93, 0.86, 0.64, 1.0);
 	glPointSize(5.0);
 	glLineWidth(2.5);
 	glMatrixMode(GL_PROJECTION);
